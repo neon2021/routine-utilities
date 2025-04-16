@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import (QApplication, QMainWindow, QPushButton, QFileDialog
                            QVBoxLayout, QHBoxLayout, QWidget, QLabel, QSpinBox,
                            QTableWidget, QTableWidgetItem, QHeaderView, QMessageBox)
 from PyQt6.QtCore import Qt
+from functools import partial
 import ffmpeg
 import subprocess
 
@@ -100,12 +101,15 @@ class VideoSplitterApp(QMainWindow):
                 
                 if i == len(video.segments) - 1:
                     add_btn = QPushButton("+")
-                    add_btn.clicked.connect(lambda v=video: self.addSegment(v))
+                    current_video = video  # Create a reference to the current video
+                    add_btn.clicked.connect(partial(self.addSegment, current_video))
                     btn_layout.addWidget(add_btn)
                 
                 if len(video.segments) > 1:
                     del_btn = QPushButton("-")
-                    del_btn.clicked.connect(lambda v=video, s=segment: self.removeSegment(v, s))
+                    current_video = video  # Create a reference to the current video
+                    current_segment = segment  # Create a reference to the current segment
+                    del_btn.clicked.connect(partial(self.removeSegment, current_video, current_segment))
                     btn_layout.addWidget(del_btn)
                 
                 btn_layout.setContentsMargins(0, 0, 0, 0)
