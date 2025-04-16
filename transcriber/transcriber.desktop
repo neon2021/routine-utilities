@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Audio/Video Transcriber
+Comment=Transcribe audio and video files to text
+Exec=bash -c 'cd $HOME/Documents/code-projects/routine-utilities/transcriber && ./run_transcriber.sh %f'
+Terminal=true
+Type=Application
+Categories=Utility;Audio;Video;
+Icon=audio-headset 
