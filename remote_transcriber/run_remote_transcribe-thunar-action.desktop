@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Action
+Name=Transcribe Audio/Video
+Name[en_US]=Transcribe Audio/Video
+Tooltip=Transcribe this audio/video file to text
+Icon=audio-headset
+ToolbarLabel=Transcribe Audio/Video
+TargetLocation=false
+TargetToolbar=false
+TargetMenu=true
+TargetContext=true
+Profiles=TranscribeAudioVideo;
+
+[X-Action-Profile TranscribeAudioVideo]
+Exec=/home/caesar/Applications/shell-utilities/transcribe-demo.sh %f
+MimeTypes=audio/*;video/*;
+Schemes=file; 
