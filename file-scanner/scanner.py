@@ -31,6 +31,7 @@ ROOT_DIRS = [os.path.expanduser(p) for p in config.get('scan_dirs', ['/tmp'])]
 DB_CONFIG = config.get('db', {})
 TABLE_NAME = config.get('table_name', 'file_inventory')
 BATCH_SIZE = config.get('batch_size', 100)
+FORCE_UPDATE = config.get('force_update', False)
 
 # === 获取本机主机名 ===
 machine_name = socket.gethostname()
@@ -81,7 +82,7 @@ update_deleted_sql = f"""
 UPDATE {TABLE_NAME}
 SET deleted = 1, scanned_at = CURRENT_TIMESTAMP,
     md5 = %s, size = %s, mime_type = %s, scan_duration_secs = %s
-WHERE path = %s AND (md5 IS DISTINCT FROM %s OR size IS DISTINCT FROM %s);
+WHERE path = %s {"" if FORCE_UPDATE else "AND (md5 IS DISTINCT FROM %s OR size IS DISTINCT FROM %s)"};
 """
 
 # === 执行插入 ===
@@ -120,7 +121,6 @@ for root_dir in ROOT_DIRS:
     for root, _, files in os.walk(root_dir):
         for name in files:
             full_path = os.path.join(root, name)
-            print(f"full_path: {full_path}")
             try:
                 if os.path.isfile(full_path):
                     start_time = time.time()
@@ -129,10 +129,11 @@ for root_dir in ROOT_DIRS:
                     file_size = os.path.getsize(full_path)
                     duration = round(time.time() - start_time, 4)
                     if md5_hash:
-                        # for insert
                         batch_insert.append((machine_name, full_path, mime_type, md5_hash, file_size, duration))
-                        # for update
-                        batch_update.append((md5_hash, file_size, mime_type, duration, full_path, md5_hash, file_size))
+                        if FORCE_UPDATE:
+                            batch_update.append((md5_hash, file_size, mime_type, duration, full_path))
+                        else:
+                            batch_update.append((md5_hash, file_size, mime_type, duration, full_path, md5_hash, file_size))
                         if len(batch_insert) >= BATCH_SIZE:
                             mark_old_versions(batch_update)
                             insert_records(batch_insert)
