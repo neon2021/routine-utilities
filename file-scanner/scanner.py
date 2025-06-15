@@ -1,9 +1,10 @@
 import os
 import hashlib
-import mimetypes
 import socket
 import psycopg2
 import yaml
+import magic
+import time
 from psycopg2.extras import execute_batch
 from datetime import datetime
 
@@ -20,7 +21,7 @@ def load_config():
         if os.path.exists(path):
             with open(path, 'r') as f:
                 return yaml.safe_load(f)
-    raise FileNotFoundError("配置文件 file-scanner-config.yaml 未找到")
+    raise FileNotFoundError("配置文件 file-scanner-config.yml 未找到")
 
 config = load_config()
 print("✅ Loaded config:")
@@ -45,10 +46,12 @@ def calculate_md5(filepath, block_size=65536):
     except Exception:
         return None
 
-# === 工具函数：获取 MIME 类型（基于扩展名） ===
+# === 工具函数：获取 MIME 类型（读取内容） ===
 def get_mime_type(filepath):
-    mime_type, _ = mimetypes.guess_type(filepath)
-    return mime_type or 'application/octet-stream'
+    try:
+        return magic.from_file(filepath, mime=True)
+    except Exception:
+        return 'application/octet-stream'
 
 # === 创建数据表（如不存在） ===
 create_table_sql = f"""
@@ -61,21 +64,23 @@ CREATE TABLE IF NOT EXISTS {TABLE_NAME} (
     size BIGINT,
     scanned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     gmt_create TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    scan_duration_secs REAL,
     deleted SMALLINT DEFAULT 0
 );
 """
 
 # === 插入语句（避免重复） ===
 insert_sql = f"""
-INSERT INTO {TABLE_NAME} (machine, path, mime_type, md5, size, scanned_at, gmt_create, deleted)
-VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0)
+INSERT INTO {TABLE_NAME} (machine, path, mime_type, md5, size, scanned_at, gmt_create, scan_duration_secs, deleted)
+VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, %s, 0)
 ON CONFLICT (path) DO NOTHING;
 """
 
-# === 更新旧记录为已删除 ===
+# === 更新旧记录为已删除并记录新状态 ===
 update_deleted_sql = f"""
 UPDATE {TABLE_NAME}
-SET deleted = 1, scanned_at = CURRENT_TIMESTAMP
+SET deleted = 1, scanned_at = CURRENT_TIMESTAMP,
+    md5 = %s, size = %s, mime_type = %s, scan_duration_secs = %s
 WHERE path = %s AND (md5 IS DISTINCT FROM %s OR size IS DISTINCT FROM %s);
 """
 
@@ -92,15 +97,15 @@ def insert_records(records):
     except Exception as e:
         print(f"❌ 批量写入失败: {str(e)}")
 
-# === 执行标记旧记录已删除 ===
-def mark_old_versions(path_md5_size_triples):
-    if not path_md5_size_triples:
+# === 执行标记旧记录已删除并更新字段 ===
+def mark_old_versions(update_tuples):
+    if not update_tuples:
         return
     try:
         conn = psycopg2.connect(**DB_CONFIG)
         with conn:
             with conn.cursor() as cur:
-                execute_batch(cur, update_deleted_sql, path_md5_size_triples)
+                execute_batch(cur, update_deleted_sql, update_tuples)
         conn.close()
     except Exception as e:
         print(f"❌ 批量更新失败: {str(e)}")
@@ -118,21 +123,23 @@ for root_dir in ROOT_DIRS:
             print(f"full_path: {full_path}")
             try:
                 if os.path.isfile(full_path):
+                    start_time = time.time()
                     mime_type = get_mime_type(full_path)
                     md5_hash = calculate_md5(full_path)
                     file_size = os.path.getsize(full_path)
+                    duration = round(time.time() - start_time, 4)
                     if md5_hash:
-                        batch_update.append((full_path, md5_hash, file_size))
-                        batch_insert.append((machine_name, full_path, mime_type, md5_hash, file_size))
+                        # for insert
+                        batch_insert.append((machine_name, full_path, mime_type, md5_hash, file_size, duration))
+                        # for update
+                        batch_update.append((md5_hash, file_size, mime_type, duration, full_path, md5_hash, file_size))
                         if len(batch_insert) >= BATCH_SIZE:
                             mark_old_versions(batch_update)
                             insert_records(batch_insert)
                             total_inserted += len(batch_insert)
-                            print(f"total_inserted: {total_inserted}")
                             batch_insert.clear()
                             batch_update.clear()
-            except Exception as ex:
-                print(f"full_path: {full_path} exception: {ex}")
+            except Exception:
                 continue
 
 # === 写入剩余数据 ===
