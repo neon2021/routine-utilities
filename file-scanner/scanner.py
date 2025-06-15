@@ -36,7 +36,7 @@ FORCE_UPDATE = config.get('force_update', False)
 # === 获取本机主机名 ===
 machine_name = socket.gethostname()
 
-# === 工具函数：计算文件的 MD5 ===
+# === 工具函数 ===
 def calculate_md5(filepath, block_size=65536):
     md5 = hashlib.md5()
     try:
@@ -47,7 +47,6 @@ def calculate_md5(filepath, block_size=65536):
     except Exception:
         return None
 
-# === 工具函数：获取 MIME 类型（读取内容） ===
 def get_mime_type(filepath):
     try:
         return magic.from_file(filepath, mime=True)
@@ -70,50 +69,42 @@ CREATE TABLE IF NOT EXISTS {TABLE_NAME} (
 );
 """
 
-# === 插入语句（避免重复） ===
 insert_sql = f"""
 INSERT INTO {TABLE_NAME} (machine, path, mime_type, md5, size, scanned_at, gmt_create, scan_duration_secs, deleted)
-VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, %s, 0)
-ON CONFLICT (path) DO NOTHING;
+VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, %s, 0);
 """
 
-# === 更新旧记录为已删除并记录新状态 ===
-update_deleted_sql = f"""
+mark_old_sql = f"""
 UPDATE {TABLE_NAME}
-SET deleted = 1, scanned_at = CURRENT_TIMESTAMP,
-    md5 = %s, size = %s, mime_type = %s, scan_duration_secs = %s
-WHERE path = %s {"" if FORCE_UPDATE else "AND (md5 IS DISTINCT FROM %s OR size IS DISTINCT FROM %s)"};
+SET deleted = 1, scanned_at = CURRENT_TIMESTAMP
+WHERE path = %s AND deleted = 0;
 """
-
-# === 执行插入 ===
-def insert_records(records):
-    if not records:
-        return
-    try:
-        conn = psycopg2.connect(**DB_CONFIG)
-        with conn:
-            with conn.cursor() as cur:
-                execute_batch(cur, insert_sql, records)
-        conn.close()
-    except Exception as e:
-        print(f"❌ 批量写入失败: {str(e)}")
-
-# === 执行标记旧记录已删除并更新字段 ===
-def mark_old_versions(update_tuples):
-    if not update_tuples:
-        return
-    try:
-        conn = psycopg2.connect(**DB_CONFIG)
-        with conn:
-            with conn.cursor() as cur:
-                execute_batch(cur, update_deleted_sql, update_tuples)
-        conn.close()
-    except Exception as e:
-        print(f"❌ 批量更新失败: {str(e)}")
 
 # === 扫描并处理文件 ===
-batch_insert = []
-batch_update = []
+def get_existing_record(path):
+    try:
+        conn = psycopg2.connect(**DB_CONFIG)
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute(f"SELECT md5, size FROM {TABLE_NAME} WHERE path = %s AND deleted = 0;", (path,))
+                row = cur.fetchone()
+        conn.close()
+        return row
+    except Exception as e:
+        print(f"❌ 查询旧记录失败: {str(e)}")
+        return None
+
+def mark_old_record(path):
+    try:
+        conn = psycopg2.connect(**DB_CONFIG)
+        with conn:
+            with conn.cursor() as cur:
+                cur.execute(mark_old_sql, (path,))
+        conn.close()
+    except Exception as e:
+        print(f"❌ 标记旧记录失败: {str(e)}")
+
+insert_batch = []
 total_inserted = 0
 
 for root_dir in ROOT_DIRS:
@@ -128,26 +119,48 @@ for root_dir in ROOT_DIRS:
                     md5_hash = calculate_md5(full_path)
                     file_size = os.path.getsize(full_path)
                     duration = round(time.time() - start_time, 4)
-                    if md5_hash:
-                        batch_insert.append((machine_name, full_path, mime_type, md5_hash, file_size, duration))
-                        if FORCE_UPDATE:
-                            batch_update.append((md5_hash, file_size, mime_type, duration, full_path))
+                    if not md5_hash:
+                        continue
+
+                    if FORCE_UPDATE:
+                        mark_old_record(full_path)
+                        insert_batch.append((machine_name, full_path, mime_type, md5_hash, file_size, duration))
+                    else:
+                        old_record = get_existing_record(full_path)
+                        if old_record is None:
+                            insert_batch.append((machine_name, full_path, mime_type, md5_hash, file_size, duration))
                         else:
-                            batch_update.append((md5_hash, file_size, mime_type, duration, full_path, md5_hash, file_size))
-                        if len(batch_insert) >= BATCH_SIZE:
-                            mark_old_versions(batch_update)
-                            insert_records(batch_insert)
-                            total_inserted += len(batch_insert)
-                            batch_insert.clear()
-                            batch_update.clear()
+                            old_md5, old_size = old_record
+                            if md5_hash != old_md5 or file_size != old_size:
+                                mark_old_record(full_path)
+                                insert_batch.append((machine_name, full_path, mime_type, md5_hash, file_size, duration))
+
+                    if len(insert_batch) >= BATCH_SIZE:
+                        insert_records = insert_batch[:]
+                        insert_batch.clear()
+                        try:
+                            conn = psycopg2.connect(**DB_CONFIG)
+                            with conn:
+                                with conn.cursor() as cur:
+                                    execute_batch(cur, insert_sql, insert_records)
+                            conn.close()
+                            total_inserted += len(insert_records)
+                        except Exception as e:
+                            print(f"❌ 批量写入失败: {str(e)}")
             except Exception:
                 continue
 
 # === 写入剩余数据 ===
-if batch_insert:
-    mark_old_versions(batch_update)
-    insert_records(batch_insert)
-    total_inserted += len(batch_insert)
+if insert_batch:
+    try:
+        conn = psycopg2.connect(**DB_CONFIG)
+        with conn:
+            with conn.cursor() as cur:
+                execute_batch(cur, insert_sql, insert_batch)
+        conn.close()
+        total_inserted += len(insert_batch)
+    except Exception as e:
+        print(f"❌ 批量写入失败: {str(e)}")
 
 # === 创建表（如不存在） ===
 try:
