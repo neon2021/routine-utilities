@@ -8,6 +8,8 @@ import time
 from psycopg2.extras import execute_batch
 from datetime import datetime
 
+from global_config.logger_config import logger
+
 # === 从配置文件读取参数 ===
 def load_config():
     config_name = "file-scanner-config.yml"
@@ -24,8 +26,8 @@ def load_config():
     raise FileNotFoundError("配置文件 file-scanner-config.yml 未找到")
 
 config = load_config()
-print("✅ Loaded config:")
-print(config)
+logger.info("✅ Loaded config:")
+logger.info(config)
 
 ROOT_DIRS = [os.path.expanduser(p) for p in config.get('scan_dirs', ['/tmp'])]
 DB_CONFIG = config.get('db', {})
@@ -86,12 +88,12 @@ def get_existing_record(path):
         conn = psycopg2.connect(**DB_CONFIG)
         with conn:
             with conn.cursor() as cur:
-                cur.execute(f"SELECT md5, size FROM {TABLE_NAME} WHERE path = %s AND deleted = 0;", (path,))
+                cur.execute(f"SELECT md5, size, id FROM {TABLE_NAME} WHERE path = %s AND deleted = 0;", (path,))
                 row = cur.fetchone()
         conn.close()
         return row
     except Exception as e:
-        print(f"❌ 查询旧记录失败: {str(e)}")
+        logger.info(f"❌ 查询旧记录失败: {str(e)}")
         return None
 
 def mark_old_record(path):
@@ -102,15 +104,24 @@ def mark_old_record(path):
                 cur.execute(mark_old_sql, (path,))
         conn.close()
     except Exception as e:
-        print(f"❌ 标记旧记录失败: {str(e)}")
+        logger.info(f"❌ 标记旧记录失败: {str(e)}")
 
 insert_batch = []
 total_inserted = 0
+MIN_FILE_COUNT=10
 
+scanning_count = 0
 for root_dir in ROOT_DIRS:
-    print(f"� 正在扫描目录: {root_dir}")
+    logger.info(f"> 正在扫描目录: {root_dir}")
     for root, _, files in os.walk(root_dir):
+        files_count = len(files)
+        if files_count>MIN_FILE_COUNT:
+            logger.info(f"> 正在扫描目录: {root_dir} 中的(文件数量大于{MIN_FILE_COUNT})子目录: {root}, 其中文件数量: {files_count}")
         for name in files:
+            scanning_count += 1
+            if scanning_count % 1000 == 0:
+                logger.info(f"> 累计扫描文件数量: {scanning_count}")
+                
             full_path = os.path.join(root, name)
             try:
                 if os.path.isfile(full_path):
@@ -130,7 +141,7 @@ for root_dir in ROOT_DIRS:
                         if old_record is None:
                             insert_batch.append((machine_name, full_path, mime_type, md5_hash, file_size, duration))
                         else:
-                            old_md5, old_size = old_record
+                            old_md5, old_size, old_id = old_record
                             if md5_hash != old_md5 or file_size != old_size:
                                 mark_old_record(full_path)
                                 insert_batch.append((machine_name, full_path, mime_type, md5_hash, file_size, duration))
@@ -145,8 +156,9 @@ for root_dir in ROOT_DIRS:
                                     execute_batch(cur, insert_sql, insert_records)
                             conn.close()
                             total_inserted += len(insert_records)
+                            logger.info(f"> 累计写入文件数量: {total_inserted}")
                         except Exception as e:
-                            print(f"❌ 批量写入失败: {str(e)}")
+                            logger.info(f"❌ 批量写入失败: {str(e)}")
             except Exception:
                 continue
 
@@ -160,7 +172,7 @@ if insert_batch:
         conn.close()
         total_inserted += len(insert_batch)
     except Exception as e:
-        print(f"❌ 批量写入失败: {str(e)}")
+        logger.info(f"❌ 批量写入失败: {str(e)}")
 
 # === 创建表（如不存在） ===
 try:
@@ -170,6 +182,6 @@ try:
             cur.execute(create_table_sql)
     conn.close()
 except Exception as e:
-    print(f"❌ 表创建失败: {str(e)}")
+    logger.info(f"❌ 表创建失败: {str(e)}")
 
-print(f"✅ 总共插入 {total_inserted} 条记录。")
+logger.info(f"✅ 总共插入 {total_inserted} 条记录。")
