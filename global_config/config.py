@@ -22,7 +22,7 @@ base_dir = os.path.dirname(os.getcwd())
 def cur_dir(path:str)->str:
     return os.path.join(base_dir,path)
 
-def cur_dir(f:str, path:str)->str:
+def other_dir(f:str, path:str)->str:
     base_dir = os.path.dirname(f)
     return os.path.join(base_dir,path)
 
