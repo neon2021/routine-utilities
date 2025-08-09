@@ -41,6 +41,18 @@ class WhisperTranscriber:
         # model = WhisperModel(os.path.expanduser("~/Downloads/huggingface_downloads/distil-whisper/distil-large-v3-ct2"), device=device, compute_type=compute_type,local_files_only=True)
         self.model = WhisperModel(self.selected_model_path, device=device, compute_type=compute_type,local_files_only=True)
 
+    def transcribe(self, file_path:str, beam_size:int=5, language:str=None, vad_filter:bool=True):
+        '''
+            language: "zh", "en" or None
+        '''
+        
+        logger.info('file_path=%s'%(file_path))
+        segments, info = self.model.transcribe(file_path
+                            , beam_size=beam_size
+                            , language=language
+                            , vad_filter=vad_filter)
+        return segments, info
+
     def start_transcribe(self, file_path:str, file_format:str="srt", not_write_file:bool=True, multilingual=True, language:str=None, temperature=(0.0, 0.2, 0.4)):
         '''
             language: "zh", "en" or None
@@ -110,18 +122,6 @@ class WhisperTranscriber:
                 srt_out.write("elapse_seconds: %s\n"%elapse_seconds)
         
             return output_srt_file_path
-
-    def transcribe(self, file_path:str, beam_size:int=5, language:str=None, vad_filter:bool=True):
-        '''
-            language: "zh", "en" or None
-        '''
-        
-        logger.info('file_path=%s'%(file_path))
-        segments, info = self.model.transcribe(file_path
-                            , beam_size=beam_size
-                            , language=language
-                            , vad_filter=vad_filter)
-        return segments, info
 
 
     def create_txt_line(self, row_num:int, segment)->str:

@@ -110,7 +110,7 @@ insert_batch = []
 total_inserted = 0
 MIN_FILE_COUNT=10
 
-
+scanning_count = 0
 for root_dir in ROOT_DIRS:
     logger.info(f"> 正在扫描目录: {root_dir}")
     for root, _, files in os.walk(root_dir):
@@ -118,6 +118,10 @@ for root_dir in ROOT_DIRS:
         if files_count>MIN_FILE_COUNT:
             logger.info(f"> 正在扫描目录: {root_dir} 中的(文件数量大于{MIN_FILE_COUNT})子目录: {root}, 其中文件数量: {files_count}")
         for name in files:
+            scanning_count += 1
+            if scanning_count % 1000 == 0:
+                logger.info(f"> 累计扫描文件数量: {scanning_count}")
+                
             full_path = os.path.join(root, name)
             try:
                 if os.path.isfile(full_path):
@@ -152,6 +156,7 @@ for root_dir in ROOT_DIRS:
                                     execute_batch(cur, insert_sql, insert_records)
                             conn.close()
                             total_inserted += len(insert_records)
+                            logger.info(f"> 累计写入文件数量: {total_inserted}")
                         except Exception as e:
                             logger.info(f"❌ 批量写入失败: {str(e)}")
             except Exception:
