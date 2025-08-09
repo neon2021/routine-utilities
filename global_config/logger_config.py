@@ -14,7 +14,7 @@ for base_dir in base_dirs:
     if os.path.exists(LOG_DIR):
         break
 
-print(f'log_path:{log_path}')
+# print(f'log_path:{log_path}')
 
 # 只配置一次，避免重复添加 handler
 logger = logging.getLogger("myapp")
