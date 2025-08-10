@@ -19,6 +19,7 @@ class DeviceMount:
     fs_type: Optional[str]
     label: Optional[str]
     is_external: Optional[bool]
+    partition_uuid: Optional[str] = None # new uuid, more stable
 
 # =========================
 # 统一 UUID 规范化
@@ -156,17 +157,20 @@ def _append_macos_entry(devices: List[DeviceMount], e: dict) -> None:
         return None
 
     uuid_raw = first(["VolumeUUID", "VolumeUUIDString"])
+    part_uuid_raw = first(["PartitionUUID"])
     mount_point = first(["MountPoint"])
     device_node = first(["DeviceNode"])
     fs = first(["FilesystemName", "FileSystemType", "Type (Bundle)"])
     label = first(["VolumeName", "MediaName"])
     # 规范化 UUID
     uuid = normalize_uuid(uuid_raw, fs_type=fs, os_name="Darwin")
+    part_uuid = normalize_uuid(part_uuid_raw, os_name="Darwin") if part_uuid_raw else None # new stable uuid
 
     if uuid and mount_point:
         devices.append(DeviceMount(
             uuid=uuid, mount_path=mount_point, device=device_node,
-            fs_type=fs, label=label, is_external=None
+            fs_type=fs, label=label, is_external=None,
+            partition_uuid=part_uuid  # new stable uuid
         ))
 
 def _list_macos_text() -> List[DeviceMount]:
@@ -202,20 +206,31 @@ def _list_macos_text() -> List[DeviceMount]:
 # =========================
 
 def _list_linux() -> List[DeviceMount]:
-    devices: List[DeviceMount] = []
-    uuid_to_dev: Dict[str, str] = {}
+    uuid_to_dev = {}
+    partuuid_map = {}
 
-    by_uuid = Path("/dev/disk/by-uuid")
-    if by_uuid.exists():
-        for p in by_uuid.iterdir():
-            try:
-                if p.is_symlink():
-                    target = os.path.realpath(p)
-                    # p.name 就是文件系统 UUID
-                    uuid_to_dev[normalize_uuid(p.name, os_name="Linux")] = target
-            except Exception:
+    # 对所有设备
+    proc = subprocess.run(["blkid", "-o", "export"], capture_output=True, text=True, check=False)
+
+    if proc.returncode == 0:
+        cur_dev = None
+        for line in proc.stdout.splitlines():
+            if not line:
                 continue
+            if 'DEVNAME=' in line:  # 设备行，如 /dev/nvme0n1p2
+                cur_dev = os.path.realpath(line.strip().removeprefix("DEVNAME="))
+                continue
+            key, val = line.split("=", 1)
+            if key == "UUID":
+                uuid_to_dev[val] = cur_dev
+            elif key == "PARTUUID":
+                partuuid_map[cur_dev] = val
 
+        # 调试看看
+        print(f'\n\nuuid_to_dev: {uuid_to_dev}')
+        print(f'\n\npartuuid_map: {partuuid_map}')
+
+    # 读取挂载信息
     dev_to_mount: Dict[str, Tuple[str, str]] = {}
     try:
         with open("/proc/mounts", "r", encoding="utf-8", errors="ignore") as f:
@@ -226,40 +241,30 @@ def _list_linux() -> List[DeviceMount]:
                     dev_to_mount[os.path.realpath(dev)] = (mnt, fs)
     except Exception:
         pass
+    # print(f'dev_to_mount: {dev_to_mount}')
 
-    for uuid, dev in uuid_to_dev.items():
+    # 生成 DeviceMount
+    devices: List[DeviceMount] = []
+    for fs_uuid, dev in uuid_to_dev.items():
         m = dev_to_mount.get(os.path.realpath(dev))
         if not m:
             continue
         mount_path, fs = m
         if _looks_like_system_mount(mount_path):
             continue
+        print(f'dev: {dev}')
         devices.append(DeviceMount(
-            uuid=uuid, mount_path=mount_path, device=dev, fs_type=fs, label=None, is_external=None
+            uuid=fs_uuid,
+            mount_path=mount_path,
+            device=dev,
+            fs_type=fs,
+            label=None,
+            is_external=None,
+            partition_uuid=partuuid_map.get(dev)  # 用 PARTUUID
         ))
 
-    if not devices:
-        try:
-            blkid = subprocess.run(["blkid"], capture_output=True, text=True, check=False)
-            if blkid.returncode == 0:
-                for line in blkid.stdout.splitlines():
-                    m = re.match(r'(?P<dev>\S+):.*UUID="(?P<uuid>[^"]+)"(?:.*TYPE="(?P<fs>[^"]+)")?', line)
-                    if not m:
-                        continue
-                    dev = os.path.realpath(m.group("dev"))
-                    uuid = normalize_uuid(m.group("uuid"), fs_type=m.group("fs"), os_name="Linux")
-                    if dev in dev_to_mount:
-                        mount_path, fs2 = dev_to_mount[dev]
-                        if _looks_like_system_mount(mount_path):
-                            continue
-                        devices.append(DeviceMount(
-                            uuid=uuid, mount_path=mount_path, device=dev, fs_type=fs2 or m.group("fs"),
-                            label=None, is_external=None
-                        ))
-        except Exception:
-            pass
-
-    return _dedup_by_uuid_choose_mounted(devices)
+    # return _dedup_by_uuid_choose_mounted(devices)
+    return devices
 
 # =========================
 # Windows
@@ -288,10 +293,13 @@ def _list_windows() -> List[DeviceMount]:
                 label = r.get("FileSystemLabel")
                 uid_raw = r.get("UniqueId") or r.get("Path") or r.get("DriveLetter")
                 uuid = normalize_uuid(uid_raw, fs_type=fs, os_name="Windows")
+                part_uuid = normalize_uuid(uid_raw, os_name="Windows") if uid_raw else None  # new stable uuid
+
                 if uuid and os.path.exists(mount_path):
                     devices.append(DeviceMount(
                         uuid=uuid, mount_path=mount_path, device=mount_path,
-                        fs_type=fs, label=label, is_external=None
+                        fs_type=fs, label=label, is_external=None,
+                        partition_uuid=part_uuid # new stable uuid
                     ))
     except Exception:
         pass
@@ -327,10 +335,13 @@ def _list_windows() -> List[DeviceMount]:
                 if drive and serial:
                     mount_path = f"{drive}:\\"
                     uuid = normalize_uuid(serial, fs_type=block.get("FileSystem"), os_name="Windows")
+                    part_uuid = normalize_uuid(serial, os_name="Windows") if serial else None # new stable uuid
+                    
                     if uuid and os.path.exists(mount_path):
                         devices.append(DeviceMount(
                             uuid=uuid, mount_path=mount_path, device=mount_path,
-                            fs_type=block.get("FileSystem"), label=block.get("Label"), is_external=None
+                            fs_type=block.get("FileSystem"), label=block.get("Label"), is_external=None,
+                            partition_uuid=part_uuid # new stable uuid
                         ))
         except Exception:
             pass

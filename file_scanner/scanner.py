@@ -115,7 +115,7 @@ else:
             return 'application/octet-stream'
 
     insert_sql = f"""
-    INSERT INTO {TABLE_NAME} (machine, path, mime_type, md5, size, scanned_at, gmt_create, scan_duration_secs, deleted, mount_id, relative_path)
+    INSERT INTO {TABLE_NAME} (machine, path, mime_type, md5, size, scanned_at, gmt_create, scan_duration_secs, deleted, mount_uuid, relative_path)
     VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, %s, 0, %s, %s);
     """
 
@@ -167,7 +167,9 @@ else:
                     
                 full_path = os.path.join(root, name)
                 mount_conversion = mountPathUtil.real_path_2_logical(full_path)
-                disk_uuid, relative_path = mount_conversion if mount_conversion else None, None
+                disk_uuid, relative_path = None, None
+                if mount_conversion:
+                    disk_uuid, relative_path = mount_conversion
                 try:
                     if os.path.isfile(full_path):
                         start_time = time.time()

@@ -62,12 +62,12 @@ class MountPathUtil:
             most_match_mount = max(mount_path_list, key=lambda o: len(o.mount_path))
             relative_path = real_path.removeprefix(most_match_mount.mount_path)
             relative_path = relative_path.removeprefix(os.path.sep)
-            return most_match_mount.uuid, relative_path
+            return most_match_mount.partition_uuid if most_match_mount.partition_uuid else most_match_mount.uuid, relative_path
         
         return None
 
     def logical_path_2_real(self, uuid:str, relative_path:str)->str:
-        mount_path_list = [m for m in self.mount_points if m.uuid == uuid]
+        mount_path_list = [m for m in self.mount_points if m.partition_uuid == uuid or m.uuid == uuid]
         print(f'mount_path_list: {mount_path_list}')
         if mount_path_list:
             most_match_mount = mount_path_list[0]
