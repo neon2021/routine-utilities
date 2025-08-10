@@ -19,6 +19,7 @@ from tinytag import TinyTag
 
 # ================= Configuration Area =================
 from global_config.config import yaml_config_boxed
+from file_scanner.mount_path_utils import MountPathUtil
 
 CONFIG_FILE = os.path.expanduser("~/exif_extractor_config.json")
 logger.name = os.path.basename(__file__)
@@ -232,6 +233,7 @@ def fetch_files(limit=100, dry_run=False, run_mode=None, debug_mode=False):
             limit %s
         """
     else:
+        # TODO: here could add more conditions to satisfy more requirements 2025-08-11
         sql = """
             SELECT * FROM file_inventory
             WHERE deleted = 0 AND (mime_type LIKE 'video%%' OR mime_type LIKE 'audio%%' OR mime_type LIKE 'image%%')
@@ -391,8 +393,8 @@ def save_metadata(file_id, scan_id, metadata, status, error_message, existing=No
     """
     execute_sql(sql_history, (file_id, version, scan_id, Json(metadata), status, error_message, now), commit=True, dry_run=dry_run)
 
-def delete_file_rows_not_existed(file_id, orig_path, dry_run=False):
-    logger.info(f'delete file rows, file_id:{file_id}, orig_path:{orig_path}')
+def delete_file_rows_not_existed(file_id, orig_path,mount_uuid,relative_path, dry_run=False):
+    logger.info(f'delete file rows, file_id:{file_id}, orig_path:{orig_path},mount_uuid:{mount_uuid},relative_path:{relative_path}')
     execute_sql("""update file_inventory set deleted=1, scanned_at = CURRENT_TIMESTAMP where id = %s
                 """, (file_id, ), commit=True, dry_run=dry_run)
 
@@ -413,16 +415,26 @@ def main(limit=100, dry_run=False, workers=1, run_mode=None, debug_mode=None):
     # 3. Replace path prefix
     old_prefix = config.get("path_replacement", {}).get("old_path", "")
     new_prefix = config.get("path_replacement", {}).get("new_path", "")
-    file_tasks = [(file["id"], replace_path(file["path"], old_prefix, new_prefix), file["path"], file["mime_type"]) for file in files]
+    file_tasks = [(file["id"], replace_path(file["path"], old_prefix, new_prefix), file["path"], file["mime_type"], file["mount_uuid"], file["relative_path"]) for file in files]
+
+    # 3.1 read mount info
+    mountPathUtil = MountPathUtil.from_system()
+    print(f'mountPathUtil:{mountPathUtil.mount_points}')
 
     # 4. Run EXIF extraction
     # 5. Save to database
     for task in file_tasks:
-        file_id, real_path, orig_path, mime_type = task
-        existed = os.path.exists(real_path)
-        logger.info(f'path: {real_path}, existed: {existed}')
-        if not existed:
-            delete_file_rows_not_existed(file_id, orig_path)
+        file_id, real_path_from_orig, orig_path, mime_type,mount_uuid,relative_path = task
+        logger.info(f'task: {task}')
+        real_path_from_uuid = mountPathUtil.logical_path_2_real(mount_uuid, relative_path)
+        if real_path_from_uuid and os.path.exists(real_path_from_uuid):
+            real_path = real_path_from_uuid
+            logger.info(f'real_path_from_uuid, path: {real_path}, existed')
+        elif real_path_from_orig and os.path.exists(real_path_from_orig):
+            real_path = real_path_from_orig
+            logger.info(f'real_path_from_orig, path: {real_path}, existed')
+        else:
+            delete_file_rows_not_existed(file_id, orig_path,mount_uuid,relative_path,dry_run=True)
             continue
         
         file_path, status, error_message, clean_stdout = run_exif(real_path, mime_type, debug_mode=debug_mode)
