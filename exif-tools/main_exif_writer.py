@@ -8,6 +8,7 @@ from datetime import datetime
 import argparse
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import multiprocessing
+from typing import Literal
 
 from global_config.logger_config import logger
 
@@ -221,9 +222,20 @@ def log_scan_operation(config, dry_run=False, debug_mode=False):
     result = execute_sql(sql, params, fetch=True, commit=True, dry_run=dry_run, debug_mode=debug_mode)
     return result[0]["scan_id"] if result else "DRY-RUN"
 
-def fetch_files(limit=100, dry_run=False, run_mode=None, debug_mode=False):
+def fetch_files(limit=100, dry_run=False, run_mode=None, debug_mode=False,
+                cond_type:Literal['uuid','path_like']=None, condition:str=None):
     """Fetch non-deleted audio/video/image files from file_inventory"""
-    if run_mode == 'fix':
+    if run_mode == 'new': # scan new
+        sql = """
+            select fi.* from file_inventory fi
+            left outer join file_metadata fm on fi.id = fm.file_id
+            where fi.deleted = 0 
+                AND (fi.mime_type LIKE 'video%%' OR fi.mime_type LIKE 'audio%%' OR fi.mime_type LIKE 'image%%')
+                and fm.id is null
+            order by fi.id
+            limit %s
+        """
+    elif run_mode == 'fix': # fixing failed data
         sql = """
             select fi.* from file_inventory fi
             left outer join file_metadata fm on fi.id = fm.file_id
@@ -232,13 +244,29 @@ def fetch_files(limit=100, dry_run=False, run_mode=None, debug_mode=False):
              order by fi.id
             limit %s
         """
-    else:
+    else: # scan all
         # TODO: here could add more conditions to satisfy more requirements 2025-08-11
-        sql = """
-            SELECT * FROM file_inventory
-            WHERE deleted = 0 AND (mime_type LIKE 'video%%' OR mime_type LIKE 'audio%%' OR mime_type LIKE 'image%%')
-            LIMIT %s
-        """
+        if cond_type is None:
+            sql = """
+                SELECT * FROM file_inventory
+                WHERE deleted = 0 AND (mime_type LIKE 'video%%' OR mime_type LIKE 'audio%%' OR mime_type LIKE 'image%%')
+                LIMIT %s
+            """
+        else:
+            if cond_type == 'uuid':
+                sql = f"""
+                    SELECT * FROM file_inventory
+                    WHERE deleted = 0 AND (mime_type LIKE 'video%%' OR mime_type LIKE 'audio%%' OR mime_type LIKE 'image%%')
+                    and mount_uuid = '{condition}'
+                """
+                sql += "LIMIT %s"
+            if cond_type == 'path_like':
+                sql = f"""
+                    SELECT * FROM file_inventory
+                    WHERE deleted = 0 AND (mime_type LIKE 'video%%' OR mime_type LIKE 'audio%%' OR mime_type LIKE 'image%%')
+                    and (path like '%%{condition}%%' or relative_path like '%%{condition}%%')
+                """
+                sql += "LIMIT %s"
     return execute_sql(sql, (limit,), fetch=True, dry_run=dry_run, debug_mode=debug_mode)
 
 def replace_path(file_path, old_prefix, new_prefix):
@@ -400,7 +428,9 @@ def delete_file_rows_not_existed(file_id, orig_path,mount_uuid,relative_path, dr
 
 # ================ Main Execution Logic ================
 
-def main(limit=100, dry_run=False, workers=1, run_mode=None, debug_mode=None):
+def main(limit=100, dry_run=False, workers=1, run_mode=None, debug_mode=None,
+         cond_type=None, condition=None
+         ):
     # 1. Read config file
     with open(CONFIG_FILE, "r") as f:
         config = json.load(f)
@@ -409,7 +439,8 @@ def main(limit=100, dry_run=False, workers=1, run_mode=None, debug_mode=None):
     logger.info(f"Started scan operation: {scan_id}")
 
     # 2. Fetch file list
-    files = fetch_files(limit=limit, dry_run=dry_run, run_mode=run_mode, debug_mode=debug_mode)
+    files = fetch_files(limit=limit, dry_run=dry_run, run_mode=run_mode, debug_mode=debug_mode,
+                        cond_type=cond_type,condition=condition)
     logger.info(f"Fetched {len(files)} files")
 
     # 3. Replace path prefix
@@ -451,7 +482,11 @@ if __name__ == "__main__":
     parser.add_argument("--dry-run", action="store_true", help="Print SQL without executing")
     parser.add_argument("--workers", type=int, default=max(1, multiprocessing.cpu_count() // 2), help="Number of parallel workers for EXIF extraction")
     parser.add_argument("--debug", action="store_true", help="Debug mode")
-    parser.add_argument("--run-mode", choices=['normal', 'fix'], default='normal', help="Run mode: normal or fix")
+    parser.add_argument("--run-mode", choices=['new','fix','all'], default='new', help="Run mode: new, fix or all")
+    parser.add_argument("--cond-type", choices=['uuid', 'path_like'], default=None, help="None, uuid, or path_like")
+    parser.add_argument("--condition", type=str, default=None, help="condition content")
     args = parser.parse_args()
     
-    main(limit=args.limit, dry_run=args.dry_run, workers=args.workers, run_mode=args.run_mode, debug_mode=args.debug)
+    main(limit=args.limit, dry_run=args.dry_run, workers=args.workers, run_mode=args.run_mode, debug_mode=args.debug,
+         cond_type = args.cond_type, condition = args.condition
+         )
