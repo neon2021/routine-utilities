@@ -225,7 +225,17 @@ def log_scan_operation(config, dry_run=False, debug_mode=False):
 def fetch_files(limit=100, dry_run=False, run_mode=None, debug_mode=False,
                 cond_type:Literal['uuid','path_like']=None, condition:str=None):
     """Fetch non-deleted audio/video/image files from file_inventory"""
-    if run_mode == 'fix':
+    if run_mode == 'new': # scan new
+        sql = """
+            select fi.* from file_inventory fi
+            left outer join file_metadata fm on fi.id = fm.file_id
+            where fi.deleted = 0 
+                AND (fi.mime_type LIKE 'video%%' OR fi.mime_type LIKE 'audio%%' OR fi.mime_type LIKE 'image%%')
+                and fm.id is null
+            order by fi.id
+            limit %s
+        """
+    elif run_mode == 'fix': # fixing failed data
         sql = """
             select fi.* from file_inventory fi
             left outer join file_metadata fm on fi.id = fm.file_id
@@ -234,7 +244,7 @@ def fetch_files(limit=100, dry_run=False, run_mode=None, debug_mode=False,
              order by fi.id
             limit %s
         """
-    else:
+    else: # scan all
         # TODO: here could add more conditions to satisfy more requirements 2025-08-11
         if cond_type is None:
             sql = """
@@ -472,7 +482,7 @@ if __name__ == "__main__":
     parser.add_argument("--dry-run", action="store_true", help="Print SQL without executing")
     parser.add_argument("--workers", type=int, default=max(1, multiprocessing.cpu_count() // 2), help="Number of parallel workers for EXIF extraction")
     parser.add_argument("--debug", action="store_true", help="Debug mode")
-    parser.add_argument("--run-mode", choices=['normal', 'fix'], default='normal', help="Run mode: normal or fix")
+    parser.add_argument("--run-mode", choices=['new','fix','all'], default='new', help="Run mode: new, fix or all")
     parser.add_argument("--cond-type", choices=['uuid', 'path_like'], default=None, help="None, uuid, or path_like")
     parser.add_argument("--condition", type=str, default=None, help="condition content")
     args = parser.parse_args()
