@@ -1,0 +1,1207 @@
+Barbell Bench Press	杠铃 卧推 推举
+Barbell Floor Press	杠铃 floor 推举
+Close Grip Barbell Bench Press	窄 握 杠铃 卧推 推举
+Dumbbell Bench Press	哑铃 卧推 推举
+Dumbbell Floor Press	哑铃 floor 推举
+Incline Dumbbell Bench Press	incline 哑铃 卧推 推举
+Kettlebell Chest Press	壶铃 胸部 推举
+Partial Lockout	partial lockout
+Cardio Core Crawl	cardio 核心 crawl
+Jumping Jacks	jumping jacks
+Jump Rope	跳 rope
+Squat Jacks	深蹲 jacks
+Barbell Rollout	杠铃 rollout
+Kneeling Ab Wheel	kneeling ab wheel
+Russian Twist	russian twist
+Swiss Ball Jackknife	swiss 球 jackknife
+Swiss Ball Rollout	swiss 球 rollout
+Bicycle Crunch	bicycle 卷腹
+Cable Crunch	绳索 卷腹
+Crunch	卷腹
+Hanging Knee Raise Oblique Crunch	hanging knee 上举 oblique 卷腹
+Kneeling Cable Crunch	kneeling 绳索 卷腹
+Reverse Crunch	reverse 卷腹
+Reverse Crunch On A Bench	reverse 卷腹 on a 卧推
+Skater Crunch Cross	skater 卷腹 cross
+Swiss Ball Crunch	swiss 球 卷腹
+Alternating Dumbbell Biceps Curl	alternating 哑铃 biceps 弯举
+Alternating Incline Dumbbell Biceps Curl	alternating incline 哑铃 biceps 弯举
+Barbell Biceps Curl	杠铃 biceps 弯举
+Dead Hang Biceps Curl	dead hang biceps 弯举
+Dumbbell Hammer Curl	哑铃 hammer 弯举
+Forward Bend Biceps Curl	forward bend biceps 弯举
+One Arm Concentration Curl	one 手臂 concentration 弯举
+Seated Alternating Dumbbell Biceps Curl	seated alternating 哑铃 biceps 弯举
+Standing Alternating Dumbbell Curls	standing alternating 哑铃 curls
+Standing Dumbbell Biceps Curl	standing 哑铃 biceps 弯举
+Barbell Deadlift	杠铃 硬拉
+Barbell Straight Leg Deadlift	杠铃 straight 腿 硬拉
+Dumbbell Deadlift	哑铃 硬拉
+Dumbbell Straight Leg Deadlift	哑铃 straight 腿 硬拉
+Single Leg Deadlift With Barbell	single 腿 硬拉 with 杠铃
+Dumbbell Flye	哑铃 flye
+Barbell Hip Thrust On Floor	杠铃 hip thrust on floor
+Hip Raise	hip 上举
+Kettlebell Swing	壶铃 swing
+Single Leg Hip Raise	single 腿 hip 上举
+External Hip Raise	external hip 上举
+Single Arm Dumbbell Swing	single 手臂 哑铃 swing
+One Arm Swing	one 手臂 swing
+Swiss Ball Hyperextension	swiss 球 hyperextension
+Cable Front Raise	绳索 前 上举
+Good Morning	good morning
+Hanging Leg Raise	hanging 腿 上举
+Alternating Dumbbell Lunge	alternating 哑铃 弓步
+Alternating Dumbbell Lunge With Reach	alternating 哑铃 弓步 with reach
+Barbell Bulgarian Split Squat	杠铃 bulgarian split 深蹲
+Barbell Side Lunge	杠铃 侧 弓步
+Dumbbell Reverse Lunge	哑铃 reverse 弓步
+Low Lunge With Isometric Adduction	low 弓步 with isometric adduction
+Lunge	弓步
+Lunge With Arm Reach	弓步 with 手臂 reach
+Overhead Dumbbell Lunge	过头 哑铃 弓步
+Overhead Dumbbell Split Squat	过头 哑铃 split 深蹲
+Reverse Sliding Lunge	reverse sliding 弓步
+Runners Lunge To Balance	runners 弓步 to balance
+Shifting Side Lunge	shifting 侧 弓步
+Side To Side Lunge Chops	侧 to 侧 弓步 chops
+Walking Lunge	walking 弓步
+Cross Body Mountain Climber	cross body mountain climber
+Elevator Abs	elevator 腹肌
+Mountain Climber	mountain climber
+Mountain Climber On Sliding Discs	mountain climber on sliding discs
+Mountain Climber With Feet On Bosu Ball	mountain climber with feet on bosu 球
+Plank	平板支撑
+Plank With Arm Raise	平板支撑 with 手臂 上举
+Plank With Oblique Crunch	平板支撑 with oblique 卷腹
+Side Plank	侧 平板支撑
+Side Plank And Row	侧 平板支撑 and 划船
+Side Plank With Feet On Bench	侧 平板支撑 with feet on 卧推
+Weighted Plank	负重 平板支撑
+45 Degree Plank	45 degree 平板支撑
+Alternating Jump Lunge	alternating 跳 弓步
+Barbell Jump Squat	杠铃 跳 深蹲
+Body Weight Jump Squat	body weight 跳 深蹲
+Medicine Ball Slam	药球 球 slam
+Side To Side Shuffle Jump	侧 to 侧 shuffle 跳
+Chin Up	chin 上
+Lat Pulldown	lat pulldown
+Pull Up	拉 上
+Standing Cable Pullover	standing 绳索 pullover
+Wide Grip Lat Pulldown	宽 握 lat pulldown
+Push Up	推 上
+T Push Up	t 推 上
+Alternating Dumbbell Row	alternating 哑铃 划船
+Cable Row Standing	绳索 划船 standing
+Dumbbell Row	哑铃 划船
+Face Pull	face 拉
+Inverted Row	inverted 划船
+One Arm Bent Over Row	one 手臂 bent over 划船
+Renegade Row	renegade 划船
+Reverse Grip Barbell Row	reverse 握 杠铃 划船
+Single Arm Neutral Grip Dumbbell Row And Rotation	single 手臂 neutral 握 哑铃 划船 and rotation
+Jog	jog
+Run	跑
+Alternating Dumbbell Shoulder Press	alternating 哑铃 肩膀 推举
+Barbell Front Squat To Push Press	杠铃 前 深蹲 to 推 推举
+Dumbbell Push Press	哑铃 推 推举
+Dumbbell Shoulder Press	哑铃 肩膀 推举
+Single Arm Dumbbell Shoulder Press	single 手臂 哑铃 肩膀 推举
+Single Arm Step Up And Press	single 手臂 步 上 and 推举
+Smith Machine Overhead Press	smith 器械 过头 推举
+Barbell Upright Row	杠铃 upright 划船
+Get Up Sit Up	get 上 sit 上
+Sit Up	sit 上
+V Up	v 上
+Back Squat With Body Bar	背部 深蹲 with body 杆
+Barbell Back Squat	杠铃 背部 深蹲
+Barbell Front Squat	杠铃 前 深蹲
+Barbell Step Up	杠铃 步 上
+Crossover Dumbbell Step Up	crossover 哑铃 步 上
+Dumbbell Front Squat	哑铃 前 深蹲
+Dumbbell Split Squat	哑铃 split 深蹲
+Dumbbell Squat	哑铃 深蹲
+Dumbbell Step Up	哑铃 步 上
+Goblet Squat	goblet 深蹲
+Prisoner Squat	prisoner 深蹲
+Squat	深蹲
+Squat And Side Kick	深蹲 and 侧 kick
+Squat Jumps In N Out	深蹲 jumps 内 n 外
+Wide Stance Goblet Squat	宽 站姿 goblet 深蹲
+Burpee	burpee
+Squat Thrusts	深蹲 thrusts
+Alternating Dumbbell Lying Triceps Extension	alternating 哑铃 lying triceps 伸展
+Cable Lying Triceps Extension	绳索 lying triceps 伸展
+Dumbbell Kickback	哑铃 kickback
+Dumbbell Lying Triceps Extension	哑铃 lying triceps 伸展
+Ez Bar Overhead Triceps Extension	ez 杆 过头 triceps 伸展
+Incline Dip	incline 臂屈伸
+Reverse Grip Pressdown	reverse 握 pressdown
+Rope Pressdown	rope pressdown
+Seated Single Arm Overhead Dumbbell Extension	seated single 手臂 过头 哑铃 伸展
+Single Leg Dip	single 腿 臂屈伸
+Triceps Extension On Floor	triceps 伸展 on floor
+Triceps Press	triceps 推举
+Triceps Pressdown	triceps pressdown
+Opposite Arm And Leg Balance	opposite 手臂 and 腿 balance
+Alternating Dumbbell Chest Press	alternating 哑铃 胸部 推举
+Alternating Dumbbell Chest Press On Swiss Ball	alternating 哑铃 胸部 推举 on swiss 球
+Barbell Board Bench Press	杠铃 board 卧推 推举
+Decline Dumbbell Bench Press	decline 哑铃 卧推 推举
+Incline Barbell Bench Press	incline 杠铃 卧推 推举
+Incline Smith Machine Bench Press	incline smith 器械 卧推 推举
+Isometric Barbell Bench Press	isometric 杠铃 卧推 推举
+Neutral Grip Dumbbell Bench Press	neutral 握 哑铃 卧推 推举
+Neutral Grip Dumbbell Incline Bench Press	neutral 握 哑铃 incline 卧推 推举
+One Arm Floor Press	one 手臂 floor 推举
+Reverse Grip Barbell Bench Press	reverse 握 杠铃 卧推 推举
+Reverse Grip Incline Bench Press	reverse 握 incline 卧推 推举
+Single Arm Cable Chest Press	single 手臂 绳索 胸部 推举
+Single Arm Dumbbell Bench Press	single 手臂 哑铃 卧推 推举
+Smith Machine Bench Press	smith 器械 卧推 推举
+Swiss Ball Dumbbell Chest Press	swiss 球 哑铃 胸部 推举
+Triple Stop Barbell Bench Press	triple stop 杠铃 卧推 推举
+Weighted One Arm Floor Press	负重 one 手臂 floor 推举
+Wide Grip Barbell Bench Press	宽 握 杠铃 卧推 推举
+Donkey Calf Raise	donkey 小腿 上举
+Seated Calf Raise	seated 小腿 上举
+Seated Dumbbell Toe Raise	seated 哑铃 toe 上举
+Single Leg Bent Knee Calf Raise	single 腿 bent knee 小腿 上举
+Single Leg Decline Push Up	single 腿 decline 推 上
+Single Leg Donkey Calf Raise	single 腿 donkey 小腿 上举
+Single Leg Hip Raise With Knee Hold	single 腿 hip 上举 with knee 保持
+Single Leg Standing Calf Raise	single 腿 standing 小腿 上举
+Single Leg Standing Dumbbell Calf Raise	single 腿 standing 哑铃 小腿 上举
+Standing Barbell Calf Raise	standing 杠铃 小腿 上举
+Standing Calf Raise	standing 小腿 上举
+Standing Dumbbell Calf Raise	standing 哑铃 小腿 上举
+Weighted Donkey Calf Raise	负重 donkey 小腿 上举
+Weighted Seated Calf Raise	负重 seated 小腿 上举
+Weighted Single Leg Bent Knee Calf Raise	负重 single 腿 bent knee 小腿 上举
+Weighted Single Leg Donkey Calf Raise	负重 single 腿 donkey 小腿 上举
+Weighted Standing Calf Raise	负重 standing 小腿 上举
+3 Way Calf Raise	3 way 小腿 上举
+3 Way Single Leg Calf Raise	3 way single 腿 小腿 上举
+3 Way Weighted Calf Raise	3 way 负重 小腿 上举
+3 Way Weighted Single Leg Calf Raise	3 way 负重 single 腿 小腿 上举
+Bob And Weave Circle	bob and weave circle
+Double Under	double under
+Jump Rope Crossover	跳 rope crossover
+Jump Rope Jog	跳 rope jog
+Ski Moguls	ski moguls
+Split Jacks	split jacks
+Triple Under	triple under
+Weighted Bob And Weave Circle	负重 bob and weave circle
+Weighted Cardio Core Crawl	负重 cardio 核心 crawl
+Weighted Double Under	负重 double under
+Weighted Jumping Jacks	负重 jumping jacks
+Weighted Jump Rope	负重 跳 rope
+Weighted Jump Rope Crossover	负重 跳 rope crossover
+Weighted Jump Rope Jog	负重 跳 rope jog
+Weighted Ski Moguls	负重 ski moguls
+Weighted Split Jacks	负重 split jacks
+Weighted Squat Jacks	负重 深蹲 jacks
+Weighted Triple Under	负重 triple under
+Bar Holds	杆 holds
+Farmers Walk	farmers 走
+Farmers Walk On Toes	farmers 走 on toes
+Hex Dumbbell Hold	hex 哑铃 保持
+Overhead Carry	过头 carry
+Cable Pull Through	绳索 拉 through
+Cable Rotational Lift	绳索 rotational lift
+Cable Woodchop	绳索 woodchop
+Cross Chop To Knee	cross chop to knee
+Dumbbell Chop	哑铃 chop
+Half Kneeling Rotation	half kneeling rotation
+Half Kneeling Rotational Chop	half kneeling rotational chop
+Half Kneeling Rotational Reverse Chop	half kneeling rotational reverse chop
+Half Kneeling Stability Chop	half kneeling stability chop
+Half Kneeling Stability Reverse Chop	half kneeling stability reverse chop
+Kneeling Rotational Chop	kneeling rotational chop
+Kneeling Rotational Reverse Chop	kneeling rotational reverse chop
+Kneeling Stability Chop	kneeling stability chop
+Kneeling Woodchopper	kneeling woodchopper
+Medicine Ball Wood Chops	药球 球 wood chops
+Power Squat Chops	power 深蹲 chops
+Standing Rotational Chop	standing rotational chop
+Standing Split Rotational Chop	standing split rotational chop
+Standing Split Rotational Reverse Chop	standing split rotational reverse chop
+Standing Stability Reverse Chop	standing stability reverse chop
+Weighted Cross Chop To Knee	负重 cross chop to knee
+Weighted Half Kneeling Rotation	负重 half kneeling rotation
+Weighted Power Squat Chops	负重 power 深蹲 chops
+Abs Jabs	腹肌 jabs
+Alternating Plate Reach	alternating 片 reach
+Alternating Slide Out	alternating slide 外
+Body Bar Oblique Twist	body 杆 oblique twist
+Cable Core Press	绳索 核心 推举
+Cable Side Bend	绳索 侧 bend
+Crescent Circle	crescent circle
+Cycling Russian Twist	cycling russian twist
+Elevated Feet Russian Twist	elevated feet russian twist
+Ghd Back Extensions	ghd 背部 extensions
+Half Turkish Get Up	half turkish get 上
+Inchworm	inchworm
+Kettlebell Windmill	壶铃 windmill
+Modified Front Lever	modified 前 lever
+Open Knee Tucks	open knee tucks
+Overhead Walk	过头 走
+Side Abs Leg Lift	侧 腹肌 腿 lift
+Side Bend	侧 bend
+Swiss Ball Pike	swiss 球 pike
+Triangle Hip Press	triangle hip 推举
+Trx Suspended Jackknife	trx suspended jackknife
+U Boat	u boat
+Weighted Abs Jabs	负重 腹肌 jabs
+Weighted Alternating Slide Out	负重 alternating slide 外
+Weighted Barbell Rollout	负重 杠铃 rollout
+Weighted Crescent Circle	负重 crescent circle
+Weighted Cycling Russian Twist	负重 cycling russian twist
+Weighted Elevated Feet Russian Twist	负重 elevated feet russian twist
+Weighted Ghd Back Extensions	负重 ghd 背部 extensions
+Weighted Kneeling Ab Wheel	负重 kneeling ab wheel
+Weighted Modified Front Lever	负重 modified 前 lever
+Weighted Open Knee Tucks	负重 open knee tucks
+Weighted Side Abs Leg Lift	负重 侧 腹肌 腿 lift
+Weighted Side Bend	负重 侧 bend
+Weighted Swiss Ball Jackknife	负重 swiss 球 jackknife
+Weighted Swiss Ball Pike	负重 swiss 球 pike
+Weighted Swiss Ball Rollout	负重 swiss 球 rollout
+Weighted Triangle Hip Press	负重 triangle hip 推举
+Weighted Trx Suspended Jackknife	负重 trx suspended jackknife
+Weighted U Boat	负重 u boat
+Weighted Windmill Switches	负重 windmill switches
+Windmill Switches	windmill switches
+Circular Arm Crunch	circular 手臂 卷腹
+Crossed Arms Crunch	crossed arms 卷腹
+Cross Leg Reverse Crunch	cross 腿 reverse 卷腹
+Crunch Chop	卷腹 chop
+Double Crunch	double 卷腹
+Elbow To Knee Crunch	elbow to knee 卷腹
+Flutter Kicks	flutter kicks
+Foam Roller Reverse Crunch On Bench	foam roller reverse 卷腹 on 卧推
+Foam Roller Reverse Crunch With Dumbbell	foam roller reverse 卷腹 with 哑铃
+Foam Roller Reverse Crunch With Medicine Ball	foam roller reverse 卷腹 with 药球 球
+Frog Press	frog 推举
+Hip Crossover	hip crossover
+Hollow Rock	hollow rock
+Incline Reverse Crunch	incline reverse 卷腹
+Kneeling Cross Crunch	kneeling cross 卷腹
+Kneeling Oblique Cable Crunch	kneeling oblique 绳索 卷腹
+Knees To Elbow	knees to elbow
+Leg Extensions	腿 extensions
+Leg Levers	腿 levers
+Mcgill Curl Up	mcgill 弯举 上
+Modified Pilates Roll Up With Ball	modified pilates roll 上 with 球
+Pilates Crunch	pilates 卷腹
+Pilates Roll Up With Ball	pilates roll 上 with 球
+Raised Legs Crunch	raised legs 卷腹
+Reverse Curl And Lift	reverse 弯举 and lift
+Rotational Lift	rotational lift
+Seated Alternating Reverse Crunch	seated alternating reverse 卷腹
+Seated Leg U	seated 腿 u
+Side To Side Crunch And Weave	侧 to 侧 卷腹 and weave
+Single Leg Reverse Crunch	single 腿 reverse 卷腹
+Standing Cable Crunch	standing 绳索 卷腹
+Standing Side Crunch	standing 侧 卷腹
+Step Climb	步 climb
+Swiss Ball Reverse Crunch	swiss 球 reverse 卷腹
+Swiss Ball Russian Twist	swiss 球 russian twist
+Swiss Ball Side Crunch	swiss 球 侧 卷腹
+Thoracic Crunches On Foam Roller	thoracic crunches on foam roller
+Toes To Bar	toes to 杆
+Triceps Crunch	triceps 卷腹
+Weighted Bicycle Crunch	负重 bicycle 卷腹
+Weighted Crossed Arms Crunch	负重 crossed arms 卷腹
+Weighted Cross Leg Reverse Crunch	负重 cross 腿 reverse 卷腹
+Weighted Crunch	负重 卷腹
+Weighted Crunch Chop	负重 卷腹 chop
+Weighted Double Crunch	负重 double 卷腹
+Weighted Elbow To Knee Crunch	负重 elbow to knee 卷腹
+Weighted Flutter Kicks	负重 flutter kicks
+Weighted Foam Roller Reverse Crunch On Bench	负重 foam roller reverse 卷腹 on 卧推
+Weighted Hanging Knee Raise Oblique Crunch	负重 hanging knee 上举 oblique 卷腹
+Weighted Hip Crossover	负重 hip crossover
+Weighted Hollow Rock	负重 hollow rock
+Weighted Incline Reverse Crunch	负重 incline reverse 卷腹
+Weighted Kneeling Cross Crunch	负重 kneeling cross 卷腹
+Weighted Leg Extensions	负重 腿 extensions
+Weighted Mcgill Curl Up	负重 mcgill 弯举 上
+Weighted Modified Pilates Roll Up With Ball	负重 modified pilates roll 上 with 球
+Weighted Pilates Crunch	负重 pilates 卷腹
+Weighted Pilates Roll Up With Ball	负重 pilates roll 上 with 球
+Weighted Raised Legs Crunch	负重 raised legs 卷腹
+Weighted Reverse Crunch	负重 reverse 卷腹
+Weighted Reverse Crunch On A Bench	负重 reverse 卷腹 on a 卧推
+Weighted Reverse Curl And Lift	负重 reverse 弯举 and lift
+Weighted Rotational Lift	负重 rotational lift
+Weighted Seated Alternating Reverse Crunch	负重 seated alternating reverse 卷腹
+Weighted Seated Leg U	负重 seated 腿 u
+Weighted Side To Side Crunch And Weave	负重 侧 to 侧 卷腹 and weave
+Weighted Single Leg Reverse Crunch	负重 single 腿 reverse 卷腹
+Weighted Skater Crunch Cross	负重 skater 卷腹 cross
+Weighted Step Climb	负重 步 climb
+Weighted Swiss Ball Crunch	负重 swiss 球 卷腹
+Weighted Swiss Ball Reverse Crunch	负重 swiss 球 reverse 卷腹
+Weighted Swiss Ball Russian Twist	负重 swiss 球 russian twist
+Weighted Swiss Ball Side Crunch	负重 swiss 球 侧 卷腹
+Weighted Thoracic Crunches On Foam Roller	负重 thoracic crunches on foam roller
+Alternating Dumbbell Biceps Curl On Swiss Ball	alternating 哑铃 biceps 弯举 on swiss 球
+Barbell Reverse Wrist Curl	杠铃 reverse wrist 弯举
+Barbell Wrist Curl	杠铃 wrist 弯举
+Behind The Back Barbell Reverse Wrist Curl	behind the 背部 杠铃 reverse wrist 弯举
+Behind The Back One Arm Cable Curl	behind the 背部 one 手臂 绳索 弯举
+Cable Biceps Curl	绳索 biceps 弯举
+Cable Hammer Curl	绳索 hammer 弯举
+Cheating Barbell Biceps Curl	cheating 杠铃 biceps 弯举
+Close Grip Ez Bar Biceps Curl	窄 握 ez 杆 biceps 弯举
+Cross Body Dumbbell Hammer Curl	cross body 哑铃 hammer 弯举
+Decline Hammer Curl	decline hammer 弯举
+Dumbbell Biceps Curl With Static Hold	哑铃 biceps 弯举 with static 保持
+Dumbbell Reverse Wrist Curl	哑铃 reverse wrist 弯举
+Dumbbell Wrist Curl	哑铃 wrist 弯举
+Ez Bar Preacher Curl	ez 杆 preacher 弯举
+Hammer Curl To Press	hammer 弯举 to 推举
+Incline Dumbbell Biceps Curl	incline 哑铃 biceps 弯举
+Incline Offset Thumb Dumbbell Curl	incline offset thumb 哑铃 弯举
+Kettlebell Biceps Curl	壶铃 biceps 弯举
+Lying Concentration Cable Curl	lying concentration 绳索 弯举
+One Arm Preacher Curl	one 手臂 preacher 弯举
+Plate Pinch Curl	片 pinch 弯举
+Preacher Curl With Cable	preacher 弯举 with 绳索
+Reverse Ez Bar Curl	reverse ez 杆 弯举
+Reverse Grip Barbell Biceps Curl	reverse 握 杠铃 biceps 弯举
+Reverse Grip Wrist Curl	reverse 握 wrist 弯举
+Seated Dumbbell Biceps Curl	seated 哑铃 biceps 弯举
+Seated Reverse Dumbbell Curl	seated reverse 哑铃 弯举
+Split Stance Offset Pinky Dumbbell Curl	split 站姿 offset pinky 哑铃 弯举
+Standing Ez Bar Biceps Curl	standing ez 杆 biceps 弯举
+Standing Zottman Biceps Curl	standing zottman biceps 弯举
+Static Curl	static 弯举
+Swiss Ball Dumbbell Overhead Triceps Extension	swiss 球 哑铃 过头 triceps 伸展
+Swiss Ball Ez Bar Preacher Curl	swiss 球 ez 杆 preacher 弯举
+Twisting Standing Dumbbell Biceps Curl	twisting standing 哑铃 biceps 弯举
+Wide Grip Ez Bar Biceps Curl	宽 握 ez 杆 biceps 弯举
+Dumbbell Single Leg Deadlift To Row	哑铃 single 腿 硬拉 to 划船
+Kettlebell Floor To Shelf	壶铃 floor to shelf
+One Arm One Leg Deadlift	one 手臂 one 腿 硬拉
+Rack Pull	架 拉
+Rotational Dumbbell Straight Leg Deadlift	rotational 哑铃 straight 腿 硬拉
+Single Arm Deadlift	single 手臂 硬拉
+Single Leg Barbell Deadlift	single 腿 杠铃 硬拉
+Single Leg Barbell Straight Leg Deadlift	single 腿 杠铃 straight 腿 硬拉
+Single Leg Rdl Circuit	single 腿 rdl circuit
+Single Leg Romanian Deadlift With Dumbbell	single 腿 romanian 硬拉 with 哑铃
+Sumo Deadlift	sumo 硬拉
+Sumo Deadlift High Pull	sumo 硬拉 high 拉
+Trap Bar Deadlift	trap 杆 硬拉
+Wide Grip Barbell Deadlift	宽 握 杠铃 硬拉
+Cable Crossover	绳索 crossover
+Decline Dumbbell Flye	decline 哑铃 flye
+Incline Dumbbell Flye	incline 哑铃 flye
+Kettlebell Flye	壶铃 flye
+Kneeling Rear Flye	kneeling rear flye
+Single Arm Standing Cable Reverse Flye	single 手臂 standing 绳索 reverse flye
+Swiss Ball Dumbbell Flye	swiss 球 哑铃 flye
+Barbell Hip Thrust With Bench	杠铃 hip thrust with 卧推
+Bent Knee Swiss Ball Reverse Hip Raise	bent knee swiss 球 reverse hip 上举
+Bridge With Leg Extension	bridge with 腿 伸展
+Clam Bridge	clam bridge
+Front Kick Tabletop	前 kick tabletop
+Hip Extension And Cross	hip 伸展 and cross
+Hip Raise With Feet On Swiss Ball	hip 上举 with feet on swiss 球
+Hip Raise With Head On Bosu Ball	hip 上举 with head on bosu 球
+Hip Raise With Head On Swiss Ball	hip 上举 with head on swiss 球
+Hip Raise With Knee Squeeze	hip 上举 with knee squeeze
+Incline Rear Leg Extension	incline rear 腿 伸展
+Marching Hip Raise	marching hip 上举
+Marching Hip Raise With Feet On A Swiss Ball	marching hip 上举 with feet on a swiss 球
+Reverse Hip Raise	reverse hip 上举
+Single Leg Hip Raise With Foot On Bench	single 腿 hip 上举 with foot on 卧推
+Single Leg Hip Raise With Foot On Bosu Ball	single 腿 hip 上举 with foot on bosu 球
+Single Leg Hip Raise With Foot On Foam Roller	single 腿 hip 上举 with foot on foam roller
+Single Leg Hip Raise With Foot On Medicine Ball	single 腿 hip 上举 with foot on 药球 球
+Single Leg Hip Raise With Head On Bosu Ball	single 腿 hip 上举 with head on bosu 球
+Single Leg Swiss Ball Hip Raise And Leg Curl	single 腿 swiss 球 hip 上举 and 腿 弯举
+Weighted Bent Knee Swiss Ball Reverse Hip Raise	负重 bent knee swiss 球 reverse hip 上举
+Weighted Bridge With Leg Extension	负重 bridge with 腿 伸展
+Weighted Clam Bridge	负重 clam bridge
+Weighted Front Kick Tabletop	负重 前 kick tabletop
+Weighted Hip Extension And Cross	负重 hip 伸展 and cross
+Weighted Hip Raise	负重 hip 上举
+Weighted Hip Raise With Feet On Swiss Ball	负重 hip 上举 with feet on swiss 球
+Weighted Hip Raise With Head On Bosu Ball	负重 hip 上举 with head on bosu 球
+Weighted Hip Raise With Head On Swiss Ball	负重 hip 上举 with head on swiss 球
+Weighted Hip Raise With Knee Squeeze	负重 hip 上举 with knee squeeze
+Weighted Incline Rear Leg Extension	负重 incline rear 腿 伸展
+Weighted Marching Hip Raise	负重 marching hip 上举
+Weighted Marching Hip Raise With Feet On A Swiss Ball	负重 marching hip 上举 with feet on a swiss 球
+Weighted Reverse Hip Raise	负重 reverse hip 上举
+Weighted Single Leg Hip Raise	负重 single 腿 hip 上举
+Weighted Single Leg Hip Raise With Foot On Bench	负重 single 腿 hip 上举 with foot on 卧推
+Weighted Single Leg Hip Raise With Foot On Bosu Ball	负重 single 腿 hip 上举 with foot on bosu 球
+Weighted Single Leg Hip Raise With Foot On Foam Roller	负重 single 腿 hip 上举 with foot on foam roller
+Weighted Single Leg Hip Raise With Foot On Medicine Ball	负重 single 腿 hip 上举 with foot on 药球 球
+Weighted Single Leg Hip Raise With Head On Bosu Ball	负重 single 腿 hip 上举 with head on bosu 球
+Band Side Lying Leg Raise	弹力带 侧 lying 腿 上举
+Dead Bug	dead bug
+Fire Hydrant Kicks	fire hydrant kicks
+Hip Circles	hip circles
+Inner Thigh Lift	inner 大腿 lift
+Lateral Walks With Band At Ankles	lateral walks with 弹力带 at ankles
+Lying Abduction Stretch	lying abduction stretch
+Pretzel Side Kick	pretzel 侧 kick
+Prone Hip Internal Rotation	prone hip internal rotation
+Quadruped	quadruped
+Quadruped Hip Extension	quadruped hip 伸展
+Quadruped With Leg Lift	quadruped with 腿 lift
+Side Lying Leg Raise	侧 lying 腿 上举
+Sliding Hip Adduction	sliding hip adduction
+Standing Adduction	standing adduction
+Standing Cable Hip Abduction	standing 绳索 hip abduction
+Standing Hip Abduction	standing hip abduction
+Standing Rear Leg Raise	standing rear 腿 上举
+Supine Hip Internal Rotation	supine hip internal rotation
+Weighted Dead Bug	负重 dead bug
+Weighted External Hip Raise	负重 external hip 上举
+Weighted Fire Hydrant Kicks	负重 fire hydrant kicks
+Weighted Hip Circles	负重 hip circles
+Weighted Inner Thigh Lift	负重 inner 大腿 lift
+Weighted Pretzel Side Kick	负重 pretzel 侧 kick
+Weighted Prone Hip Internal Rotation	负重 prone hip internal rotation
+Weighted Quadruped Hip Extension	负重 quadruped hip 伸展
+Weighted Quadruped With Leg Lift	负重 quadruped with 腿 lift
+Weighted Side Lying Leg Raise	负重 侧 lying 腿 上举
+Weighted Sliding Hip Adduction	负重 sliding hip adduction
+Weighted Standing Adduction	负重 standing adduction
+Weighted Standing Hip Abduction	负重 standing hip abduction
+Weighted Standing Rear Leg Raise	负重 standing rear 腿 上举
+Weighted Supine Hip Internal Rotation	负重 supine hip internal rotation
+Single Arm Kettlebell Swing	single 手臂 壶铃 swing
+Step Out Swing	步 外 swing
+Back Extension With Opposite Arm And Leg Reach	背部 伸展 with opposite 手臂 and 腿 reach
+Base Rotations	base rotations
+Bent Knee Reverse Hyperextension	bent knee reverse hyperextension
+Hollow Hold And Roll	hollow 保持 and roll
+Kicks	kicks
+Kneeling Superman	kneeling superman
+Knee Raises	knee raises
+Lat Pull Down With Row	lat 拉 下 with 划船
+Medicine Ball Deadlift To Reach	药球 球 硬拉 to reach
+One Arm One Leg Row	one 手臂 one 腿 划船
+One Arm Row With Band	one 手臂 划船 with 弹力带
+Overhead Lunge With Medicine Ball	过头 弓步 with 药球 球
+Plank Knee Tucks	平板支撑 knee tucks
+Side Step	侧 步
+Single Leg Back Extension	single 腿 背部 伸展
+Spine Extension	spine 伸展
+Static Back Extension	static 背部 伸展
+Superman From Floor	superman from floor
+Superman On Swiss Ball	superman on swiss 球
+Swiss Ball Back Extension	swiss 球 背部 伸展
+Swiss Ball Opposite Arm And Leg Lift	swiss 球 opposite 手臂 and 腿 lift
+Weighted Back Extension With Opposite Arm And Leg Reach	负重 背部 伸展 with opposite 手臂 and 腿 reach
+Weighted Base Rotations	负重 base rotations
+Weighted Bent Knee Reverse Hyperextension	负重 bent knee reverse hyperextension
+Weighted Hollow Hold And Roll	负重 hollow 保持 and roll
+Weighted Kicks	负重 kicks
+Weighted Kneeling Superman	负重 kneeling superman
+Weighted Knee Raises	负重 knee raises
+Weighted Plank Knee Tucks	负重 平板支撑 knee tucks
+Weighted Side Step	负重 侧 步
+Weighted Single Leg Back Extension	负重 single 腿 背部 伸展
+Weighted Spine Extension	负重 spine 伸展
+Weighted Static Back Extension	负重 static 背部 伸展
+Weighted Superman From Floor	负重 superman from floor
+Weighted Swiss Ball Back Extension	负重 swiss 球 背部 伸展
+Weighted Swiss Ball Hyperextension	负重 swiss 球 hyperextension
+Weighted Swiss Ball Opposite Arm And Leg Lift	负重 swiss 球 opposite 手臂 and 腿 lift
+Alternating Lateral Raise With Static Hold	alternating lateral 上举 with static 保持
+Bar Muscle Up	杆 muscle 上
+Bent Over Lateral Raise	bent over lateral 上举
+Cable Diagonal Raise	绳索 diagonal 上举
+Calorie Row	calorie 划船
+Combo Shoulder Raise	combo 肩膀 上举
+Dumbbell Diagonal Raise	哑铃 diagonal 上举
+Dumbbell V Raise	哑铃 v 上举
+Front Raise	前 上举
+Leaning Dumbbell Lateral Raise	leaning 哑铃 lateral 上举
+Lying Dumbbell Raise	lying 哑铃 上举
+Muscle Up	muscle 上
+One Arm Cable Lateral Raise	one 手臂 绳索 lateral 上举
+Overhand Grip Rear Lateral Raise	overhand 握 rear lateral 上举
+Plate Raises	片 raises
+Ring Dip	ring 臂屈伸
+Ring Muscle Up	ring muscle 上
+Rope Climb	rope climb
+Scaption	scaption
+Seated Lateral Raise	seated lateral 上举
+Seated Rear Lateral Raise	seated rear lateral 上举
+Side Lying Lateral Raise	侧 lying lateral 上举
+Standing Lift	standing lift
+Suspended Row	suspended 划船
+Underhand Grip Rear Lateral Raise	反手 握 rear lateral 上举
+Wall Slide	wall slide
+Weighted Ring Dip	负重 ring 臂屈伸
+Weighted Ring Muscle Up	负重 ring muscle 上
+Weighted Rope Climb	负重 rope climb
+Weighted Wall Slide	负重 wall slide
+45 Degree Cable External Rotation	45 degree 绳索 external rotation
+Leg Curl	腿 弯举
+Seated Barbell Good Morning	seated 杠铃 good morning
+Single Leg Barbell Good Morning	single 腿 杠铃 good morning
+Single Leg Sliding Leg Curl	single 腿 sliding 腿 弯举
+Sliding Leg Curl	sliding 腿 弯举
+Split Barbell Good Morning	split 杠铃 good morning
+Split Stance Extension	split 站姿 伸展
+Staggered Stance Good Morning	staggered 站姿 good morning
+Swiss Ball Hip Raise And Leg Curl	swiss 球 hip 上举 and 腿 弯举
+Weighted Leg Curl	负重 腿 弯举
+Zercher Good Morning	zercher good morning
+Hanging Knee Raise	hanging knee 上举
+Hanging Single Leg Raise	hanging single 腿 上举
+Kettlebell Leg Raises	壶铃 腿 raises
+Lateral Stepover	lateral stepover
+Leg Lowering Drill	腿 lowering drill
+Lying Straight Leg Raise	lying straight 腿 上举
+Medicine Ball Leg Drops	药球 球 腿 drops
+Quadruped Leg Raise	quadruped 腿 上举
+Reverse Leg Raise	reverse 腿 上举
+Reverse Leg Raise On Swiss Ball	reverse 腿 上举 on swiss 球
+Single Leg Lowering Drill	single 腿 lowering drill
+Weighted Hanging Knee Raise	负重 hanging knee 上举
+Weighted Hanging Leg Raise	负重 hanging 腿 上举
+Weighted Hanging Single Leg Raise	负重 hanging single 腿 上举
+Weighted Lateral Stepover	负重 lateral stepover
+Weighted Leg Lowering Drill	负重 腿 lowering drill
+Weighted Lying Straight Leg Raise	负重 lying straight 腿 上举
+Weighted Quadruped Leg Raise	负重 quadruped 腿 上举
+Weighted Reverse Leg Raise	负重 reverse 腿 上举
+Weighted Reverse Leg Raise On Swiss Ball	负重 reverse 腿 上举 on swiss 球
+Weighted Single Leg Lowering Drill	负重 single 腿 lowering drill
+Alternating Barbell Forward Lunge	alternating 杠铃 forward 弓步
+Back Foot Elevated Dumbbell Split Squat	背部 foot elevated 哑铃 split 深蹲
+Barbell Box Lunge	杠铃 箱 弓步
+Barbell Crossover Lunge	杠铃 crossover 弓步
+Barbell Front Split Squat	杠铃 前 split 深蹲
+Barbell Lunge	杠铃 弓步
+Barbell Reverse Lunge	杠铃 reverse 弓步
+Barbell Split Squat	杠铃 split 深蹲
+Core Control Rear Lunge	核心 control rear 弓步
+Diagonal Lunge	diagonal 弓步
+Drop Lunge	drop 弓步
+Dumbbell Box Lunge	哑铃 箱 弓步
+Dumbbell Bulgarian Split Squat	哑铃 bulgarian split 深蹲
+Dumbbell Crossover Lunge	哑铃 crossover 弓步
+Dumbbell Diagonal Lunge	哑铃 diagonal 弓步
+Dumbbell Lunge	哑铃 弓步
+Dumbbell Lunge And Rotation	哑铃 弓步 and rotation
+Dumbbell Overhead Bulgarian Split Squat	哑铃 过头 bulgarian split 深蹲
+Dumbbell Reverse Lunge To High Knee And Press	哑铃 reverse 弓步 to high knee and 推举
+Dumbbell Side Lunge	哑铃 侧 弓步
+Elevated Front Foot Barbell Split Squat	elevated 前 foot 杠铃 split 深蹲
+Front Foot Elevated Dumbbell Split Squat	前 foot elevated 哑铃 split 深蹲
+Gunslinger Lunge	gunslinger 弓步
+Lawnmower Lunge	lawnmower 弓步
+Low Side To Side Lunge	low 侧 to 侧 弓步
+Lunge Matrix	弓步 matrix
+Lunge With Diagonal Reach	弓步 with diagonal reach
+Lunge With Side Bend	弓步 with 侧 bend
+Offset Dumbbell Lunge	offset 哑铃 弓步
+Offset Dumbbell Reverse Lunge	offset 哑铃 reverse 弓步
+Overhead Bulgarian Split Squat	过头 bulgarian split 深蹲
+Overhead Dumbbell Reverse Lunge	过头 哑铃 reverse 弓步
+Overhead Lunge	过头 弓步
+Overhead Lunge With Rotation	过头 弓步 with rotation
+Reverse Barbell Box Lunge	reverse 杠铃 箱 弓步
+Reverse Box Lunge	reverse 箱 弓步
+Reverse Dumbbell Box Lunge	reverse 哑铃 箱 弓步
+Reverse Dumbbell Crossover Lunge	reverse 哑铃 crossover 弓步
+Reverse Dumbbell Diagonal Lunge	reverse 哑铃 diagonal 弓步
+Reverse Lunge With Reach Back	reverse 弓步 with reach 背部
+Reverse Lunge With Twist And Overhead Reach	reverse 弓步 with twist and 过头 reach
+Reverse Sliding Box Lunge	reverse sliding 箱 弓步
+Scissor Power Switch	scissor power switch
+Side And Crossover Lunge	侧 and crossover 弓步
+Side Lunge	侧 弓步
+Side Lunge And Press	侧 弓步 and 推举
+Side Lunge Jump Off	侧 弓步 跳 off
+Side Lunge Sweep	侧 弓步 sweep
+Side Lunge To Crossover Tap	侧 弓步 to crossover tap
+Siff Jump Lunge	siff 跳 弓步
+Single Arm Reverse Lunge And Press	single 手臂 reverse 弓步 and 推举
+Sliding Lateral Lunge	sliding lateral 弓步
+Walking Barbell Lunge	walking 杠铃 弓步
+Walking Dumbbell Lunge	walking 哑铃 弓步
+Weighted Lunge	负重 弓步
+Weighted Lunge Matrix	负重 弓步 matrix
+Weighted Reverse Lunge With Reach Back	负重 reverse 弓步 with reach 背部
+Weighted Reverse Lunge With Twist And Overhead Reach	负重 reverse 弓步 with twist and 过头 reach
+Weighted Reverse Sliding Box Lunge	负重 reverse sliding 箱 弓步
+Weighted Reverse Sliding Lunge	负重 reverse sliding 弓步
+Weighted Runners Lunge To Balance	负重 runners 弓步 to balance
+Weighted Side And Crossover Lunge	负重 侧 and crossover 弓步
+Weighted Side Lunge	负重 侧 弓步
+Weighted Side Lunge Sweep	负重 侧 弓步 sweep
+Weighted Side Lunge To Crossover Tap	负重 侧 弓步 to crossover tap
+Weighted Side To Side Lunge Chops	负重 侧 to 侧 弓步 chops
+Weighted Siff Jump Lunge	负重 siff 跳 弓步
+Weighted Sliding Lateral Lunge	负重 sliding lateral 弓步
+Weighted Walking Lunge	负重 walking 弓步
+Wide Grip Overhead Barbell Split Squat	宽 握 过头 杠铃 split 深蹲
+Barbell Hang Power Clean	杠铃 hang power clean
+Barbell Hang Power Snatch	杠铃 hang power snatch
+Barbell Hang Pull	杠铃 hang 拉
+Barbell Hang Squat Clean	杠铃 hang 深蹲 clean
+Barbell High Pull	杠铃 high 拉
+Barbell Power Clean	杠铃 power clean
+Barbell Power Snatch	杠铃 power snatch
+Barbell Snatch	杠铃 snatch
+Barbell Split Jerk	杠铃 split jerk
+Barbell Squat Clean	杠铃 深蹲 clean
+Clean	clean
+Clean And Jerk	clean and jerk
+Dumbbell Clean	哑铃 clean
+Dumbbell Hang Pull	哑铃 hang 拉
+One Hand Dumbbell Split Snatch	one hand 哑铃 split snatch
+Push Jerk	推 jerk
+Single Arm Dumbbell Snatch	single 手臂 哑铃 snatch
+Single Arm Hang Snatch	single 手臂 hang snatch
+Single Arm Kettlebell Snatch	single 手臂 壶铃 snatch
+Split Jerk	split jerk
+Squat Clean And Jerk	深蹲 clean and jerk
+Bear Crawl	bear crawl
+Elbow Plank Pike Jacks	elbow 平板支撑 pike jacks
+Elevated Feet Plank	elevated feet 平板支撑
+Extended Plank	extended 平板支撑
+Full Plank Passe Twist	full 平板支撑 passe twist
+Inching Elbow Plank	inching elbow 平板支撑
+Inchworm To Side Plank	inchworm to 侧 平板支撑
+Kneeling Plank	kneeling 平板支撑
+Kneeling Side Plank With Leg Lift	kneeling 侧 平板支撑 with 腿 lift
+Lateral Roll	lateral roll
+Lying Reverse Plank	lying reverse 平板支撑
+Medicine Ball Mountain Climber	药球 球 mountain climber
+Modified Mountain Climber And Extension	modified mountain climber and 伸展
+Mountain Climber With Hands On Bench	mountain climber with hands on 卧推
+Mountain Climber With Hands On Swiss Ball	mountain climber with hands on swiss 球
+Plank Jacks With Feet On Sliding Discs	平板支撑 jacks with feet on sliding discs
+Plank Knee Twist	平板支撑 knee twist
+Plank Pikes	平板支撑 pikes
+Plank Pike Jumps	平板支撑 pike jumps
+Plank To Stand Up	平板支撑 to stand 上
+Plank With Feet On Swiss Ball	平板支撑 with feet on swiss 球
+Plank With Knee To Elbow	平板支撑 with knee to elbow
+Plyometric Side Plank	plyometric 侧 平板支撑
+Rolling Side Plank	rolling 侧 平板支撑
+Side Kick Plank	侧 kick 平板支撑
+Side Plank Lift	侧 平板支撑 lift
+Side Plank To Plank With Reach Under	侧 平板支撑 to 平板支撑 with reach under
+Side Plank With Elbow On Bosu Ball	侧 平板支撑 with elbow on bosu 球
+Side Plank With Knee Circle	侧 平板支撑 with knee circle
+Side Plank With Knee Tuck	侧 平板支撑 with knee tuck
+Side Plank With Leg Lift	侧 平板支撑 with 腿 lift
+Side Plank With Reach Under	侧 平板支撑 with reach under
+Single Leg Elevated Feet Plank	single 腿 elevated feet 平板支撑
+Single Leg Flex And Extend	single 腿 flex and extend
+Single Leg Side Plank	single 腿 侧 平板支撑
+Spiderman Plank	spiderman 平板支撑
+Straight Arm Plank	straight 手臂 平板支撑
+Straight Arm Plank With Shoulder Touch	straight 手臂 平板支撑 with 肩膀 touch
+Swiss Ball Plank	swiss 球 平板支撑
+Swiss Ball Plank Leg Lift	swiss 球 平板支撑 腿 lift
+Swiss Ball Plank Leg Lift And Hold	swiss 球 平板支撑 腿 lift and 保持
+Swiss Ball Plank With Feet On Bench	swiss 球 平板支撑 with feet on 卧推
+Swiss Ball Prone Jackknife	swiss 球 prone jackknife
+Swiss Ball Side Plank	swiss 球 侧 平板支撑
+Three Way Plank	three way 平板支撑
+Towel Plank And Knee In	towel 平板支撑 and knee 内
+Turkish Get Up To Side Plank	turkish get 上 to 侧 平板支撑
+Two Point Plank	two point 平板支撑
+T Stabilization	t stabilization
+Weighted 45 Degree Plank	负重 45 degree 平板支撑
+Weighted 90 Degree Static Hold	负重 90 degree static 保持
+Weighted Bear Crawl	负重 bear crawl
+Weighted Cross Body Mountain Climber	负重 cross body mountain climber
+Weighted Elbow Plank Pike Jacks	负重 elbow 平板支撑 pike jacks
+Weighted Elevated Feet Plank	负重 elevated feet 平板支撑
+Weighted Elevator Abs	负重 elevator 腹肌
+Weighted Extended Plank	负重 extended 平板支撑
+Weighted Full Plank Passe Twist	负重 full 平板支撑 passe twist
+Weighted Inching Elbow Plank	负重 inching elbow 平板支撑
+Weighted Inchworm To Side Plank	负重 inchworm to 侧 平板支撑
+Weighted Kneeling Plank	负重 kneeling 平板支撑
+Weighted Kneeling Side Plank With Leg Lift	负重 kneeling 侧 平板支撑 with 腿 lift
+Weighted Lateral Roll	负重 lateral roll
+Weighted Lying Reverse Plank	负重 lying reverse 平板支撑
+Weighted Medicine Ball Mountain Climber	负重 药球 球 mountain climber
+Weighted Modified Mountain Climber And Extension	负重 modified mountain climber and 伸展
+Weighted Mountain Climber	负重 mountain climber
+Weighted Mountain Climber On Sliding Discs	负重 mountain climber on sliding discs
+Weighted Mountain Climber With Feet On Bosu Ball	负重 mountain climber with feet on bosu 球
+Weighted Mountain Climber With Hands On Swiss Ball	负重 mountain climber with hands on swiss 球
+Weighted Plank Jacks With Feet On Sliding Discs	负重 平板支撑 jacks with feet on sliding discs
+Weighted Plank Knee Twist	负重 平板支撑 knee twist
+Weighted Plank Pikes	负重 平板支撑 pikes
+Weighted Plank Pike Jumps	负重 平板支撑 pike jumps
+Weighted Plank To Stand Up	负重 平板支撑 to stand 上
+Weighted Plank With Arm Raise	负重 平板支撑 with 手臂 上举
+Weighted Plank With Knee To Elbow	负重 平板支撑 with knee to elbow
+Weighted Plank With Oblique Crunch	负重 平板支撑 with oblique 卷腹
+Weighted Plyometric Side Plank	负重 plyometric 侧 平板支撑
+Weighted Rolling Side Plank	负重 rolling 侧 平板支撑
+Weighted Side Kick Plank	负重 侧 kick 平板支撑
+Weighted Side Plank	负重 侧 平板支撑
+Weighted Side Plank And Row	负重 侧 平板支撑 and 划船
+Weighted Side Plank Lift	负重 侧 平板支撑 lift
+Weighted Side Plank With Elbow On Bosu Ball	负重 侧 平板支撑 with elbow on bosu 球
+Weighted Side Plank With Feet On Bench	负重 侧 平板支撑 with feet on 卧推
+Weighted Side Plank With Knee Circle	负重 侧 平板支撑 with knee circle
+Weighted Side Plank With Knee Tuck	负重 侧 平板支撑 with knee tuck
+Weighted Side Plank With Leg Lift	负重 侧 平板支撑 with 腿 lift
+Weighted Side Plank With Reach Under	负重 侧 平板支撑 with reach under
+Weighted Single Leg Elevated Feet Plank	负重 single 腿 elevated feet 平板支撑
+Weighted Single Leg Flex And Extend	负重 single 腿 flex and extend
+Weighted Single Leg Side Plank	负重 single 腿 侧 平板支撑
+Weighted Spiderman Plank	负重 spiderman 平板支撑
+Weighted Straight Arm Plank	负重 straight 手臂 平板支撑
+Weighted Straight Arm Plank With Shoulder Touch	负重 straight 手臂 平板支撑 with 肩膀 touch
+Weighted Swiss Ball Plank	负重 swiss 球 平板支撑
+Weighted Swiss Ball Plank Leg Lift	负重 swiss 球 平板支撑 腿 lift
+Weighted Swiss Ball Plank With Feet On Bench	负重 swiss 球 平板支撑 with feet on 卧推
+Weighted Swiss Ball Prone Jackknife	负重 swiss 球 prone jackknife
+Weighted Swiss Ball Side Plank	负重 swiss 球 侧 平板支撑
+Weighted Three Way Plank	负重 three way 平板支撑
+Weighted Towel Plank And Knee In	负重 towel 平板支撑 and knee 内
+Weighted Turkish Get Up To Side Plank	负重 turkish get 上 to 侧 平板支撑
+Weighted Two Point Plank	负重 two point 平板支撑
+Weighted T Stabilization	负重 t stabilization
+Weighted Wide Stance Plank With Diagonal Arm Lift	负重 宽 站姿 平板支撑 with diagonal 手臂 lift
+Weighted Wide Stance Plank With Diagonal Leg Lift	负重 宽 站姿 平板支撑 with diagonal 腿 lift
+Wide Stance Plank With Diagonal Arm Lift	宽 站姿 平板支撑 with diagonal 手臂 lift
+Wide Stance Plank With Diagonal Leg Lift	宽 站姿 平板支撑 with diagonal 腿 lift
+Wide Stance Plank With Leg Lift	宽 站姿 平板支撑 with 腿 lift
+90 Degree Static Hold	90 degree static 保持
+Cross Knee Strike	cross knee strike
+Depth Jump	depth 跳
+Dumbbell Jump Squat	哑铃 跳 深蹲
+Dumbbell Split Jump	哑铃 split 跳
+Front Knee Strike	前 knee strike
+High Box Jump	high 箱 跳
+Isometric Explosive Body Weight Jump Squat	isometric explosive body weight 跳 深蹲
+Lateral Leap And Hop	lateral leap and hop
+Lateral Plyo Squats	lateral plyo squats
+Lateral Slide	lateral slide
+Medicine Ball Overhead Throws	药球 球 过头 throws
+Medicine Ball Side Throw	药球 球 侧 throw
+Side To Side Medicine Ball Throws	侧 to 侧 药球 球 throws
+Squat Jumps In And Out	深蹲 jumps 内 and 外
+Squat Jump Onto Box	深蹲 跳 onto 箱
+Weighted Alternating Jump Lunge	负重 alternating 跳 弓步
+Weighted Cross Knee Strike	负重 cross knee strike
+Weighted Depth Jump	负重 depth 跳
+Weighted Front Knee Strike	负重 前 knee strike
+Weighted High Box Jump	负重 high 箱 跳
+Weighted Isometric Explosive Jump Squat	负重 isometric explosive 跳 深蹲
+Weighted Jump Squat	负重 跳 深蹲
+Weighted Lateral Leap And Hop	负重 lateral leap and hop
+Weighted Lateral Plyo Squats	负重 lateral plyo squats
+Weighted Lateral Slide	负重 lateral slide
+Weighted Side To Side Shuffle Jump	负重 侧 to 侧 shuffle 跳
+Weighted Squat Jumps In And Out	负重 深蹲 jumps 内 and 外
+Weighted Squat Jump Onto Box	负重 深蹲 跳 onto 箱
+Banded Pull Ups	banded 拉 ups
+Band Assisted Chin Up	弹力带 assisted chin 上
+Burpee Pull Up	burpee 拉 上
+Close Grip Chin Up	窄 握 chin 上
+Close Grip Lat Pulldown	窄 握 lat pulldown
+Crossover Chin Up	crossover chin 上
+Ez Bar Pullover	ez 杆 pullover
+Hanging Hurdle	hanging hurdle
+Jumping Pull Ups	jumping 拉 ups
+Kipping Pull Up	kipping 拉 上
+Kneeling Lat Pulldown	kneeling lat pulldown
+Kneeling Underhand Grip Lat Pulldown	kneeling 反手 握 lat pulldown
+L Pull Up	l 拉 上
+Mixed Grip Chin Up	mixed 握 chin 上
+Mixed Grip Pull Up	mixed 握 拉 上
+Neutral Grip Chin Up	neutral 握 chin 上
+Reverse Grip Pulldown	reverse 握 pulldown
+Straight Arm Pulldown	straight 手臂 pulldown
+Suspended Chin Up	suspended chin 上
+Swiss Ball Ez Bar Pullover	swiss 球 ez 杆 pullover
+Towel Pull Up	towel 拉 上
+Weighted Burpee Pull Up	负重 burpee 拉 上
+Weighted Chin Up	负重 chin 上
+Weighted Close Grip Chin Up	负重 窄 握 chin 上
+Weighted Crossover Chin Up	负重 crossover chin 上
+Weighted Hanging Hurdle	负重 hanging hurdle
+Weighted Jumping Pull Ups	负重 jumping 拉 ups
+Weighted Kipping Pull Up	负重 kipping 拉 上
+Weighted L Pull Up	负重 l 拉 上
+Weighted Mixed Grip Chin Up	负重 mixed 握 chin 上
+Weighted Mixed Grip Pull Up	负重 mixed 握 拉 上
+Weighted Pull Up	负重 拉 上
+Weighted Towel Pull Up	负重 towel 拉 上
+Weighted Wide Grip Pull Up	负重 宽 握 拉 上
+Wide Grip Pull Up	宽 握 拉 上
+30 Degree Lat Pulldown	30 degree lat pulldown
+Alternating Hands Medicine Ball Push Up	alternating hands 药球 球 推 上
+Alternating Staggered Push Up	alternating staggered 推 上
+Bosu Ball Push Up	bosu 球 推 上
+Chest Press With Band	胸部 推举 with 弹力带
+Clapping Push Up	clapping 推 上
+Close Grip Medicine Ball Push Up	窄 握 药球 球 推 上
+Close Hands Push Up	窄 hands 推 上
+Decline Push Up	decline 推 上
+Diamond Push Up	diamond 推 上
+Explosive Crossover Push Up	explosive crossover 推 上
+Explosive Push Up	explosive 推 上
+Feet Elevated Side To Side Push Up	feet elevated 侧 to 侧 推 上
+Handstand Push Up	handstand 推 上
+Hand Release Push Up	hand release 推 上
+Incline Push Up	incline 推 上
+Isometric Explosive Push Up	isometric explosive 推 上
+Judo Push Up	judo 推 上
+Kneeling Push Up	kneeling 推 上
+Medicine Ball Chest Pass	药球 球 胸部 pass
+Medicine Ball Push Up	药球 球 推 上
+One Arm Push Up	one 手臂 推 上
+Parallette Handstand Push Up	parallette handstand 推 上
+Push Up And Row	推 上 and 划船
+Push Up Plus	推 上 plus
+Push Up With Feet On Swiss Ball	推 上 with feet on swiss 球
+Push Up With One Hand On Medicine Ball	推 上 with one hand on 药球 球
+Ring Handstand Push Up	ring handstand 推 上
+Ring Push Up	ring 推 上
+Shoulder Push Up	肩膀 推 上
+Single Arm Medicine Ball Push Up	single 手臂 药球 球 推 上
+Spiderman Push Up	spiderman 推 上
+Stacked Feet Push Up	stacked feet 推 上
+Staggered Hands Push Up	staggered hands 推 上
+Suspended Push Up	suspended 推 上
+Swiss Ball Push Up	swiss 球 推 上
+Swiss Ball Push Up Plus	swiss 球 推 上 plus
+Triple Stop Push Up	triple stop 推 上
+Weighted Alternating Hands Medicine Ball Push Up	负重 alternating hands 药球 球 推 上
+Weighted Alternating Staggered Push Up	负重 alternating staggered 推 上
+Weighted Bosu Ball Push Up	负重 bosu 球 推 上
+Weighted Clapping Push Up	负重 clapping 推 上
+Weighted Close Grip Medicine Ball Push Up	负重 窄 握 药球 球 推 上
+Weighted Close Hands Push Up	负重 窄 hands 推 上
+Weighted Decline Push Up	负重 decline 推 上
+Weighted Diamond Push Up	负重 diamond 推 上
+Weighted Explosive Crossover Push Up	负重 explosive crossover 推 上
+Weighted Explosive Push Up	负重 explosive 推 上
+Weighted Feet Elevated Side To Side Push Up	负重 feet elevated 侧 to 侧 推 上
+Weighted Handstand Push Up	负重 handstand 推 上
+Weighted Hand Release Push Up	负重 hand release 推 上
+Weighted Incline Push Up	负重 incline 推 上
+Weighted Isometric Explosive Push Up	负重 isometric explosive 推 上
+Weighted Judo Push Up	负重 judo 推 上
+Weighted Kneeling Push Up	负重 kneeling 推 上
+Weighted Medicine Ball Push Up	负重 药球 球 推 上
+Weighted One Arm Push Up	负重 one 手臂 推 上
+Weighted Parallette Handstand Push Up	负重 parallette handstand 推 上
+Weighted Push Up	负重 推 上
+Weighted Push Up And Row	负重 推 上 and 划船
+Weighted Push Up Plus	负重 推 上 plus
+Weighted Push Up With Feet On Swiss Ball	负重 推 上 with feet on swiss 球
+Weighted Push Up With One Hand On Medicine Ball	负重 推 上 with one hand on 药球 球
+Weighted Ring Handstand Push Up	负重 ring handstand 推 上
+Weighted Shoulder Push Up	负重 肩膀 推 上
+Weighted Single Arm Medicine Ball Push Up	负重 single 手臂 药球 球 推 上
+Weighted Spiderman Push Up	负重 spiderman 推 上
+Weighted Stacked Feet Push Up	负重 stacked feet 推 上
+Weighted Staggered Hands Push Up	负重 staggered hands 推 上
+Weighted Suspended Push Up	负重 suspended 推 上
+Weighted Swiss Ball Push Up	负重 swiss 球 推 上
+Weighted Swiss Ball Push Up Plus	负重 swiss 球 推 上 plus
+Weighted Triple Stop Push Up	负重 triple stop 推 上
+Weighted T Push Up	负重 t 推 上
+Weighted Wide Hands Push Up	负重 宽 hands 推 上
+Wide Hands Push Up	宽 hands 推 上
+Barbell Straight Leg Deadlift To Row	杠铃 straight 腿 硬拉 to 划船
+Elevated Feet Inverted Row	elevated feet inverted 划船
+Face Pull With External Rotation	face 拉 with external rotation
+Inverted Row With Feet On Swiss Ball	inverted 划船 with feet on swiss 球
+Kettlebell Row	壶铃 划船
+Modified Inverted Row	modified inverted 划船
+Neutral Grip Alternating Dumbbell Row	neutral 握 alternating 哑铃 划船
+One Legged Dumbbell Row	one legged 哑铃 划船
+Rope Handle Cable Row	rope handle 绳索 划船
+Row	划船
+Seated Cable Row	seated 绳索 划船
+Seated Dumbbell Row	seated 哑铃 划船
+Single Arm Cable Row	single 手臂 绳索 划船
+Single Arm Cable Row And Rotation	single 手臂 绳索 划船 and rotation
+Single Arm Inverted Row	single 手臂 inverted 划船
+Single Arm Neutral Grip Dumbbell Row	single 手臂 neutral 握 哑铃 划船
+Suspended Inverted Row	suspended inverted 划船
+Towel Grip Inverted Row	towel 握 inverted 划船
+T Bar Row	t 杆 划船
+Underhand Grip Cable Row	反手 握 绳索 划船
+V Grip Cable Row	v 握 绳索 划船
+Weighted Elevated Feet Inverted Row	负重 elevated feet inverted 划船
+Weighted Inverted Row With Feet On Swiss Ball	负重 inverted 划船 with feet on swiss 球
+Weighted Modified Inverted Row	负重 modified inverted 划船
+Weighted Row	负重 划船
+Weighted Single Arm Inverted Row	负重 single 手臂 inverted 划船
+Weighted Suspended Inverted Row	负重 suspended inverted 划船
+Weighted Towel Grip Inverted Row	负重 towel 握 inverted 划船
+Wide Grip Seated Cable Row	宽 握 seated 绳索 划船
+Run Or Walk	跑 or 走
+Sprint	冲刺
+Walk	走
+Arnold Press	arnold 推举
+Barbell Push Press	杠铃 推 推举
+Barbell Shoulder Press	杠铃 肩膀 推举
+Dead Curl Press	dead 弯举 推举
+Dumbbell Alternating Shoulder Press And Twist	哑铃 alternating 肩膀 推举 and twist
+Dumbbell Hammer Curl To Lunge To Press	哑铃 hammer 弯举 to 弓步 to 推举
+Floor Inverted Shoulder Press	floor inverted 肩膀 推举
+Inverted Shoulder Press	inverted 肩膀 推举
+One Arm Push Press	one 手臂 推 推举
+Overhead Barbell Press	过头 杠铃 推举
+Overhead Dumbbell Press	过头 哑铃 推举
+Seated Barbell Shoulder Press	seated 杠铃 肩膀 推举
+Seated Dumbbell Shoulder Press	seated 哑铃 肩膀 推举
+Split Stance Hammer Curl To Press	split 站姿 hammer 弯举 to 推举
+Swiss Ball Dumbbell Shoulder Press	swiss 球 哑铃 肩膀 推举
+Weighted Floor Inverted Shoulder Press	负重 floor inverted 肩膀 推举
+Weighted Inverted Shoulder Press	负重 inverted 肩膀 推举
+Weight Plate Front Raise	weight 片 前 上举
+Band External Rotation	弹力带 external rotation
+Band Internal Rotation	弹力带 internal rotation
+Bent Arm Lateral Raise And External Rotation	bent 手臂 lateral 上举 and external rotation
+Cable External Rotation	绳索 external rotation
+Dumbbell Face Pull With External Rotation	哑铃 face 拉 with external rotation
+Floor I Raise	floor i 上举
+Floor T Raise	floor t 上举
+Floor Y Raise	floor y 上举
+Incline I Raise	incline i 上举
+Incline L Raise	incline l 上举
+Incline T Raise	incline t 上举
+Incline W Raise	incline w 上举
+Incline Y Raise	incline y 上举
+Lying External Rotation	lying external rotation
+Seated Dumbbell External Rotation	seated 哑铃 external rotation
+Standing L Raise	standing l 上举
+Swiss Ball I Raise	swiss 球 i 上举
+Swiss Ball T Raise	swiss 球 t 上举
+Swiss Ball W Raise	swiss 球 w 上举
+Swiss Ball Y Raise	swiss 球 y 上举
+Weighted Floor I Raise	负重 floor i 上举
+Weighted Floor T Raise	负重 floor t 上举
+Weighted Floor Y Raise	负重 floor y 上举
+Weighted Incline I Raise	负重 incline i 上举
+Weighted Incline L Raise	负重 incline l 上举
+Weighted Incline T Raise	负重 incline t 上举
+Weighted Incline W Raise	负重 incline w 上举
+Weighted Incline Y Raise	负重 incline y 上举
+Weighted Swiss Ball I Raise	负重 swiss 球 i 上举
+Weighted Swiss Ball T Raise	负重 swiss 球 t 上举
+Weighted Swiss Ball W Raise	负重 swiss 球 w 上举
+Weighted Swiss Ball Y Raise	负重 swiss 球 y 上举
+90 Degree Cable External Rotation	90 degree 绳索 external rotation
+Barbell Jump Shrug	杠铃 跳 shrug
+Barbell Shrug	杠铃 shrug
+Behind The Back Smith Machine Shrug	behind the 背部 smith 器械 shrug
+Dumbbell Jump Shrug	哑铃 跳 shrug
+Dumbbell Shrug	哑铃 shrug
+Dumbbell Upright Row	哑铃 upright 划船
+Incline Dumbbell Shrug	incline 哑铃 shrug
+Overhead Barbell Shrug	过头 杠铃 shrug
+Overhead Dumbbell Shrug	过头 哑铃 shrug
+Scaption And Shrug	scaption and shrug
+Scapular Retraction	scapular retraction
+Serratus Chair Shrug	serratus chair shrug
+Serratus Shrug	serratus shrug
+Weighted Serratus Chair Shrug	负重 serratus chair shrug
+Weighted Serratus Shrug	负重 serratus shrug
+Wide Grip Barbell Shrug	宽 握 杠铃 shrug
+Wide Grip Jump Shrug	宽 握 跳 shrug
+Alternating Sit Up	alternating sit 上
+Bent Knee V Up	bent knee v 上
+Butterfly Sit Up	butterfly sit 上
+Crossed Arms Sit Up	crossed arms sit 上
+Cross Punch Roll Up	cross punch roll 上
+Hovering Sit Up	hovering sit 上
+Kettlebell Sit Up	壶铃 sit 上
+Medicine Ball Alternating V Up	药球 球 alternating v 上
+Medicine Ball Sit Up	药球 球 sit 上
+Medicine Ball V Up	药球 球 v 上
+Modified Sit Up	modified sit 上
+Negative Sit Up	negative sit 上
+One Arm Full Sit Up	one 手臂 full sit 上
+Reclining Circle	reclining circle
+Reverse Curl Up	reverse 弯举 上
+Single Leg Swiss Ball Jackknife	single 腿 swiss 球 jackknife
+The Teaser	the teaser
+The Teaser Weighted	the teaser 负重
+Three Part Roll Down	three part roll 下
+Weighted Alternating Sit Up	负重 alternating sit 上
+Weighted Bent Knee V Up	负重 bent knee v 上
+Weighted Butterfly Situp	负重 butterfly situp
+Weighted Crossed Arms Sit Up	负重 crossed arms sit 上
+Weighted Cross Punch Roll Up	负重 cross punch roll 上
+Weighted Get Up Sit Up	负重 get 上 sit 上
+Weighted Hovering Sit Up	负重 hovering sit 上
+Weighted Reclining Circle	负重 reclining circle
+Weighted Reverse Curl Up	负重 reverse 弯举 上
+Weighted Russian Twist On Swiss Ball	负重 russian twist on swiss 球
+Weighted Single Leg Swiss Ball Jackknife	负重 single 腿 swiss 球 jackknife
+Weighted Sit Up	负重 sit 上
+Weighted Three Part Roll Down	负重 three part roll 下
+Weighted V Up	负重 v 上
+Weighted X Abs	负重 x 腹肌
+X Abs	x 腹肌
+Back Squats	背部 squats
+Balancing Squat	balancing 深蹲
+Barbell Box Squat	杠铃 箱 深蹲
+Barbell Hack Squat	杠铃 hack 深蹲
+Barbell Hang Squat Snatch	杠铃 hang 深蹲 snatch
+Barbell Lateral Step Up	杠铃 lateral 步 上
+Barbell Quarter Squat	杠铃 quarter 深蹲
+Barbell Siff Squat	杠铃 siff 深蹲
+Barbell Squat Snatch	杠铃 深蹲 snatch
+Barbell Squat With Heels Raised	杠铃 深蹲 with heels raised
+Barbell Stepover	杠铃 stepover
+Bench Squat With Rotational Chop	卧推 深蹲 with rotational chop
+Body Weight Wall Squat	body weight wall 深蹲
+Box Step Squat	箱 步 深蹲
+Braced Squat	braced 深蹲
+Crossed Arm Barbell Front Squat	crossed 手臂 杠铃 前 深蹲
+Dumbbell Squat Clean	哑铃 深蹲 clean
+Dumbbell Stepover	哑铃 stepover
+Elevated Single Leg Squat	elevated single 腿 深蹲
+Figure Four Squats	figure four squats
+Kbs Overhead	kbs 过头
+Kettlebell Squat	壶铃 深蹲
+Kettlebell Swing Overhead	壶铃 swing 过头
+Kettlebell Swing With Flip To Squat	壶铃 swing with flip to 深蹲
+Lateral Dumbbell Step Up	lateral 哑铃 步 上
+Leg Press	腿 推举
+One Legged Squat	one legged 深蹲
+Overhead Dumbbell Squat	过头 哑铃 深蹲
+Overhead Squat	过头 深蹲
+Partial Single Leg Squat	partial single 腿 深蹲
+Pistol Squat	pistol 深蹲
+Plie Slides	plie slides
+Plie Squat	plie 深蹲
+Single Leg Bench Get Up	single 腿 卧推 get 上
+Single Leg Bench Squat	single 腿 卧推 深蹲
+Single Leg Squat On Swiss Ball	single 腿 深蹲 on swiss 球
+Squats With Band	squats with 弹力带
+Staggered Squat	staggered 深蹲
+Step Up	步 上
+Suitcase Squats	suitcase squats
+Sumo Squat	sumo 深蹲
+Sumo Squat Slide In	sumo 深蹲 slide 内
+Sumo Squat To High Pull	sumo 深蹲 to high 拉
+Sumo Squat To Stand	sumo 深蹲 to stand
+Sumo Squat With Rotation	sumo 深蹲 with rotation
+Swiss Ball Body Weight Wall Squat	swiss 球 body weight wall 深蹲
+Thrusters	thrusters
+Uneven Squat	uneven 深蹲
+Waist Slimming Squat	waist slimming 深蹲
+Wall Ball	wall 球
+Weighted Back Squats	负重 背部 squats
+Weighted Balancing Squat	负重 balancing 深蹲
+Weighted Bench Squat With Rotational Chop	负重 卧推 深蹲 with rotational chop
+Weighted Box Step Squat	负重 箱 步 深蹲
+Weighted Elevated Single Leg Squat	负重 elevated single 腿 深蹲
+Weighted Figure Four Squats	负重 figure four squats
+Weighted Partial Single Leg Squat	负重 partial single 腿 深蹲
+Weighted Pistol Squat	负重 pistol 深蹲
+Weighted Plie Slides	负重 plie slides
+Weighted Plie Squat	负重 plie 深蹲
+Weighted Prisoner Squat	负重 prisoner 深蹲
+Weighted Single Leg Bench Get Up	负重 single 腿 卧推 get 上
+Weighted Single Leg Bench Squat	负重 single 腿 卧推 深蹲
+Weighted Single Leg Squat On Swiss Ball	负重 single 腿 深蹲 on swiss 球
+Weighted Squat	负重 深蹲
+Weighted Staggered Squat	负重 staggered 深蹲
+Weighted Step Up	负重 步 上
+Weighted Sumo Squat Slide In	负重 sumo 深蹲 slide 内
+Weighted Sumo Squat To Stand	负重 sumo 深蹲 to stand
+Weighted Sumo Squat With Rotation	负重 sumo 深蹲 with rotation
+Weighted Swiss Ball Wall Squat	负重 swiss 球 wall 深蹲
+Weighted Uneven Squat	负重 uneven 深蹲
+Weighted Wall Squat	负重 wall 深蹲
+Wide Stance Barbell Squat	宽 站姿 杠铃 深蹲
+Zercher Squat	zercher 深蹲
+Burpee Box Jump	burpee 箱 跳
+High Pull Burpee	high 拉 burpee
+Man Makers	man makers
+One Arm Burpee	one 手臂 burpee
+Squat Plank Push Up	深蹲 平板支撑 推 上
+Standing T Rotation Balance	standing t rotation balance
+Weighted Burpee	负重 burpee
+Weighted Burpee Box Jump	负重 burpee 箱 跳
+Weighted Squat Plank Push Up	负重 深蹲 平板支撑 推 上
+Weighted Squat Thrusts	负重 深蹲 thrusts
+Weighted Standing T Rotation Balance	负重 standing t rotation balance
+Bench Dip	卧推 臂屈伸
+Body Weight Dip	body weight 臂屈伸
+Cable Kickback	绳索 kickback
+Cable Overhead Triceps Extension	绳索 过头 triceps 伸展
+Incline Ez Bar Lying Triceps Extension	incline ez 杆 lying triceps 伸展
+Lying Dumbbell Pullover To Extension	lying 哑铃 pullover to 伸展
+Lying Ez Bar Triceps Extension	lying ez 杆 triceps 伸展
+Lying Triceps Extension To Close Grip Bench Press	lying triceps 伸展 to 窄 握 卧推 推举
+Overhead Dumbbell Triceps Extension	过头 哑铃 triceps 伸展
+Reclining Triceps Press	reclining triceps 推举
+Reverse Grip Triceps Pressdown	reverse 握 triceps pressdown
+Seated Barbell Overhead Triceps Extension	seated 杠铃 过头 triceps 伸展
+Seated Dumbbell Overhead Triceps Extension	seated 哑铃 过头 triceps 伸展
+Seated Ez Bar Overhead Triceps Extension	seated ez 杆 过头 triceps 伸展
+Single Arm Dumbbell Overhead Triceps Extension	single 手臂 哑铃 过头 triceps 伸展
+Single Dumbbell Seated Overhead Triceps Extension	single 哑铃 seated 过头 triceps 伸展
+Single Leg Bench Dip And Kick	single 腿 卧推 臂屈伸 and kick
+Static Lying Triceps Extension	static lying triceps 伸展
+Suspended Dip	suspended 臂屈伸
+Swiss Ball Dumbbell Lying Triceps Extension	swiss 球 哑铃 lying triceps 伸展
+Swiss Ball Ez Bar Lying Triceps Extension	swiss 球 ez 杆 lying triceps 伸展
+Swiss Ball Ez Bar Overhead Triceps Extension	swiss 球 ez 杆 过头 triceps 伸展
+Tabletop Dip	tabletop 臂屈伸
+Weighted Bench Dip	负重 卧推 臂屈伸
+Weighted Dip	负重 臂屈伸
+Weighted Incline Dip	负重 incline 臂屈伸
+Weighted Single Leg Bench Dip And Kick	负重 single 腿 卧推 臂屈伸 and kick
+Weighted Single Leg Dip	负重 single 腿 臂屈伸
+Weighted Suspended Dip	负重 suspended 臂屈伸
+Weighted Tabletop Dip	负重 tabletop 臂屈伸
+Ankle Circles	ankle circles
+Ankle Dorsiflexion With Band	ankle dorsiflexion with 弹力带
+Ankle Internal Rotation	ankle internal rotation
+Arm Circles	手臂 circles
+Bent Over Reach To Sky	bent over reach to sky
+Biceps Stretch	biceps stretch
+Cat Camel	cat camel
+Elbow To Foot Lunge	elbow to foot 弓步
+Forward And Backward Leg Swings	forward and backward 腿 swings
+Glutes Stretch	glutes stretch
+Groiners	groiners
+Inverted Hamstring Stretch	inverted hamstring stretch
+Lateral Duck Under	lateral duck under
+Neck Rotations	neck rotations
+Neck Tilts	neck tilts
+Quadruped Rocking	quadruped rocking
+Reach Roll And Lift	reach roll and lift
+Scorpion	scorpion
+Shoulder Circles	肩膀 circles
+Side To Side Leg Swings	侧 to 侧 腿 swings
+Sleeper Stretch	sleeper stretch
+Slide Out	slide 外
+Standing Hamstring Stretch	standing hamstring stretch
+Swiss Ball Hip Crossover	swiss 球 hip crossover
+Swiss Ball Reach Roll And Lift	swiss 球 reach roll and lift
+Swiss Ball Windshield Wipers	swiss 球 windshield wipers
+Thoracic Rotation	thoracic rotation
+Walking High Kicks	walking high kicks
+Walking High Knees	walking high knees
+Walking Knee Hugs	walking knee hugs
+Walking Leg Cradles	walking 腿 cradles
+Walkout	walkout
+Walkout From Push Up Position	walkout from 推 上 姿势
