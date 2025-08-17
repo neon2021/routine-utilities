@@ -156,7 +156,7 @@ if __name__ == '__main__':
     # Invalid handle. Cannot load symbol cudnnCreateTensorDescriptor
     # [1]    65130 IOT instruction (core dumped)  python faster-transcribe.py
     # transcriber = WhisperTranscriber('faster-whisper-large-v3-turbo-ct2')
-    transcriber = WhisperTranscriber('distil-large-v3-ct2')
+    transcriber = None
     for file_path in args.files:
         if not os.path.exists(file_path):
             logger.info(f"File not found: {file_path}")
@@ -166,6 +166,8 @@ if __name__ == '__main__':
         srt_file_path=parts[0]+'.srt'
         logger.info(f"\ncheckpoint: file_path: {file_path}, srt_file_path: {srt_file_path}\n")
 
+        if transcriber is None:
+            transcriber = WhisperTranscriber('distil-large-v3-ct2')
         srt = transcriber.start_transcribe(file_path=file_path)
 
         with open(srt_file_path,'w') as srt_file:
