@@ -487,6 +487,7 @@ if __name__ == "__main__":
     parser.add_argument("--condition", type=str, default=None, help="condition content")
     args = parser.parse_args()
     
+    # TODO: rescan exif when md5 is changed on 12 Aug 2025
     main(limit=args.limit, dry_run=args.dry_run, workers=args.workers, run_mode=args.run_mode, debug_mode=args.debug,
          cond_type = args.cond_type, condition = args.condition
          )

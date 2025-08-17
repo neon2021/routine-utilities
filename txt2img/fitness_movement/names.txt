@@ -1,0 +1,1207 @@
+BENCH_PRESS,Barbell Bench Press
+BENCH_PRESS,Barbell Floor Press
+BENCH_PRESS,Close Grip Barbell Bench Press
+BENCH_PRESS,Dumbbell Bench Press
+BENCH_PRESS,Dumbbell Floor Press
+BENCH_PRESS,Incline Dumbbell Bench Press
+BENCH_PRESS,Kettlebell Chest Press
+BENCH_PRESS,Partial Lockout
+CARDIO,Cardio Core Crawl
+CARDIO,Jumping Jacks
+CARDIO,Jump Rope
+CARDIO,Squat Jacks
+CORE,Barbell Rollout
+CORE,Kneeling Ab Wheel
+CORE,Russian Twist
+CORE,Swiss Ball Jackknife
+CORE,Swiss Ball Rollout
+CRUNCH,Bicycle Crunch
+CRUNCH,Cable Crunch
+CRUNCH,Crunch
+CRUNCH,Hanging Knee Raise Oblique Crunch
+CRUNCH,Kneeling Cable Crunch
+CRUNCH,Reverse Crunch
+CRUNCH,Reverse Crunch On A Bench
+CRUNCH,Skater Crunch Cross
+CRUNCH,Swiss Ball Crunch
+CURL,Alternating Dumbbell Biceps Curl
+CURL,Alternating Incline Dumbbell Biceps Curl
+CURL,Barbell Biceps Curl
+CURL,Dead Hang Biceps Curl
+CURL,Dumbbell Hammer Curl
+CURL,Forward Bend Biceps Curl
+CURL,One Arm Concentration Curl
+CURL,Seated Alternating Dumbbell Biceps Curl
+CURL,Standing Alternating Dumbbell Curls
+CURL,Standing Dumbbell Biceps Curl
+DEADLIFT,Barbell Deadlift
+DEADLIFT,Barbell Straight Leg Deadlift
+DEADLIFT,Dumbbell Deadlift
+DEADLIFT,Dumbbell Straight Leg Deadlift
+DEADLIFT,Single Leg Deadlift With Barbell
+FLYE,Dumbbell Flye
+HIP_RAISE,Barbell Hip Thrust On Floor
+HIP_RAISE,Hip Raise
+HIP_RAISE,Kettlebell Swing
+HIP_RAISE,Single Leg Hip Raise
+HIP_STABILITY,External Hip Raise
+HIP_SWING,Single Arm Dumbbell Swing
+HIP_SWING,One Arm Swing
+HYPEREXTENSION,Swiss Ball Hyperextension
+LATERAL_RAISE,Cable Front Raise
+LEG_CURL,Good Morning
+LEG_RAISE,Hanging Leg Raise
+LUNGE,Alternating Dumbbell Lunge
+LUNGE,Alternating Dumbbell Lunge With Reach
+LUNGE,Barbell Bulgarian Split Squat
+LUNGE,Barbell Side Lunge
+LUNGE,Dumbbell Reverse Lunge
+LUNGE,Low Lunge With Isometric Adduction
+LUNGE,Lunge
+LUNGE,Lunge With Arm Reach
+LUNGE,Overhead Dumbbell Lunge
+LUNGE,Overhead Dumbbell Split Squat
+LUNGE,Reverse Sliding Lunge
+LUNGE,Runners Lunge To Balance
+LUNGE,Shifting Side Lunge
+LUNGE,Side To Side Lunge Chops
+LUNGE,Walking Lunge
+PLANK,Cross Body Mountain Climber
+PLANK,Elevator Abs
+PLANK,Mountain Climber
+PLANK,Mountain Climber On Sliding Discs
+PLANK,Mountain Climber With Feet On Bosu Ball
+PLANK,Plank
+PLANK,Plank With Arm Raise
+PLANK,Plank With Oblique Crunch
+PLANK,Side Plank
+PLANK,Side Plank And Row
+PLANK,Side Plank With Feet On Bench
+PLANK,Weighted Plank
+PLANK,45 Degree Plank
+PLYO,Alternating Jump Lunge
+PLYO,Barbell Jump Squat
+PLYO,Body Weight Jump Squat
+PLYO,Medicine Ball Slam
+PLYO,Side To Side Shuffle Jump
+PULL_UP,Chin Up
+PULL_UP,Lat Pulldown
+PULL_UP,Pull Up
+PULL_UP,Standing Cable Pullover
+PULL_UP,Wide Grip Lat Pulldown
+PUSH_UP,Push Up
+PUSH_UP,T Push Up
+ROW,Alternating Dumbbell Row
+ROW,Cable Row Standing
+ROW,Dumbbell Row
+ROW,Face Pull
+ROW,Inverted Row
+ROW,One Arm Bent Over Row
+ROW,Renegade Row
+ROW,Reverse Grip Barbell Row
+ROW,Single Arm Neutral Grip Dumbbell Row And Rotation
+RUN,Jog
+RUN,Run
+SHOULDER_PRESS,Alternating Dumbbell Shoulder Press
+SHOULDER_PRESS,Barbell Front Squat To Push Press
+SHOULDER_PRESS,Dumbbell Push Press
+SHOULDER_PRESS,Dumbbell Shoulder Press
+SHOULDER_PRESS,Single Arm Dumbbell Shoulder Press
+SHOULDER_PRESS,Single Arm Step Up And Press
+SHOULDER_PRESS,Smith Machine Overhead Press
+SHRUG,Barbell Upright Row
+SIT_UP,Get Up Sit Up
+SIT_UP,Sit Up
+SIT_UP,V Up
+SQUAT,Back Squat With Body Bar
+SQUAT,Barbell Back Squat
+SQUAT,Barbell Front Squat
+SQUAT,Barbell Step Up
+SQUAT,Crossover Dumbbell Step Up
+SQUAT,Dumbbell Front Squat
+SQUAT,Dumbbell Split Squat
+SQUAT,Dumbbell Squat
+SQUAT,Dumbbell Step Up
+SQUAT,Goblet Squat
+SQUAT,Prisoner Squat
+SQUAT,Squat
+SQUAT,Squat And Side Kick
+SQUAT,Squat Jumps In N Out
+SQUAT,Wide Stance Goblet Squat
+TOTAL_BODY,Burpee
+TOTAL_BODY,Squat Thrusts
+TRICEPS_EXTENSION,Alternating Dumbbell Lying Triceps Extension
+TRICEPS_EXTENSION,Cable Lying Triceps Extension
+TRICEPS_EXTENSION,Dumbbell Kickback
+TRICEPS_EXTENSION,Dumbbell Lying Triceps Extension
+TRICEPS_EXTENSION,Ez Bar Overhead Triceps Extension
+TRICEPS_EXTENSION,Incline Dip
+TRICEPS_EXTENSION,Reverse Grip Pressdown
+TRICEPS_EXTENSION,Rope Pressdown
+TRICEPS_EXTENSION,Seated Single Arm Overhead Dumbbell Extension
+TRICEPS_EXTENSION,Single Leg Dip
+TRICEPS_EXTENSION,Triceps Extension On Floor
+TRICEPS_EXTENSION,Triceps Press
+TRICEPS_EXTENSION,Triceps Pressdown
+WARM_UP,Opposite Arm And Leg Balance
+BENCH_PRESS,Alternating Dumbbell Chest Press
+BENCH_PRESS,Alternating Dumbbell Chest Press On Swiss Ball
+BENCH_PRESS,Barbell Board Bench Press
+BENCH_PRESS,Decline Dumbbell Bench Press
+BENCH_PRESS,Incline Barbell Bench Press
+BENCH_PRESS,Incline Smith Machine Bench Press
+BENCH_PRESS,Isometric Barbell Bench Press
+BENCH_PRESS,Neutral Grip Dumbbell Bench Press
+BENCH_PRESS,Neutral Grip Dumbbell Incline Bench Press
+BENCH_PRESS,One Arm Floor Press
+BENCH_PRESS,Reverse Grip Barbell Bench Press
+BENCH_PRESS,Reverse Grip Incline Bench Press
+BENCH_PRESS,Single Arm Cable Chest Press
+BENCH_PRESS,Single Arm Dumbbell Bench Press
+BENCH_PRESS,Smith Machine Bench Press
+BENCH_PRESS,Swiss Ball Dumbbell Chest Press
+BENCH_PRESS,Triple Stop Barbell Bench Press
+BENCH_PRESS,Weighted One Arm Floor Press
+BENCH_PRESS,Wide Grip Barbell Bench Press
+CALF_RAISE,Donkey Calf Raise
+CALF_RAISE,Seated Calf Raise
+CALF_RAISE,Seated Dumbbell Toe Raise
+CALF_RAISE,Single Leg Bent Knee Calf Raise
+CALF_RAISE,Single Leg Decline Push Up
+CALF_RAISE,Single Leg Donkey Calf Raise
+CALF_RAISE,Single Leg Hip Raise With Knee Hold
+CALF_RAISE,Single Leg Standing Calf Raise
+CALF_RAISE,Single Leg Standing Dumbbell Calf Raise
+CALF_RAISE,Standing Barbell Calf Raise
+CALF_RAISE,Standing Calf Raise
+CALF_RAISE,Standing Dumbbell Calf Raise
+CALF_RAISE,Weighted Donkey Calf Raise
+CALF_RAISE,Weighted Seated Calf Raise
+CALF_RAISE,Weighted Single Leg Bent Knee Calf Raise
+CALF_RAISE,Weighted Single Leg Donkey Calf Raise
+CALF_RAISE,Weighted Standing Calf Raise
+CALF_RAISE,3 Way Calf Raise
+CALF_RAISE,3 Way Single Leg Calf Raise
+CALF_RAISE,3 Way Weighted Calf Raise
+CALF_RAISE,3 Way Weighted Single Leg Calf Raise
+CARDIO,Bob And Weave Circle
+CARDIO,Double Under
+CARDIO,Jump Rope Crossover
+CARDIO,Jump Rope Jog
+CARDIO,Ski Moguls
+CARDIO,Split Jacks
+CARDIO,Triple Under
+CARDIO,Weighted Bob And Weave Circle
+CARDIO,Weighted Cardio Core Crawl
+CARDIO,Weighted Double Under
+CARDIO,Weighted Jumping Jacks
+CARDIO,Weighted Jump Rope
+CARDIO,Weighted Jump Rope Crossover
+CARDIO,Weighted Jump Rope Jog
+CARDIO,Weighted Ski Moguls
+CARDIO,Weighted Split Jacks
+CARDIO,Weighted Squat Jacks
+CARDIO,Weighted Triple Under
+CARRY,Bar Holds
+CARRY,Farmers Walk
+CARRY,Farmers Walk On Toes
+CARRY,Hex Dumbbell Hold
+CARRY,Overhead Carry
+CHOP,Cable Pull Through
+CHOP,Cable Rotational Lift
+CHOP,Cable Woodchop
+CHOP,Cross Chop To Knee
+CHOP,Dumbbell Chop
+CHOP,Half Kneeling Rotation
+CHOP,Half Kneeling Rotational Chop
+CHOP,Half Kneeling Rotational Reverse Chop
+CHOP,Half Kneeling Stability Chop
+CHOP,Half Kneeling Stability Reverse Chop
+CHOP,Kneeling Rotational Chop
+CHOP,Kneeling Rotational Reverse Chop
+CHOP,Kneeling Stability Chop
+CHOP,Kneeling Woodchopper
+CHOP,Medicine Ball Wood Chops
+CHOP,Power Squat Chops
+CHOP,Standing Rotational Chop
+CHOP,Standing Split Rotational Chop
+CHOP,Standing Split Rotational Reverse Chop
+CHOP,Standing Stability Reverse Chop
+CHOP,Weighted Cross Chop To Knee
+CHOP,Weighted Half Kneeling Rotation
+CHOP,Weighted Power Squat Chops
+CORE,Abs Jabs
+CORE,Alternating Plate Reach
+CORE,Alternating Slide Out
+CORE,Body Bar Oblique Twist
+CORE,Cable Core Press
+CORE,Cable Side Bend
+CORE,Crescent Circle
+CORE,Cycling Russian Twist
+CORE,Elevated Feet Russian Twist
+CORE,Ghd Back Extensions
+CORE,Half Turkish Get Up
+CORE,Inchworm
+CORE,Kettlebell Windmill
+CORE,Modified Front Lever
+CORE,Open Knee Tucks
+CORE,Overhead Walk
+CORE,Side Abs Leg Lift
+CORE,Side Bend
+CORE,Swiss Ball Pike
+CORE,Triangle Hip Press
+CORE,Trx Suspended Jackknife
+CORE,U Boat
+CORE,Weighted Abs Jabs
+CORE,Weighted Alternating Slide Out
+CORE,Weighted Barbell Rollout
+CORE,Weighted Crescent Circle
+CORE,Weighted Cycling Russian Twist
+CORE,Weighted Elevated Feet Russian Twist
+CORE,Weighted Ghd Back Extensions
+CORE,Weighted Kneeling Ab Wheel
+CORE,Weighted Modified Front Lever
+CORE,Weighted Open Knee Tucks
+CORE,Weighted Side Abs Leg Lift
+CORE,Weighted Side Bend
+CORE,Weighted Swiss Ball Jackknife
+CORE,Weighted Swiss Ball Pike
+CORE,Weighted Swiss Ball Rollout
+CORE,Weighted Triangle Hip Press
+CORE,Weighted Trx Suspended Jackknife
+CORE,Weighted U Boat
+CORE,Weighted Windmill Switches
+CORE,Windmill Switches
+CRUNCH,Circular Arm Crunch
+CRUNCH,Crossed Arms Crunch
+CRUNCH,Cross Leg Reverse Crunch
+CRUNCH,Crunch Chop
+CRUNCH,Double Crunch
+CRUNCH,Elbow To Knee Crunch
+CRUNCH,Flutter Kicks
+CRUNCH,Foam Roller Reverse Crunch On Bench
+CRUNCH,Foam Roller Reverse Crunch With Dumbbell
+CRUNCH,Foam Roller Reverse Crunch With Medicine Ball
+CRUNCH,Frog Press
+CRUNCH,Hip Crossover
+CRUNCH,Hollow Rock
+CRUNCH,Incline Reverse Crunch
+CRUNCH,Kneeling Cross Crunch
+CRUNCH,Kneeling Oblique Cable Crunch
+CRUNCH,Knees To Elbow
+CRUNCH,Leg Extensions
+CRUNCH,Leg Levers
+CRUNCH,Mcgill Curl Up
+CRUNCH,Modified Pilates Roll Up With Ball
+CRUNCH,Pilates Crunch
+CRUNCH,Pilates Roll Up With Ball
+CRUNCH,Raised Legs Crunch
+CRUNCH,Reverse Curl And Lift
+CRUNCH,Rotational Lift
+CRUNCH,Seated Alternating Reverse Crunch
+CRUNCH,Seated Leg U
+CRUNCH,Side To Side Crunch And Weave
+CRUNCH,Single Leg Reverse Crunch
+CRUNCH,Standing Cable Crunch
+CRUNCH,Standing Side Crunch
+CRUNCH,Step Climb
+CRUNCH,Swiss Ball Reverse Crunch
+CRUNCH,Swiss Ball Russian Twist
+CRUNCH,Swiss Ball Side Crunch
+CRUNCH,Thoracic Crunches On Foam Roller
+CRUNCH,Toes To Bar
+CRUNCH,Triceps Crunch
+CRUNCH,Weighted Bicycle Crunch
+CRUNCH,Weighted Crossed Arms Crunch
+CRUNCH,Weighted Cross Leg Reverse Crunch
+CRUNCH,Weighted Crunch
+CRUNCH,Weighted Crunch Chop
+CRUNCH,Weighted Double Crunch
+CRUNCH,Weighted Elbow To Knee Crunch
+CRUNCH,Weighted Flutter Kicks
+CRUNCH,Weighted Foam Roller Reverse Crunch On Bench
+CRUNCH,Weighted Hanging Knee Raise Oblique Crunch
+CRUNCH,Weighted Hip Crossover
+CRUNCH,Weighted Hollow Rock
+CRUNCH,Weighted Incline Reverse Crunch
+CRUNCH,Weighted Kneeling Cross Crunch
+CRUNCH,Weighted Leg Extensions
+CRUNCH,Weighted Mcgill Curl Up
+CRUNCH,Weighted Modified Pilates Roll Up With Ball
+CRUNCH,Weighted Pilates Crunch
+CRUNCH,Weighted Pilates Roll Up With Ball
+CRUNCH,Weighted Raised Legs Crunch
+CRUNCH,Weighted Reverse Crunch
+CRUNCH,Weighted Reverse Crunch On A Bench
+CRUNCH,Weighted Reverse Curl And Lift
+CRUNCH,Weighted Rotational Lift
+CRUNCH,Weighted Seated Alternating Reverse Crunch
+CRUNCH,Weighted Seated Leg U
+CRUNCH,Weighted Side To Side Crunch And Weave
+CRUNCH,Weighted Single Leg Reverse Crunch
+CRUNCH,Weighted Skater Crunch Cross
+CRUNCH,Weighted Step Climb
+CRUNCH,Weighted Swiss Ball Crunch
+CRUNCH,Weighted Swiss Ball Reverse Crunch
+CRUNCH,Weighted Swiss Ball Russian Twist
+CRUNCH,Weighted Swiss Ball Side Crunch
+CRUNCH,Weighted Thoracic Crunches On Foam Roller
+CURL,Alternating Dumbbell Biceps Curl On Swiss Ball
+CURL,Barbell Reverse Wrist Curl
+CURL,Barbell Wrist Curl
+CURL,Behind The Back Barbell Reverse Wrist Curl
+CURL,Behind The Back One Arm Cable Curl
+CURL,Cable Biceps Curl
+CURL,Cable Hammer Curl
+CURL,Cheating Barbell Biceps Curl
+CURL,Close Grip Ez Bar Biceps Curl
+CURL,Cross Body Dumbbell Hammer Curl
+CURL,Decline Hammer Curl
+CURL,Dumbbell Biceps Curl With Static Hold
+CURL,Dumbbell Reverse Wrist Curl
+CURL,Dumbbell Wrist Curl
+CURL,Ez Bar Preacher Curl
+CURL,Hammer Curl To Press
+CURL,Incline Dumbbell Biceps Curl
+CURL,Incline Offset Thumb Dumbbell Curl
+CURL,Kettlebell Biceps Curl
+CURL,Lying Concentration Cable Curl
+CURL,One Arm Preacher Curl
+CURL,Plate Pinch Curl
+CURL,Preacher Curl With Cable
+CURL,Reverse Ez Bar Curl
+CURL,Reverse Grip Barbell Biceps Curl
+CURL,Reverse Grip Wrist Curl
+CURL,Seated Dumbbell Biceps Curl
+CURL,Seated Reverse Dumbbell Curl
+CURL,Split Stance Offset Pinky Dumbbell Curl
+CURL,Standing Ez Bar Biceps Curl
+CURL,Standing Zottman Biceps Curl
+CURL,Static Curl
+CURL,Swiss Ball Dumbbell Overhead Triceps Extension
+CURL,Swiss Ball Ez Bar Preacher Curl
+CURL,Twisting Standing Dumbbell Biceps Curl
+CURL,Wide Grip Ez Bar Biceps Curl
+DEADLIFT,Dumbbell Single Leg Deadlift To Row
+DEADLIFT,Kettlebell Floor To Shelf
+DEADLIFT,One Arm One Leg Deadlift
+DEADLIFT,Rack Pull
+DEADLIFT,Rotational Dumbbell Straight Leg Deadlift
+DEADLIFT,Single Arm Deadlift
+DEADLIFT,Single Leg Barbell Deadlift
+DEADLIFT,Single Leg Barbell Straight Leg Deadlift
+DEADLIFT,Single Leg Rdl Circuit
+DEADLIFT,Single Leg Romanian Deadlift With Dumbbell
+DEADLIFT,Sumo Deadlift
+DEADLIFT,Sumo Deadlift High Pull
+DEADLIFT,Trap Bar Deadlift
+DEADLIFT,Wide Grip Barbell Deadlift
+FLYE,Cable Crossover
+FLYE,Decline Dumbbell Flye
+FLYE,Incline Dumbbell Flye
+FLYE,Kettlebell Flye
+FLYE,Kneeling Rear Flye
+FLYE,Single Arm Standing Cable Reverse Flye
+FLYE,Swiss Ball Dumbbell Flye
+HIP_RAISE,Barbell Hip Thrust With Bench
+HIP_RAISE,Bent Knee Swiss Ball Reverse Hip Raise
+HIP_RAISE,Bridge With Leg Extension
+HIP_RAISE,Clam Bridge
+HIP_RAISE,Front Kick Tabletop
+HIP_RAISE,Hip Extension And Cross
+HIP_RAISE,Hip Raise With Feet On Swiss Ball
+HIP_RAISE,Hip Raise With Head On Bosu Ball
+HIP_RAISE,Hip Raise With Head On Swiss Ball
+HIP_RAISE,Hip Raise With Knee Squeeze
+HIP_RAISE,Incline Rear Leg Extension
+HIP_RAISE,Marching Hip Raise
+HIP_RAISE,Marching Hip Raise With Feet On A Swiss Ball
+HIP_RAISE,Reverse Hip Raise
+HIP_RAISE,Single Leg Hip Raise With Foot On Bench
+HIP_RAISE,Single Leg Hip Raise With Foot On Bosu Ball
+HIP_RAISE,Single Leg Hip Raise With Foot On Foam Roller
+HIP_RAISE,Single Leg Hip Raise With Foot On Medicine Ball
+HIP_RAISE,Single Leg Hip Raise With Head On Bosu Ball
+HIP_RAISE,Single Leg Swiss Ball Hip Raise And Leg Curl
+HIP_RAISE,Weighted Bent Knee Swiss Ball Reverse Hip Raise
+HIP_RAISE,Weighted Bridge With Leg Extension
+HIP_RAISE,Weighted Clam Bridge
+HIP_RAISE,Weighted Front Kick Tabletop
+HIP_RAISE,Weighted Hip Extension And Cross
+HIP_RAISE,Weighted Hip Raise
+HIP_RAISE,Weighted Hip Raise With Feet On Swiss Ball
+HIP_RAISE,Weighted Hip Raise With Head On Bosu Ball
+HIP_RAISE,Weighted Hip Raise With Head On Swiss Ball
+HIP_RAISE,Weighted Hip Raise With Knee Squeeze
+HIP_RAISE,Weighted Incline Rear Leg Extension
+HIP_RAISE,Weighted Marching Hip Raise
+HIP_RAISE,Weighted Marching Hip Raise With Feet On A Swiss Ball
+HIP_RAISE,Weighted Reverse Hip Raise
+HIP_RAISE,Weighted Single Leg Hip Raise
+HIP_RAISE,Weighted Single Leg Hip Raise With Foot On Bench
+HIP_RAISE,Weighted Single Leg Hip Raise With Foot On Bosu Ball
+HIP_RAISE,Weighted Single Leg Hip Raise With Foot On Foam Roller
+HIP_RAISE,Weighted Single Leg Hip Raise With Foot On Medicine Ball
+HIP_RAISE,Weighted Single Leg Hip Raise With Head On Bosu Ball
+HIP_STABILITY,Band Side Lying Leg Raise
+HIP_STABILITY,Dead Bug
+HIP_STABILITY,Fire Hydrant Kicks
+HIP_STABILITY,Hip Circles
+HIP_STABILITY,Inner Thigh Lift
+HIP_STABILITY,Lateral Walks With Band At Ankles
+HIP_STABILITY,Lying Abduction Stretch
+HIP_STABILITY,Pretzel Side Kick
+HIP_STABILITY,Prone Hip Internal Rotation
+HIP_STABILITY,Quadruped
+HIP_STABILITY,Quadruped Hip Extension
+HIP_STABILITY,Quadruped With Leg Lift
+HIP_STABILITY,Side Lying Leg Raise
+HIP_STABILITY,Sliding Hip Adduction
+HIP_STABILITY,Standing Adduction
+HIP_STABILITY,Standing Cable Hip Abduction
+HIP_STABILITY,Standing Hip Abduction
+HIP_STABILITY,Standing Rear Leg Raise
+HIP_STABILITY,Supine Hip Internal Rotation
+HIP_STABILITY,Weighted Dead Bug
+HIP_STABILITY,Weighted External Hip Raise
+HIP_STABILITY,Weighted Fire Hydrant Kicks
+HIP_STABILITY,Weighted Hip Circles
+HIP_STABILITY,Weighted Inner Thigh Lift
+HIP_STABILITY,Weighted Pretzel Side Kick
+HIP_STABILITY,Weighted Prone Hip Internal Rotation
+HIP_STABILITY,Weighted Quadruped Hip Extension
+HIP_STABILITY,Weighted Quadruped With Leg Lift
+HIP_STABILITY,Weighted Side Lying Leg Raise
+HIP_STABILITY,Weighted Sliding Hip Adduction
+HIP_STABILITY,Weighted Standing Adduction
+HIP_STABILITY,Weighted Standing Hip Abduction
+HIP_STABILITY,Weighted Standing Rear Leg Raise
+HIP_STABILITY,Weighted Supine Hip Internal Rotation
+HIP_SWING,Single Arm Kettlebell Swing
+HIP_SWING,Step Out Swing
+HYPEREXTENSION,Back Extension With Opposite Arm And Leg Reach
+HYPEREXTENSION,Base Rotations
+HYPEREXTENSION,Bent Knee Reverse Hyperextension
+HYPEREXTENSION,Hollow Hold And Roll
+HYPEREXTENSION,Kicks
+HYPEREXTENSION,Kneeling Superman
+HYPEREXTENSION,Knee Raises
+HYPEREXTENSION,Lat Pull Down With Row
+HYPEREXTENSION,Medicine Ball Deadlift To Reach
+HYPEREXTENSION,One Arm One Leg Row
+HYPEREXTENSION,One Arm Row With Band
+HYPEREXTENSION,Overhead Lunge With Medicine Ball
+HYPEREXTENSION,Plank Knee Tucks
+HYPEREXTENSION,Side Step
+HYPEREXTENSION,Single Leg Back Extension
+HYPEREXTENSION,Spine Extension
+HYPEREXTENSION,Static Back Extension
+HYPEREXTENSION,Superman From Floor
+HYPEREXTENSION,Superman On Swiss Ball
+HYPEREXTENSION,Swiss Ball Back Extension
+HYPEREXTENSION,Swiss Ball Opposite Arm And Leg Lift
+HYPEREXTENSION,Weighted Back Extension With Opposite Arm And Leg Reach
+HYPEREXTENSION,Weighted Base Rotations
+HYPEREXTENSION,Weighted Bent Knee Reverse Hyperextension
+HYPEREXTENSION,Weighted Hollow Hold And Roll
+HYPEREXTENSION,Weighted Kicks
+HYPEREXTENSION,Weighted Kneeling Superman
+HYPEREXTENSION,Weighted Knee Raises
+HYPEREXTENSION,Weighted Plank Knee Tucks
+HYPEREXTENSION,Weighted Side Step
+HYPEREXTENSION,Weighted Single Leg Back Extension
+HYPEREXTENSION,Weighted Spine Extension
+HYPEREXTENSION,Weighted Static Back Extension
+HYPEREXTENSION,Weighted Superman From Floor
+HYPEREXTENSION,Weighted Swiss Ball Back Extension
+HYPEREXTENSION,Weighted Swiss Ball Hyperextension
+HYPEREXTENSION,Weighted Swiss Ball Opposite Arm And Leg Lift
+LATERAL_RAISE,Alternating Lateral Raise With Static Hold
+LATERAL_RAISE,Bar Muscle Up
+LATERAL_RAISE,Bent Over Lateral Raise
+LATERAL_RAISE,Cable Diagonal Raise
+LATERAL_RAISE,Calorie Row
+LATERAL_RAISE,Combo Shoulder Raise
+LATERAL_RAISE,Dumbbell Diagonal Raise
+LATERAL_RAISE,Dumbbell V Raise
+LATERAL_RAISE,Front Raise
+LATERAL_RAISE,Leaning Dumbbell Lateral Raise
+LATERAL_RAISE,Lying Dumbbell Raise
+LATERAL_RAISE,Muscle Up
+LATERAL_RAISE,One Arm Cable Lateral Raise
+LATERAL_RAISE,Overhand Grip Rear Lateral Raise
+LATERAL_RAISE,Plate Raises
+LATERAL_RAISE,Ring Dip
+LATERAL_RAISE,Ring Muscle Up
+LATERAL_RAISE,Rope Climb
+LATERAL_RAISE,Scaption
+LATERAL_RAISE,Seated Lateral Raise
+LATERAL_RAISE,Seated Rear Lateral Raise
+LATERAL_RAISE,Side Lying Lateral Raise
+LATERAL_RAISE,Standing Lift
+LATERAL_RAISE,Suspended Row
+LATERAL_RAISE,Underhand Grip Rear Lateral Raise
+LATERAL_RAISE,Wall Slide
+LATERAL_RAISE,Weighted Ring Dip
+LATERAL_RAISE,Weighted Ring Muscle Up
+LATERAL_RAISE,Weighted Rope Climb
+LATERAL_RAISE,Weighted Wall Slide
+LATERAL_RAISE,45 Degree Cable External Rotation
+LEG_CURL,Leg Curl
+LEG_CURL,Seated Barbell Good Morning
+LEG_CURL,Single Leg Barbell Good Morning
+LEG_CURL,Single Leg Sliding Leg Curl
+LEG_CURL,Sliding Leg Curl
+LEG_CURL,Split Barbell Good Morning
+LEG_CURL,Split Stance Extension
+LEG_CURL,Staggered Stance Good Morning
+LEG_CURL,Swiss Ball Hip Raise And Leg Curl
+LEG_CURL,Weighted Leg Curl
+LEG_CURL,Zercher Good Morning
+LEG_RAISE,Hanging Knee Raise
+LEG_RAISE,Hanging Single Leg Raise
+LEG_RAISE,Kettlebell Leg Raises
+LEG_RAISE,Lateral Stepover
+LEG_RAISE,Leg Lowering Drill
+LEG_RAISE,Lying Straight Leg Raise
+LEG_RAISE,Medicine Ball Leg Drops
+LEG_RAISE,Quadruped Leg Raise
+LEG_RAISE,Reverse Leg Raise
+LEG_RAISE,Reverse Leg Raise On Swiss Ball
+LEG_RAISE,Single Leg Lowering Drill
+LEG_RAISE,Weighted Hanging Knee Raise
+LEG_RAISE,Weighted Hanging Leg Raise
+LEG_RAISE,Weighted Hanging Single Leg Raise
+LEG_RAISE,Weighted Lateral Stepover
+LEG_RAISE,Weighted Leg Lowering Drill
+LEG_RAISE,Weighted Lying Straight Leg Raise
+LEG_RAISE,Weighted Quadruped Leg Raise
+LEG_RAISE,Weighted Reverse Leg Raise
+LEG_RAISE,Weighted Reverse Leg Raise On Swiss Ball
+LEG_RAISE,Weighted Single Leg Lowering Drill
+LUNGE,Alternating Barbell Forward Lunge
+LUNGE,Back Foot Elevated Dumbbell Split Squat
+LUNGE,Barbell Box Lunge
+LUNGE,Barbell Crossover Lunge
+LUNGE,Barbell Front Split Squat
+LUNGE,Barbell Lunge
+LUNGE,Barbell Reverse Lunge
+LUNGE,Barbell Split Squat
+LUNGE,Core Control Rear Lunge
+LUNGE,Diagonal Lunge
+LUNGE,Drop Lunge
+LUNGE,Dumbbell Box Lunge
+LUNGE,Dumbbell Bulgarian Split Squat
+LUNGE,Dumbbell Crossover Lunge
+LUNGE,Dumbbell Diagonal Lunge
+LUNGE,Dumbbell Lunge
+LUNGE,Dumbbell Lunge And Rotation
+LUNGE,Dumbbell Overhead Bulgarian Split Squat
+LUNGE,Dumbbell Reverse Lunge To High Knee And Press
+LUNGE,Dumbbell Side Lunge
+LUNGE,Elevated Front Foot Barbell Split Squat
+LUNGE,Front Foot Elevated Dumbbell Split Squat
+LUNGE,Gunslinger Lunge
+LUNGE,Lawnmower Lunge
+LUNGE,Low Side To Side Lunge
+LUNGE,Lunge Matrix
+LUNGE,Lunge With Diagonal Reach
+LUNGE,Lunge With Side Bend
+LUNGE,Offset Dumbbell Lunge
+LUNGE,Offset Dumbbell Reverse Lunge
+LUNGE,Overhead Bulgarian Split Squat
+LUNGE,Overhead Dumbbell Reverse Lunge
+LUNGE,Overhead Lunge
+LUNGE,Overhead Lunge With Rotation
+LUNGE,Reverse Barbell Box Lunge
+LUNGE,Reverse Box Lunge
+LUNGE,Reverse Dumbbell Box Lunge
+LUNGE,Reverse Dumbbell Crossover Lunge
+LUNGE,Reverse Dumbbell Diagonal Lunge
+LUNGE,Reverse Lunge With Reach Back
+LUNGE,Reverse Lunge With Twist And Overhead Reach
+LUNGE,Reverse Sliding Box Lunge
+LUNGE,Scissor Power Switch
+LUNGE,Side And Crossover Lunge
+LUNGE,Side Lunge
+LUNGE,Side Lunge And Press
+LUNGE,Side Lunge Jump Off
+LUNGE,Side Lunge Sweep
+LUNGE,Side Lunge To Crossover Tap
+LUNGE,Siff Jump Lunge
+LUNGE,Single Arm Reverse Lunge And Press
+LUNGE,Sliding Lateral Lunge
+LUNGE,Walking Barbell Lunge
+LUNGE,Walking Dumbbell Lunge
+LUNGE,Weighted Lunge
+LUNGE,Weighted Lunge Matrix
+LUNGE,Weighted Reverse Lunge With Reach Back
+LUNGE,Weighted Reverse Lunge With Twist And Overhead Reach
+LUNGE,Weighted Reverse Sliding Box Lunge
+LUNGE,Weighted Reverse Sliding Lunge
+LUNGE,Weighted Runners Lunge To Balance
+LUNGE,Weighted Side And Crossover Lunge
+LUNGE,Weighted Side Lunge
+LUNGE,Weighted Side Lunge Sweep
+LUNGE,Weighted Side Lunge To Crossover Tap
+LUNGE,Weighted Side To Side Lunge Chops
+LUNGE,Weighted Siff Jump Lunge
+LUNGE,Weighted Sliding Lateral Lunge
+LUNGE,Weighted Walking Lunge
+LUNGE,Wide Grip Overhead Barbell Split Squat
+OLYMPIC_LIFT,Barbell Hang Power Clean
+OLYMPIC_LIFT,Barbell Hang Power Snatch
+OLYMPIC_LIFT,Barbell Hang Pull
+OLYMPIC_LIFT,Barbell Hang Squat Clean
+OLYMPIC_LIFT,Barbell High Pull
+OLYMPIC_LIFT,Barbell Power Clean
+OLYMPIC_LIFT,Barbell Power Snatch
+OLYMPIC_LIFT,Barbell Snatch
+OLYMPIC_LIFT,Barbell Split Jerk
+OLYMPIC_LIFT,Barbell Squat Clean
+OLYMPIC_LIFT,Clean
+OLYMPIC_LIFT,Clean And Jerk
+OLYMPIC_LIFT,Dumbbell Clean
+OLYMPIC_LIFT,Dumbbell Hang Pull
+OLYMPIC_LIFT,One Hand Dumbbell Split Snatch
+OLYMPIC_LIFT,Push Jerk
+OLYMPIC_LIFT,Single Arm Dumbbell Snatch
+OLYMPIC_LIFT,Single Arm Hang Snatch
+OLYMPIC_LIFT,Single Arm Kettlebell Snatch
+OLYMPIC_LIFT,Split Jerk
+OLYMPIC_LIFT,Squat Clean And Jerk
+PLANK,Bear Crawl
+PLANK,Elbow Plank Pike Jacks
+PLANK,Elevated Feet Plank
+PLANK,Extended Plank
+PLANK,Full Plank Passe Twist
+PLANK,Inching Elbow Plank
+PLANK,Inchworm To Side Plank
+PLANK,Kneeling Plank
+PLANK,Kneeling Side Plank With Leg Lift
+PLANK,Lateral Roll
+PLANK,Lying Reverse Plank
+PLANK,Medicine Ball Mountain Climber
+PLANK,Modified Mountain Climber And Extension
+PLANK,Mountain Climber With Hands On Bench
+PLANK,Mountain Climber With Hands On Swiss Ball
+PLANK,Plank Jacks With Feet On Sliding Discs
+PLANK,Plank Knee Twist
+PLANK,Plank Pikes
+PLANK,Plank Pike Jumps
+PLANK,Plank To Stand Up
+PLANK,Plank With Feet On Swiss Ball
+PLANK,Plank With Knee To Elbow
+PLANK,Plyometric Side Plank
+PLANK,Rolling Side Plank
+PLANK,Side Kick Plank
+PLANK,Side Plank Lift
+PLANK,Side Plank To Plank With Reach Under
+PLANK,Side Plank With Elbow On Bosu Ball
+PLANK,Side Plank With Knee Circle
+PLANK,Side Plank With Knee Tuck
+PLANK,Side Plank With Leg Lift
+PLANK,Side Plank With Reach Under
+PLANK,Single Leg Elevated Feet Plank
+PLANK,Single Leg Flex And Extend
+PLANK,Single Leg Side Plank
+PLANK,Spiderman Plank
+PLANK,Straight Arm Plank
+PLANK,Straight Arm Plank With Shoulder Touch
+PLANK,Swiss Ball Plank
+PLANK,Swiss Ball Plank Leg Lift
+PLANK,Swiss Ball Plank Leg Lift And Hold
+PLANK,Swiss Ball Plank With Feet On Bench
+PLANK,Swiss Ball Prone Jackknife
+PLANK,Swiss Ball Side Plank
+PLANK,Three Way Plank
+PLANK,Towel Plank And Knee In
+PLANK,Turkish Get Up To Side Plank
+PLANK,Two Point Plank
+PLANK,T Stabilization
+PLANK,Weighted 45 Degree Plank
+PLANK,Weighted 90 Degree Static Hold
+PLANK,Weighted Bear Crawl
+PLANK,Weighted Cross Body Mountain Climber
+PLANK,Weighted Elbow Plank Pike Jacks
+PLANK,Weighted Elevated Feet Plank
+PLANK,Weighted Elevator Abs
+PLANK,Weighted Extended Plank
+PLANK,Weighted Full Plank Passe Twist
+PLANK,Weighted Inching Elbow Plank
+PLANK,Weighted Inchworm To Side Plank
+PLANK,Weighted Kneeling Plank
+PLANK,Weighted Kneeling Side Plank With Leg Lift
+PLANK,Weighted Lateral Roll
+PLANK,Weighted Lying Reverse Plank
+PLANK,Weighted Medicine Ball Mountain Climber
+PLANK,Weighted Modified Mountain Climber And Extension
+PLANK,Weighted Mountain Climber
+PLANK,Weighted Mountain Climber On Sliding Discs
+PLANK,Weighted Mountain Climber With Feet On Bosu Ball
+PLANK,Weighted Mountain Climber With Hands On Swiss Ball
+PLANK,Weighted Plank Jacks With Feet On Sliding Discs
+PLANK,Weighted Plank Knee Twist
+PLANK,Weighted Plank Pikes
+PLANK,Weighted Plank Pike Jumps
+PLANK,Weighted Plank To Stand Up
+PLANK,Weighted Plank With Arm Raise
+PLANK,Weighted Plank With Knee To Elbow
+PLANK,Weighted Plank With Oblique Crunch
+PLANK,Weighted Plyometric Side Plank
+PLANK,Weighted Rolling Side Plank
+PLANK,Weighted Side Kick Plank
+PLANK,Weighted Side Plank
+PLANK,Weighted Side Plank And Row
+PLANK,Weighted Side Plank Lift
+PLANK,Weighted Side Plank With Elbow On Bosu Ball
+PLANK,Weighted Side Plank With Feet On Bench
+PLANK,Weighted Side Plank With Knee Circle
+PLANK,Weighted Side Plank With Knee Tuck
+PLANK,Weighted Side Plank With Leg Lift
+PLANK,Weighted Side Plank With Reach Under
+PLANK,Weighted Single Leg Elevated Feet Plank
+PLANK,Weighted Single Leg Flex And Extend
+PLANK,Weighted Single Leg Side Plank
+PLANK,Weighted Spiderman Plank
+PLANK,Weighted Straight Arm Plank
+PLANK,Weighted Straight Arm Plank With Shoulder Touch
+PLANK,Weighted Swiss Ball Plank
+PLANK,Weighted Swiss Ball Plank Leg Lift
+PLANK,Weighted Swiss Ball Plank With Feet On Bench
+PLANK,Weighted Swiss Ball Prone Jackknife
+PLANK,Weighted Swiss Ball Side Plank
+PLANK,Weighted Three Way Plank
+PLANK,Weighted Towel Plank And Knee In
+PLANK,Weighted Turkish Get Up To Side Plank
+PLANK,Weighted Two Point Plank
+PLANK,Weighted T Stabilization
+PLANK,Weighted Wide Stance Plank With Diagonal Arm Lift
+PLANK,Weighted Wide Stance Plank With Diagonal Leg Lift
+PLANK,Wide Stance Plank With Diagonal Arm Lift
+PLANK,Wide Stance Plank With Diagonal Leg Lift
+PLANK,Wide Stance Plank With Leg Lift
+PLANK,90 Degree Static Hold
+PLYO,Cross Knee Strike
+PLYO,Depth Jump
+PLYO,Dumbbell Jump Squat
+PLYO,Dumbbell Split Jump
+PLYO,Front Knee Strike
+PLYO,High Box Jump
+PLYO,Isometric Explosive Body Weight Jump Squat
+PLYO,Lateral Leap And Hop
+PLYO,Lateral Plyo Squats
+PLYO,Lateral Slide
+PLYO,Medicine Ball Overhead Throws
+PLYO,Medicine Ball Side Throw
+PLYO,Side To Side Medicine Ball Throws
+PLYO,Squat Jumps In And Out
+PLYO,Squat Jump Onto Box
+PLYO,Weighted Alternating Jump Lunge
+PLYO,Weighted Cross Knee Strike
+PLYO,Weighted Depth Jump
+PLYO,Weighted Front Knee Strike
+PLYO,Weighted High Box Jump
+PLYO,Weighted Isometric Explosive Jump Squat
+PLYO,Weighted Jump Squat
+PLYO,Weighted Lateral Leap And Hop
+PLYO,Weighted Lateral Plyo Squats
+PLYO,Weighted Lateral Slide
+PLYO,Weighted Side To Side Shuffle Jump
+PLYO,Weighted Squat Jumps In And Out
+PLYO,Weighted Squat Jump Onto Box
+PULL_UP,Banded Pull Ups
+PULL_UP,Band Assisted Chin Up
+PULL_UP,Burpee Pull Up
+PULL_UP,Close Grip Chin Up
+PULL_UP,Close Grip Lat Pulldown
+PULL_UP,Crossover Chin Up
+PULL_UP,Ez Bar Pullover
+PULL_UP,Hanging Hurdle
+PULL_UP,Jumping Pull Ups
+PULL_UP,Kipping Pull Up
+PULL_UP,Kneeling Lat Pulldown
+PULL_UP,Kneeling Underhand Grip Lat Pulldown
+PULL_UP,L Pull Up
+PULL_UP,Mixed Grip Chin Up
+PULL_UP,Mixed Grip Pull Up
+PULL_UP,Neutral Grip Chin Up
+PULL_UP,Reverse Grip Pulldown
+PULL_UP,Straight Arm Pulldown
+PULL_UP,Suspended Chin Up
+PULL_UP,Swiss Ball Ez Bar Pullover
+PULL_UP,Towel Pull Up
+PULL_UP,Weighted Burpee Pull Up
+PULL_UP,Weighted Chin Up
+PULL_UP,Weighted Close Grip Chin Up
+PULL_UP,Weighted Crossover Chin Up
+PULL_UP,Weighted Hanging Hurdle
+PULL_UP,Weighted Jumping Pull Ups
+PULL_UP,Weighted Kipping Pull Up
+PULL_UP,Weighted L Pull Up
+PULL_UP,Weighted Mixed Grip Chin Up
+PULL_UP,Weighted Mixed Grip Pull Up
+PULL_UP,Weighted Pull Up
+PULL_UP,Weighted Towel Pull Up
+PULL_UP,Weighted Wide Grip Pull Up
+PULL_UP,Wide Grip Pull Up
+PULL_UP,30 Degree Lat Pulldown
+PUSH_UP,Alternating Hands Medicine Ball Push Up
+PUSH_UP,Alternating Staggered Push Up
+PUSH_UP,Bosu Ball Push Up
+PUSH_UP,Chest Press With Band
+PUSH_UP,Clapping Push Up
+PUSH_UP,Close Grip Medicine Ball Push Up
+PUSH_UP,Close Hands Push Up
+PUSH_UP,Decline Push Up
+PUSH_UP,Diamond Push Up
+PUSH_UP,Explosive Crossover Push Up
+PUSH_UP,Explosive Push Up
+PUSH_UP,Feet Elevated Side To Side Push Up
+PUSH_UP,Handstand Push Up
+PUSH_UP,Hand Release Push Up
+PUSH_UP,Incline Push Up
+PUSH_UP,Isometric Explosive Push Up
+PUSH_UP,Judo Push Up
+PUSH_UP,Kneeling Push Up
+PUSH_UP,Medicine Ball Chest Pass
+PUSH_UP,Medicine Ball Push Up
+PUSH_UP,One Arm Push Up
+PUSH_UP,Parallette Handstand Push Up
+PUSH_UP,Push Up And Row
+PUSH_UP,Push Up Plus
+PUSH_UP,Push Up With Feet On Swiss Ball
+PUSH_UP,Push Up With One Hand On Medicine Ball
+PUSH_UP,Ring Handstand Push Up
+PUSH_UP,Ring Push Up
+PUSH_UP,Shoulder Push Up
+PUSH_UP,Single Arm Medicine Ball Push Up
+PUSH_UP,Spiderman Push Up
+PUSH_UP,Stacked Feet Push Up
+PUSH_UP,Staggered Hands Push Up
+PUSH_UP,Suspended Push Up
+PUSH_UP,Swiss Ball Push Up
+PUSH_UP,Swiss Ball Push Up Plus
+PUSH_UP,Triple Stop Push Up
+PUSH_UP,Weighted Alternating Hands Medicine Ball Push Up
+PUSH_UP,Weighted Alternating Staggered Push Up
+PUSH_UP,Weighted Bosu Ball Push Up
+PUSH_UP,Weighted Clapping Push Up
+PUSH_UP,Weighted Close Grip Medicine Ball Push Up
+PUSH_UP,Weighted Close Hands Push Up
+PUSH_UP,Weighted Decline Push Up
+PUSH_UP,Weighted Diamond Push Up
+PUSH_UP,Weighted Explosive Crossover Push Up
+PUSH_UP,Weighted Explosive Push Up
+PUSH_UP,Weighted Feet Elevated Side To Side Push Up
+PUSH_UP,Weighted Handstand Push Up
+PUSH_UP,Weighted Hand Release Push Up
+PUSH_UP,Weighted Incline Push Up
+PUSH_UP,Weighted Isometric Explosive Push Up
+PUSH_UP,Weighted Judo Push Up
+PUSH_UP,Weighted Kneeling Push Up
+PUSH_UP,Weighted Medicine Ball Push Up
+PUSH_UP,Weighted One Arm Push Up
+PUSH_UP,Weighted Parallette Handstand Push Up
+PUSH_UP,Weighted Push Up
+PUSH_UP,Weighted Push Up And Row
+PUSH_UP,Weighted Push Up Plus
+PUSH_UP,Weighted Push Up With Feet On Swiss Ball
+PUSH_UP,Weighted Push Up With One Hand On Medicine Ball
+PUSH_UP,Weighted Ring Handstand Push Up
+PUSH_UP,Weighted Shoulder Push Up
+PUSH_UP,Weighted Single Arm Medicine Ball Push Up
+PUSH_UP,Weighted Spiderman Push Up
+PUSH_UP,Weighted Stacked Feet Push Up
+PUSH_UP,Weighted Staggered Hands Push Up
+PUSH_UP,Weighted Suspended Push Up
+PUSH_UP,Weighted Swiss Ball Push Up
+PUSH_UP,Weighted Swiss Ball Push Up Plus
+PUSH_UP,Weighted Triple Stop Push Up
+PUSH_UP,Weighted T Push Up
+PUSH_UP,Weighted Wide Hands Push Up
+PUSH_UP,Wide Hands Push Up
+ROW,Barbell Straight Leg Deadlift To Row
+ROW,Elevated Feet Inverted Row
+ROW,Face Pull With External Rotation
+ROW,Inverted Row With Feet On Swiss Ball
+ROW,Kettlebell Row
+ROW,Modified Inverted Row
+ROW,Neutral Grip Alternating Dumbbell Row
+ROW,One Legged Dumbbell Row
+ROW,Rope Handle Cable Row
+ROW,Row
+ROW,Seated Cable Row
+ROW,Seated Dumbbell Row
+ROW,Single Arm Cable Row
+ROW,Single Arm Cable Row And Rotation
+ROW,Single Arm Inverted Row
+ROW,Single Arm Neutral Grip Dumbbell Row
+ROW,Suspended Inverted Row
+ROW,Towel Grip Inverted Row
+ROW,T Bar Row
+ROW,Underhand Grip Cable Row
+ROW,V Grip Cable Row
+ROW,Weighted Elevated Feet Inverted Row
+ROW,Weighted Inverted Row With Feet On Swiss Ball
+ROW,Weighted Modified Inverted Row
+ROW,Weighted Row
+ROW,Weighted Single Arm Inverted Row
+ROW,Weighted Suspended Inverted Row
+ROW,Weighted Towel Grip Inverted Row
+ROW,Wide Grip Seated Cable Row
+RUN,Run Or Walk
+RUN,Sprint
+RUN,Walk
+SHOULDER_PRESS,Arnold Press
+SHOULDER_PRESS,Barbell Push Press
+SHOULDER_PRESS,Barbell Shoulder Press
+SHOULDER_PRESS,Dead Curl Press
+SHOULDER_PRESS,Dumbbell Alternating Shoulder Press And Twist
+SHOULDER_PRESS,Dumbbell Hammer Curl To Lunge To Press
+SHOULDER_PRESS,Floor Inverted Shoulder Press
+SHOULDER_PRESS,Inverted Shoulder Press
+SHOULDER_PRESS,One Arm Push Press
+SHOULDER_PRESS,Overhead Barbell Press
+SHOULDER_PRESS,Overhead Dumbbell Press
+SHOULDER_PRESS,Seated Barbell Shoulder Press
+SHOULDER_PRESS,Seated Dumbbell Shoulder Press
+SHOULDER_PRESS,Split Stance Hammer Curl To Press
+SHOULDER_PRESS,Swiss Ball Dumbbell Shoulder Press
+SHOULDER_PRESS,Weighted Floor Inverted Shoulder Press
+SHOULDER_PRESS,Weighted Inverted Shoulder Press
+SHOULDER_PRESS,Weight Plate Front Raise
+SHOULDER_STABILITY,Band External Rotation
+SHOULDER_STABILITY,Band Internal Rotation
+SHOULDER_STABILITY,Bent Arm Lateral Raise And External Rotation
+SHOULDER_STABILITY,Cable External Rotation
+SHOULDER_STABILITY,Dumbbell Face Pull With External Rotation
+SHOULDER_STABILITY,Floor I Raise
+SHOULDER_STABILITY,Floor T Raise
+SHOULDER_STABILITY,Floor Y Raise
+SHOULDER_STABILITY,Incline I Raise
+SHOULDER_STABILITY,Incline L Raise
+SHOULDER_STABILITY,Incline T Raise
+SHOULDER_STABILITY,Incline W Raise
+SHOULDER_STABILITY,Incline Y Raise
+SHOULDER_STABILITY,Lying External Rotation
+SHOULDER_STABILITY,Seated Dumbbell External Rotation
+SHOULDER_STABILITY,Standing L Raise
+SHOULDER_STABILITY,Swiss Ball I Raise
+SHOULDER_STABILITY,Swiss Ball T Raise
+SHOULDER_STABILITY,Swiss Ball W Raise
+SHOULDER_STABILITY,Swiss Ball Y Raise
+SHOULDER_STABILITY,Weighted Floor I Raise
+SHOULDER_STABILITY,Weighted Floor T Raise
+SHOULDER_STABILITY,Weighted Floor Y Raise
+SHOULDER_STABILITY,Weighted Incline I Raise
+SHOULDER_STABILITY,Weighted Incline L Raise
+SHOULDER_STABILITY,Weighted Incline T Raise
+SHOULDER_STABILITY,Weighted Incline W Raise
+SHOULDER_STABILITY,Weighted Incline Y Raise
+SHOULDER_STABILITY,Weighted Swiss Ball I Raise
+SHOULDER_STABILITY,Weighted Swiss Ball T Raise
+SHOULDER_STABILITY,Weighted Swiss Ball W Raise
+SHOULDER_STABILITY,Weighted Swiss Ball Y Raise
+SHOULDER_STABILITY,90 Degree Cable External Rotation
+SHRUG,Barbell Jump Shrug
+SHRUG,Barbell Shrug
+SHRUG,Behind The Back Smith Machine Shrug
+SHRUG,Dumbbell Jump Shrug
+SHRUG,Dumbbell Shrug
+SHRUG,Dumbbell Upright Row
+SHRUG,Incline Dumbbell Shrug
+SHRUG,Overhead Barbell Shrug
+SHRUG,Overhead Dumbbell Shrug
+SHRUG,Scaption And Shrug
+SHRUG,Scapular Retraction
+SHRUG,Serratus Chair Shrug
+SHRUG,Serratus Shrug
+SHRUG,Weighted Serratus Chair Shrug
+SHRUG,Weighted Serratus Shrug
+SHRUG,Wide Grip Barbell Shrug
+SHRUG,Wide Grip Jump Shrug
+SIT_UP,Alternating Sit Up
+SIT_UP,Bent Knee V Up
+SIT_UP,Butterfly Sit Up
+SIT_UP,Crossed Arms Sit Up
+SIT_UP,Cross Punch Roll Up
+SIT_UP,Hovering Sit Up
+SIT_UP,Kettlebell Sit Up
+SIT_UP,Medicine Ball Alternating V Up
+SIT_UP,Medicine Ball Sit Up
+SIT_UP,Medicine Ball V Up
+SIT_UP,Modified Sit Up
+SIT_UP,Negative Sit Up
+SIT_UP,One Arm Full Sit Up
+SIT_UP,Reclining Circle
+SIT_UP,Reverse Curl Up
+SIT_UP,Single Leg Swiss Ball Jackknife
+SIT_UP,The Teaser
+SIT_UP,The Teaser Weighted
+SIT_UP,Three Part Roll Down
+SIT_UP,Weighted Alternating Sit Up
+SIT_UP,Weighted Bent Knee V Up
+SIT_UP,Weighted Butterfly Situp
+SIT_UP,Weighted Crossed Arms Sit Up
+SIT_UP,Weighted Cross Punch Roll Up
+SIT_UP,Weighted Get Up Sit Up
+SIT_UP,Weighted Hovering Sit Up
+SIT_UP,Weighted Reclining Circle
+SIT_UP,Weighted Reverse Curl Up
+SIT_UP,Weighted Russian Twist On Swiss Ball
+SIT_UP,Weighted Single Leg Swiss Ball Jackknife
+SIT_UP,Weighted Sit Up
+SIT_UP,Weighted Three Part Roll Down
+SIT_UP,Weighted V Up
+SIT_UP,Weighted X Abs
+SIT_UP,X Abs
+SQUAT,Back Squats
+SQUAT,Balancing Squat
+SQUAT,Barbell Box Squat
+SQUAT,Barbell Hack Squat
+SQUAT,Barbell Hang Squat Snatch
+SQUAT,Barbell Lateral Step Up
+SQUAT,Barbell Quarter Squat
+SQUAT,Barbell Siff Squat
+SQUAT,Barbell Squat Snatch
+SQUAT,Barbell Squat With Heels Raised
+SQUAT,Barbell Stepover
+SQUAT,Bench Squat With Rotational Chop
+SQUAT,Body Weight Wall Squat
+SQUAT,Box Step Squat
+SQUAT,Braced Squat
+SQUAT,Crossed Arm Barbell Front Squat
+SQUAT,Dumbbell Squat Clean
+SQUAT,Dumbbell Stepover
+SQUAT,Elevated Single Leg Squat
+SQUAT,Figure Four Squats
+SQUAT,Kbs Overhead
+SQUAT,Kettlebell Squat
+SQUAT,Kettlebell Swing Overhead
+SQUAT,Kettlebell Swing With Flip To Squat
+SQUAT,Lateral Dumbbell Step Up
+SQUAT,Leg Press
+SQUAT,One Legged Squat
+SQUAT,Overhead Dumbbell Squat
+SQUAT,Overhead Squat
+SQUAT,Partial Single Leg Squat
+SQUAT,Pistol Squat
+SQUAT,Plie Slides
+SQUAT,Plie Squat
+SQUAT,Single Leg Bench Get Up
+SQUAT,Single Leg Bench Squat
+SQUAT,Single Leg Squat On Swiss Ball
+SQUAT,Squats With Band
+SQUAT,Staggered Squat
+SQUAT,Step Up
+SQUAT,Suitcase Squats
+SQUAT,Sumo Squat
+SQUAT,Sumo Squat Slide In
+SQUAT,Sumo Squat To High Pull
+SQUAT,Sumo Squat To Stand
+SQUAT,Sumo Squat With Rotation
+SQUAT,Swiss Ball Body Weight Wall Squat
+SQUAT,Thrusters
+SQUAT,Uneven Squat
+SQUAT,Waist Slimming Squat
+SQUAT,Wall Ball
+SQUAT,Weighted Back Squats
+SQUAT,Weighted Balancing Squat
+SQUAT,Weighted Bench Squat With Rotational Chop
+SQUAT,Weighted Box Step Squat
+SQUAT,Weighted Elevated Single Leg Squat
+SQUAT,Weighted Figure Four Squats
+SQUAT,Weighted Partial Single Leg Squat
+SQUAT,Weighted Pistol Squat
+SQUAT,Weighted Plie Slides
+SQUAT,Weighted Plie Squat
+SQUAT,Weighted Prisoner Squat
+SQUAT,Weighted Single Leg Bench Get Up
+SQUAT,Weighted Single Leg Bench Squat
+SQUAT,Weighted Single Leg Squat On Swiss Ball
+SQUAT,Weighted Squat
+SQUAT,Weighted Staggered Squat
+SQUAT,Weighted Step Up
+SQUAT,Weighted Sumo Squat Slide In
+SQUAT,Weighted Sumo Squat To Stand
+SQUAT,Weighted Sumo Squat With Rotation
+SQUAT,Weighted Swiss Ball Wall Squat
+SQUAT,Weighted Uneven Squat
+SQUAT,Weighted Wall Squat
+SQUAT,Wide Stance Barbell Squat
+SQUAT,Zercher Squat
+TOTAL_BODY,Burpee Box Jump
+TOTAL_BODY,High Pull Burpee
+TOTAL_BODY,Man Makers
+TOTAL_BODY,One Arm Burpee
+TOTAL_BODY,Squat Plank Push Up
+TOTAL_BODY,Standing T Rotation Balance
+TOTAL_BODY,Weighted Burpee
+TOTAL_BODY,Weighted Burpee Box Jump
+TOTAL_BODY,Weighted Squat Plank Push Up
+TOTAL_BODY,Weighted Squat Thrusts
+TOTAL_BODY,Weighted Standing T Rotation Balance
+TRICEPS_EXTENSION,Bench Dip
+TRICEPS_EXTENSION,Body Weight Dip
+TRICEPS_EXTENSION,Cable Kickback
+TRICEPS_EXTENSION,Cable Overhead Triceps Extension
+TRICEPS_EXTENSION,Incline Ez Bar Lying Triceps Extension
+TRICEPS_EXTENSION,Lying Dumbbell Pullover To Extension
+TRICEPS_EXTENSION,Lying Ez Bar Triceps Extension
+TRICEPS_EXTENSION,Lying Triceps Extension To Close Grip Bench Press
+TRICEPS_EXTENSION,Overhead Dumbbell Triceps Extension
+TRICEPS_EXTENSION,Reclining Triceps Press
+TRICEPS_EXTENSION,Reverse Grip Triceps Pressdown
+TRICEPS_EXTENSION,Seated Barbell Overhead Triceps Extension
+TRICEPS_EXTENSION,Seated Dumbbell Overhead Triceps Extension
+TRICEPS_EXTENSION,Seated Ez Bar Overhead Triceps Extension
+TRICEPS_EXTENSION,Single Arm Dumbbell Overhead Triceps Extension
+TRICEPS_EXTENSION,Single Dumbbell Seated Overhead Triceps Extension
+TRICEPS_EXTENSION,Single Leg Bench Dip And Kick
+TRICEPS_EXTENSION,Static Lying Triceps Extension
+TRICEPS_EXTENSION,Suspended Dip
+TRICEPS_EXTENSION,Swiss Ball Dumbbell Lying Triceps Extension
+TRICEPS_EXTENSION,Swiss Ball Ez Bar Lying Triceps Extension
+TRICEPS_EXTENSION,Swiss Ball Ez Bar Overhead Triceps Extension
+TRICEPS_EXTENSION,Tabletop Dip
+TRICEPS_EXTENSION,Weighted Bench Dip
+TRICEPS_EXTENSION,Weighted Dip
+TRICEPS_EXTENSION,Weighted Incline Dip
+TRICEPS_EXTENSION,Weighted Single Leg Bench Dip And Kick
+TRICEPS_EXTENSION,Weighted Single Leg Dip
+TRICEPS_EXTENSION,Weighted Suspended Dip
+TRICEPS_EXTENSION,Weighted Tabletop Dip
+WARM_UP,Ankle Circles
+WARM_UP,Ankle Dorsiflexion With Band
+WARM_UP,Ankle Internal Rotation
+WARM_UP,Arm Circles
+WARM_UP,Bent Over Reach To Sky
+WARM_UP,Biceps Stretch
+WARM_UP,Cat Camel
+WARM_UP,Elbow To Foot Lunge
+WARM_UP,Forward And Backward Leg Swings
+WARM_UP,Glutes Stretch
+WARM_UP,Groiners
+WARM_UP,Inverted Hamstring Stretch
+WARM_UP,Lateral Duck Under
+WARM_UP,Neck Rotations
+WARM_UP,Neck Tilts
+WARM_UP,Quadruped Rocking
+WARM_UP,Reach Roll And Lift
+WARM_UP,Scorpion
+WARM_UP,Shoulder Circles
+WARM_UP,Side To Side Leg Swings
+WARM_UP,Sleeper Stretch
+WARM_UP,Slide Out
+WARM_UP,Standing Hamstring Stretch
+WARM_UP,Swiss Ball Hip Crossover
+WARM_UP,Swiss Ball Reach Roll And Lift
+WARM_UP,Swiss Ball Windshield Wipers
+WARM_UP,Thoracic Rotation
+WARM_UP,Walking High Kicks
+WARM_UP,Walking High Knees
+WARM_UP,Walking Knee Hugs
+WARM_UP,Walking Leg Cradles
+WARM_UP,Walkout
+WARM_UP,Walkout From Push Up Position

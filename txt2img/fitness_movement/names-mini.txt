@@ -1,0 +1,8 @@
+BENCH_PRESS,Barbell Bench Press
+BENCH_PRESS,Barbell Floor Press
+BENCH_PRESS,Close Grip Barbell Bench Press
+BENCH_PRESS,Dumbbell Bench Press
+BENCH_PRESS,Dumbbell Floor Press
+BENCH_PRESS,Incline Dumbbell Bench Press
+BENCH_PRESS,Kettlebell Chest Press
+BENCH_PRESS,Partial Lockout

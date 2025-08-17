@@ -15,10 +15,11 @@ logger.name = os.path.basename(__file__)
 parser = argparse.ArgumentParser(description='Transcribe audio or video files')
 parser.add_argument('-fp','--filepath', help='File path to transcribe')
 parser.add_argument('-fid','--fileid', help='File id from file_inventory to transcribe')
+parser.add_argument('-fmd5','--file_md5', help='File md5 from file_inventory to transcribe')
 
 args = parser.parse_args()
 
-def log_transcription(cur, conn, file_id, path, status, start_time, ollama_model, embedding_model_name,model_in_out,version, error_message=None):
+def log_transcription(cur, conn, file_id, file_md5, path, status, start_time, ollama_model, embedding_model_name,model_in_out,version, error_message=None):
     if status != 'success':
         logger.info(f'error_message: {error_message}')
 
@@ -26,11 +27,11 @@ def log_transcription(cur, conn, file_id, path, status, start_time, ollama_model
     duration = (end_time - start_time).total_seconds()
     cur.execute("""
         INSERT INTO transcription_log (
-            file_id, path, status, started_at, ended_at,
+            file_id, file_md5, path, status, started_at, ended_at,
             duration_secs, error_message, model_used, embedding_model,model_in_out, version
-        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """, (
-        file_id, path, status, start_time, end_time,
+        file_id, file_md5, path, status, start_time, end_time,
         duration, error_message[:1000] if error_message else None,
         ollama_model, embedding_model_name, str(model_in_out), version
     ))
@@ -53,6 +54,7 @@ def get_transcription_log(cur, file_path):
 start_time = datetime.datetime.now()
 file_id = args.fileid
 file_path = args.filepath
+file_md5 = args.file_md5
 
 DB_CONN = yaml_config_boxed.transcribe.db_conn
 llm_model_name = yaml_config_boxed.transcribe.llm.ollama_model
@@ -254,13 +256,30 @@ def new_logic(segments,version):
         conn.commit()
     return err_msg
 
-def transcribe_all():
+def exist_same_md5_transcript_log(file_md5:str)->bool:
+    '''
+    file_id, path, status, started_at FROM transcription_log
+    '''
+    try:
+        cur.execute(f"SELECT file_id, path, status, started_at FROM transcription_log WHERE file_md5 = %s and status='success';", (file_md5,))
+        rows = cur.fetchall()
+        logger.info(f'exist_same_md5_transcript_log: rows: {rows}')
+        return rows and len(rows)>0
+    except Exception as e:
+        logger.info(f"❌ failed to query transcription_log with same md5: {str(e)}")
+        return None
+    
+def transcribe_all(file_path:str,llm_model_name:str,file_md5:str,whisper_model_alias:str,whisper_beam_size:str,model_384d:str):
     version_ymd_hms = datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
     embedding_model_name = model_384d
     try:
         # 配置项
         SRT_SOURCE = file_path
         OLLAMA_MODEL = llm_model_name  # 你在本地 Ollama 中配置的模型名
+        
+        # if a file with the same md5 had been transcribed, the current file will be ignored.
+        if exist_same_md5_transcript_log(file_md5):
+            return
 
         # 初始化模型
         logger.info(f'begin to init {whisper_model_alias}')
@@ -284,12 +303,12 @@ def transcribe_all():
         err_msg = new_logic(segments,version_ymd_hms)
 
         if len(err_msg)>0:
-            log_transcription(cur, conn, file_id, file_path, "partial_success", start_time, whisper_model_alias, embedding_model_name,model_in_out,version_ymd_hms, str(err_msg))
+            log_transcription(cur, conn, file_id, file_md5, file_path, "partial_success", start_time, whisper_model_alias, embedding_model_name,model_in_out,version_ymd_hms, str(err_msg))
         else:
-            log_transcription(cur, conn, file_id, file_path, "success", start_time, whisper_model_alias, embedding_model_name,model_in_out,version_ymd_hms)
+            log_transcription(cur, conn, file_id, file_md5, file_path, "success", start_time, whisper_model_alias, embedding_model_name,model_in_out,version_ymd_hms)
 
     except Exception as e:
-        log_transcription(cur, conn, file_id, file_path, "error", start_time, whisper_model_alias, embedding_model_name,model_in_out,version_ymd_hms, str(e))
+        log_transcription(cur, conn, file_id, file_md5, file_path, "error", start_time, whisper_model_alias, embedding_model_name,model_in_out,version_ymd_hms, str(e))
     finally:
         cur.close()
         conn.close()
@@ -302,4 +321,4 @@ if old_row:
     logger.info(f'get_transcription_log, file_id:{file_id}, path:{path}, status:{status}, started_at:{started_at}')
 time_gap_in_days = (datetime.datetime.now() - started_at).days
 if old_row is None or status != 'success' or time_gap_in_days>1:
-    transcribe_all()
+    transcribe_all(file_path, llm_model_name, file_md5, whisper_model_alias, whisper_beam_size, model_384d)
