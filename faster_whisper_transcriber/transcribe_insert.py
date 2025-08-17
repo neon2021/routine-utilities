@@ -1,3 +1,4 @@
+import sys
 import os
 import psycopg2
 import datetime
@@ -7,17 +8,9 @@ from sentence_transformers import SentenceTransformer
 from uuid import uuid4
 import subprocess
 import argparse
-from global_config.config import yaml_config_boxed
 from global_config.logger_config import logger
 
 logger.name = os.path.basename(__file__)
-
-parser = argparse.ArgumentParser(description='Transcribe audio or video files')
-parser.add_argument('-fp','--filepath', help='File path to transcribe')
-parser.add_argument('-fid','--fileid', help='File id from file_inventory to transcribe')
-parser.add_argument('-fmd5','--file_md5', help='File md5 from file_inventory to transcribe')
-
-args = parser.parse_args()
 
 def log_transcription(cur, conn, file_id, file_md5, path, status, start_time, ollama_model, embedding_model_name,model_in_out,version, error_message=None):
     if status != 'success':
@@ -50,21 +43,6 @@ def get_transcription_log(cur, file_path):
     except Exception as e:
         logger.info(f"❌ 查询 transcription_log 记录失败: {str(e)}")
         return None
-
-start_time = datetime.datetime.now()
-file_id = args.fileid
-file_path = args.filepath
-file_md5 = args.file_md5
-
-DB_CONN = yaml_config_boxed.transcribe.db_conn
-llm_model_name = yaml_config_boxed.transcribe.llm.ollama_model
-whisper_model_alias = yaml_config_boxed.transcribe.whisper.model_alias
-whisper_beam_size = yaml_config_boxed.transcribe.whisper.beam_size
-model_384d = yaml_config_boxed.transcribe.embedding.model_384d
-
-# PostgreSQL 连接
-conn = psycopg2.connect(DB_CONN)
-cur = conn.cursor()
 
 def old_logic(segments, ollamaModel, info, embedding_model,version):
     merged = []
@@ -313,6 +291,34 @@ def transcribe_all(file_path:str,llm_model_name:str,file_md5:str,whisper_model_a
         cur.close()
         conn.close()
 
+
+parser = argparse.ArgumentParser(description='Transcribe audio or video files')
+parser.add_argument('-fp','--filepath', help='File path to transcribe')
+parser.add_argument('-fid','--fileid', help='File id from file_inventory to transcribe')
+parser.add_argument('-fmd5','--file_md5', help='File md5 from file_inventory to transcribe')
+
+args = parser.parse_args()
+
+start_time = datetime.datetime.now()
+file_id = args.fileid
+file_path = args.filepath
+file_md5 = args.file_md5
+
+if not os.path.exists(file_path):
+    logger.info(f"file not exists, ignored, file_path:{file_path}")
+    sys.exit(0)
+
+from global_config.config import yaml_config_boxed
+
+DB_CONN = yaml_config_boxed.transcribe.db_conn
+llm_model_name = yaml_config_boxed.transcribe.llm.ollama_model
+whisper_model_alias = yaml_config_boxed.transcribe.whisper.model_alias
+whisper_beam_size = yaml_config_boxed.transcribe.whisper.beam_size
+model_384d = yaml_config_boxed.transcribe.embedding.model_384d
+
+# PostgreSQL 连接
+conn = psycopg2.connect(DB_CONN)
+cur = conn.cursor()
 
 old_row = get_transcription_log(cur, file_path)
 started_at = datetime.datetime.now()
