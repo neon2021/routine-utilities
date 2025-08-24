@@ -34,6 +34,7 @@ left outer join (
     )
 ) t on f.id = t.file_id
 where (f.mime_type ilike 'video/%%' or f.mime_type ilike 'audio/%%')
+    and f.mime_type != 'video/x-matroska'
   and f.deleted = 0
   and (t.status != 'success' or t.id is null)
   and f.id between %(id_min)s and %(id_max)s
@@ -119,7 +120,8 @@ def main():
             import time
 
             processed = 0
-            MAX_WORKERS = 2
+            # MAX_WORKERS = 2
+            MAX_WORKERS = 3
             # 使用 spawn，避免 fork + CUDA
             try:
                 mp.set_start_method("spawn", force=True)
