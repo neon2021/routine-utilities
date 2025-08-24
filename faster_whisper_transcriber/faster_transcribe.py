@@ -7,8 +7,14 @@ from faster_whisper import WhisperModel
 
 import argparse
 
+import subprocess, tempfile
+from pathlib import Path
+    
 from global_config.logger_config import logger
 
+
+
+logger.name = os.path.basename(__file__)
 
 # nice method to convert seconds to the format as "hour:minute:second"
 # sourced from "Python Convert Seconds to HH:MM:SS (hours, minutes, seconds)" https://pynative.com/python-convert-seconds-to-hhmmss/
@@ -18,13 +24,15 @@ def conver_to_hms(sec:float)->str:
     return '%02d:%02d:%02d'%(hh,mm,ss)
 
 class WhisperTranscriber:
-    def __init__(self, model:str) -> None:
+    def __init__(self, model:str, cpu_threads:int=4, num_workers:int=1) -> None:
+        logger.name = os.path.basename(__file__)
         same_folder=os.path.expanduser("~/Downloads/huggingface_downloads/")
         model_dict={
             'distil-large-v3-ct2':same_folder+"/distil-whisper/distil-large-v3-ct2",
             # 'faster-distil-whisper-large-v2':os.path.join(same_folder,"/Systran/faster-distil-whisper-large-v2"),
             'faster-whisper-large-v3-turbo-ct2':same_folder+"/deepdml/faster-whisper-large-v3-turbo-ct2",
             # 'faster-whisper-large-v3':same_folder+"/Systran/faster-whisper-large-v3",
+            "faster-whisper-medium":same_folder+"Systran/faster-whisper-medium"
             }
 
         self.selected_model_path = model_dict[model]
@@ -39,18 +47,58 @@ class WhisperTranscriber:
 
         # load model on GPU if available, else cpu
         # model = WhisperModel(os.path.expanduser("~/Downloads/huggingface_downloads/distil-whisper/distil-large-v3-ct2"), device=device, compute_type=compute_type,local_files_only=True)
-        self.model = WhisperModel(self.selected_model_path, device=device, compute_type=compute_type,local_files_only=True)
+        self.model = WhisperModel(self.selected_model_path, device=device, compute_type=compute_type,local_files_only=True,
+                                  cpu_threads=cpu_threads, num_workers=num_workers)
 
+    
+    def to_pcm16_mono16k(self, src_path: str) -> str:
+        '''
+        solve:
+        2025-08-23 22:49:27 | INFO | transcribe_insert.py:17 | error_message: Frame does not match AudioFifo parameters.
+        '''
+        dst = Path(tempfile.gettempdir()) / (Path(src_path).stem + ".wav")
+        logger.info(f'before solving "Frame does not match AudioFifo parameters.", dst={dst}')
+        # -vn 去视频；-map a:0 选第一条音轨；-ac 1 单声道；-ar 16000；pcm_s16le
+        cmd = ["ffmpeg", "-y", "-i", src_path, "-vn", "-map", "a:0",
+            "-ac", "1", "-ar", "16000", "-acodec", "pcm_s16le", str(dst)]
+        subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+        logger.info(f'after solving "Frame does not match AudioFifo parameters.", cmd={cmd}')
+        return str(dst)
+    
+    def extract_wav_16k_mono(self, src_path: str) -> str:
+        dst = Path(tempfile.gettempdir()) / (Path(src_path).stem + ".16k.mono.wav")
+        logger.info(f'before converting, dst={dst}')
+        cmd = [
+            "ffmpeg", "-y", "-i", src_path,
+            "-vn", "-map", "a:0",    # 取第一条音轨，必要时改成你想要的轨
+            "-ac", "1",              # 单声道
+            "-ar", "16000",          # 16k
+            "-acodec", "pcm_s16le",  # 16-bit PCM
+            str(dst),
+        ]
+        subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+        logger.info(f'after converting, dst={dst}')
+        return str(dst)
+    
     def transcribe(self, file_path:str, beam_size:int=5, language:str=None, vad_filter:bool=True):
         '''
             language: "zh", "en" or None
         '''
         
         logger.info('file_path=%s'%(file_path))
+        
+        # delete_after_transcribing = False
+        # if file_path.endswith('.mkv'):
+        #     file_path = self.extract_wav_16k_mono(file_path)
+        #     delete_after_transcribing = True
+        #     logger.info(f'new file_path for mkv file, file_path={file_path}')
         segments, info = self.model.transcribe(file_path
                             , beam_size=beam_size
                             , language=language
                             , vad_filter=vad_filter)
+        # if delete_after_transcribing:
+        #     os.remove(file_path)
+        #     logger.info(f'after removing, file_path is there: {os.path.exists(file_path)}')
         return segments, info
 
     def start_transcribe(self, file_path:str, file_format:str="srt", not_write_file:bool=True, multilingual=True, language:str=None, temperature=(0.0, 0.2, 0.4)):
