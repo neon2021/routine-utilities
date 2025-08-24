@@ -22,12 +22,12 @@ if not logger.hasHandlers():
     logger.setLevel(logging.INFO)
 
     formatter = logging.Formatter(
-        fmt="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
+        fmt="%(asctime)s | %(levelname)s | %(name)s:%(lineno)d | %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S"
     )
 
     file_handler = RotatingFileHandler(
-        log_path, maxBytes=5*1024*1024, backupCount=3, encoding="utf-8"
+        log_path, maxBytes=100*1024*1024, backupCount=5, encoding="utf-8"
     )
     file_handler.setFormatter(formatter)
 

@@ -1,10 +1,8 @@
 import sys
 import os
-import hashlib
 import socket
 import psycopg2
 import yaml
-import magic
 import time
 from psycopg2.extras import execute_batch, execute_values
 from datetime import datetime
@@ -13,6 +11,7 @@ import argparse
 from global_config.logger_config import logger
 from file_scanner.device_utils import list_mounted_devices
 from file_scanner.mount_path_utils import MountPathUtil
+from file_scanner.device_utils import calculate_md5, get_mime_type
 
 logger.name = os.path.basename(__file__)
 
@@ -97,22 +96,6 @@ else:
     insert_disk_mount_info()
 
 
-    # === 工具函数 ===
-    def calculate_md5(filepath, block_size=65536):
-        md5 = hashlib.md5()
-        try:
-            with open(filepath, 'rb') as f:
-                for chunk in iter(lambda: f.read(block_size), b''):
-                    md5.update(chunk)
-            return md5.hexdigest()
-        except Exception:
-            return None
-
-    def get_mime_type(filepath):
-        try:
-            return magic.from_file(filepath, mime=True)
-        except Exception:
-            return 'application/octet-stream'
 
     insert_sql = f"""
     INSERT INTO {TABLE_NAME} (machine, path, mime_type, md5, size, scanned_at, gmt_create, scan_duration_secs, deleted, mount_uuid, relative_path)

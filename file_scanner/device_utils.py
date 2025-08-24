@@ -11,6 +11,9 @@ from dataclasses import dataclass
 from pathlib import Path, PurePosixPath, PurePath
 from typing import Dict, List, Optional, Tuple
 
+import hashlib
+import magic
+
 @dataclass
 class DeviceMount:
     uuid: str                 # 规范化后的统一 UUID
@@ -398,6 +401,23 @@ def _dedup_by_uuid_choose_mounted(devs: List[DeviceMount]) -> List[DeviceMount]:
             by_uuid[d.uuid] = d
     return list(by_uuid.values())
 
+# === 工具函数 ===
+def calculate_md5(filepath, block_size=65536):
+    md5 = hashlib.md5()
+    try:
+        with open(filepath, 'rb') as f:
+            for chunk in iter(lambda: f.read(block_size), b''):
+                md5.update(chunk)
+        return md5.hexdigest()
+    except Exception:
+        return None
+
+def get_mime_type(filepath):
+    try:
+        return magic.from_file(filepath, mime=True)
+    except Exception:
+        return 'application/octet-stream'
+    
 # =========================
 # 自测
 # =========================
