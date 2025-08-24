@@ -102,6 +102,7 @@ def main():
 
     # DB 连接参数
     DB_CONN = yaml_config_boxed.transcribe.db_conn
+    max_parallel_workers = yaml_config_boxed.transcribe.max_parallel_workers
 
     conn = get_conn(DB_CONN)
     conn.autocommit = False
@@ -120,8 +121,8 @@ def main():
             import time
 
             processed = 0
-            # MAX_WORKERS = 2
-            MAX_WORKERS = 3
+            MAX_WORKERS = max_parallel_workers # 3 workers causes OOM in CUDA at 2025-08-25 00:30:38
+            # MAX_WORKERS = 3 # 2025-08-25 00:30:38 | INFO | faster_transcribe.py:17 | error_message: CUDA failed with error out of memory
             # 使用 spawn，避免 fork + CUDA
             try:
                 mp.set_start_method("spawn", force=True)
