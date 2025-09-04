@@ -8,6 +8,8 @@ from sentence_transformers import SentenceTransformer
 from uuid import uuid4
 import subprocess
 import argparse
+from types import SimpleNamespace
+
 from global_config.logger_config import logger
 
 logger.name = os.path.basename(__file__)
@@ -201,6 +203,12 @@ def new_logic(conn, cur, file_id, segments, version):
     
     seg_idx = 0
     for seg in segments:
+        if seg_idx <= 2:
+            logger.info(f'seg_idx: {seg_idx}, segment: {seg}, type(segment): {type(seg)}')
+
+        if isinstance(seg, dict):
+            seg = SimpleNamespace(**seg)
+            
         seg_idx += 1
         logger.info(f'deal with file_id: {file_id} seg_idx: {seg_idx}')
         start, end, text = seg.start, seg.end, seg.text.strip()
@@ -280,10 +288,14 @@ def transcribe_all(conn, cur, file_id:str, file_path:str,start_time:str,llm_mode
         segments, info = transcriber.transcribe(SRT_SOURCE, beam_size=whisper_beam_size, language=None, vad_filter=True)
         logger.info(f'end to transcribe by {whisper_model_alias}, info:{info}')
         
-        model_in_out = {
-            "args": str(getattr(info, "transcription_options", "")),
-            "info":{"language":info.language,"language_probability":info.language_probability, "duration":info.duration, "duration_after_vad":info.duration_after_vad}
-        }
+        if info is None or (isinstance(info, dict) and info['tech'] == 'mlx_whisper'):
+            model_in_out = {'model':'mlx_whisper'}
+            model_in_out = {**model_in_out, **info}
+        else:    
+            model_in_out = {
+                "args": str(getattr(info, "transcription_options", "")),
+                "info":{"language":info.language,"language_probability":info.language_probability, "duration":info.duration, "duration_after_vad":info.duration_after_vad}
+            }
         logger.info(f'model_in_out:{model_in_out}')
 
         # err_msg = old_logic(segments,OLLAMA_MODEL,info,embedding_model)

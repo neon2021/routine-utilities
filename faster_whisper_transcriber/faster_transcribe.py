@@ -9,9 +9,11 @@ import argparse
 
 import subprocess, tempfile
 from pathlib import Path
+import json
     
 from global_config.logger_config import logger
 
+from types import SimpleNamespace
 
 
 logger.name = os.path.basename(__file__)
@@ -25,6 +27,9 @@ def conver_to_hms(sec:float)->str:
 
 class WhisperTranscriber:
     def __init__(self, model:str, cpu_threads:int=4, num_workers:int=1) -> None:
+        import platform
+        self.system = platform.system()
+        
         logger.name = os.path.basename(__file__)
         same_folder=os.path.expanduser("~/Downloads/huggingface_downloads/")
         model_dict={
@@ -35,67 +40,53 @@ class WhisperTranscriber:
             "faster-whisper-medium":same_folder+"Systran/faster-whisper-medium"
             }
 
-        self.selected_model_path = model_dict[model]
+        if self.is_macos():
+            if model == 'large':
+                self.selected_model_path = os.path.expanduser("~/Downloads/huggingface_downloads/mlx-community/whisper-large-v3-mlx")
+            else:
+                self.selected_model_path = os.path.expanduser("~/Downloads/huggingface_downloads/mlx-community/whisper-medium-mlx-8bit")
+        else:
+            self.selected_model_path = model_dict[model]
         logger.info('model=%s, selected_model_path=%s'%(model, self.selected_model_path))
 
 
         # define our torch configuration
         # device = "cuda:0" if torch.cuda.is_available() else "cpu" # bug: ValueError: unsupported device cuda:0
-        device = "cuda" if torch.cuda.is_available() else "cpu" # fix bug: ValueError: unsupported device cuda:0
-        compute_type = "float16" if torch.cuda.is_available() else "float32"
-        logger.info('device=%s, compute_type=%s'%(device, compute_type))
+        if not self.is_macos():
+            device = "cuda" if torch.cuda.is_available() else "cpu" # fix bug: ValueError: unsupported device cuda:0
+            compute_type = "float16" if self.system == "Darwin" or torch.cuda.is_available() else "float32"
+            logger.info('device=%s, compute_type=%s'%(device, compute_type))
 
-        # load model on GPU if available, else cpu
-        # model = WhisperModel(os.path.expanduser("~/Downloads/huggingface_downloads/distil-whisper/distil-large-v3-ct2"), device=device, compute_type=compute_type,local_files_only=True)
-        self.model = WhisperModel(self.selected_model_path, device=device, compute_type=compute_type,local_files_only=True,
-                                  cpu_threads=cpu_threads, num_workers=num_workers)
+            # load model on GPU if available, else cpu
+            # model = WhisperModel(os.path.expanduser("~/Downloads/huggingface_downloads/distil-whisper/distil-large-v3-ct2"), device=device, compute_type=compute_type,local_files_only=True)
+            self.model = WhisperModel(self.selected_model_path, device=device, compute_type=compute_type,local_files_only=True,
+                                    cpu_threads=cpu_threads, num_workers=num_workers)
 
-    
-    def to_pcm16_mono16k(self, src_path: str) -> str:
-        '''
-        solve:
-        2025-08-23 22:49:27 | INFO | transcribe_insert.py:17 | error_message: Frame does not match AudioFifo parameters.
-        '''
-        dst = Path(tempfile.gettempdir()) / (Path(src_path).stem + ".wav")
-        logger.info(f'before solving "Frame does not match AudioFifo parameters.", dst={dst}')
-        # -vn 去视频；-map a:0 选第一条音轨；-ac 1 单声道；-ar 16000；pcm_s16le
-        cmd = ["ffmpeg", "-y", "-i", src_path, "-vn", "-map", "a:0",
-            "-ac", "1", "-ar", "16000", "-acodec", "pcm_s16le", str(dst)]
-        subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
-        logger.info(f'after solving "Frame does not match AudioFifo parameters.", cmd={cmd}')
-        return str(dst)
-    
-    def extract_wav_16k_mono(self, src_path: str) -> str:
-        dst = Path(tempfile.gettempdir()) / (Path(src_path).stem + ".16k.mono.wav")
-        logger.info(f'before converting, dst={dst}')
-        cmd = [
-            "ffmpeg", "-y", "-i", src_path,
-            "-vn", "-map", "a:0",    # 取第一条音轨，必要时改成你想要的轨
-            "-ac", "1",              # 单声道
-            "-ar", "16000",          # 16k
-            "-acodec", "pcm_s16le",  # 16-bit PCM
-            str(dst),
-        ]
-        subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
-        logger.info(f'after converting, dst={dst}')
-        return str(dst)
+    def is_macos(self)->bool:
+        return self.system == "Darwin"
     
     def transcribe(self, file_path:str, beam_size:int=5, language:str=None, vad_filter:bool=True):
         '''
             language: "zh", "en" or None
         '''
         
-        logger.info('file_path=%s'%(file_path))
+        logger.info('transcribe: pid=%s, ppid=%s, file_path=%s'%(os.getpid(), os.getppid(), file_path))
         
-        # delete_after_transcribing = False
-        # if file_path.endswith('.mkv'):
-        #     file_path = self.extract_wav_16k_mono(file_path)
-        #     delete_after_transcribing = True
-        #     logger.info(f'new file_path for mkv file, file_path={file_path}')
-        segments, info = self.model.transcribe(file_path
-                            , beam_size=beam_size
-                            , language=language
-                            , vad_filter=vad_filter)
+        if self.is_macos():
+            import mlx_whisper
+            # NOTE: beam_size, vad_filter are omitted, not yet implemented
+            # RETURNS:
+            #   text
+            #   segments
+            #   language
+            res = mlx_whisper.transcribe(file_path, path_or_hf_repo=self.selected_model_path, language=language)
+            segments = res['segments']
+            info = {'language': res['language'], 'selected_model_path': self.selected_model_path, 'tech':'mlx_whisper'}
+        else:
+            segments, info = self.model.transcribe(file_path
+                                , beam_size=beam_size
+                                , language=language
+                                , vad_filter=vad_filter)
         # if delete_after_transcribing:
         #     os.remove(file_path)
         #     logger.info(f'after removing, file_path is there: {os.path.exists(file_path)}')
@@ -107,12 +98,24 @@ class WhisperTranscriber:
         '''
         
         logger.info('file_path=%s'%(file_path))
-        segments, info = self.model.transcribe(file_path
-                            , beam_size=5
-                            , multilingual=multilingual
-                            , language=language
-                            , vad_filter=True
-                            , temperature=temperature)
+        
+        if self.is_macos():
+            import mlx_whisper
+            # NOTE: beam_size, vad_filter are omitted, not yet implemented
+            # RETURNS:
+            #   text
+            #   segments
+            #   language
+            res = mlx_whisper.transcribe(file_path, path_or_hf_repo=self.selected_model_path,language=language)
+            segments = res['segments']
+            info = {'language': res['language']}
+        else:
+            segments, info = self.model.transcribe(file_path
+                                , beam_size=5
+                                , multilingual=multilingual
+                                , language=language
+                                , vad_filter=True
+                                , temperature=temperature)
 
         start = datetime.now()
         if not_write_file:
@@ -173,6 +176,12 @@ class WhisperTranscriber:
 
 
     def create_txt_line(self, row_num:int, segment)->str:
+        if row_num<=2:
+            logger.info('row_num=%s, segment=%s, type(segment)=%s'%(row_num, segment, type(segment)))
+            
+        if isinstance(segment, dict):
+            segment = SimpleNamespace(**segment)
+            
         ''' for txt format, line:
         [00:56:06 -> 00:56:06] Yeah.
         '''
@@ -182,11 +191,17 @@ class WhisperTranscriber:
             )
 
     def create_srt_line(self, row_num:int, segment)->str:
+        if row_num<=2:
+            logger.info('row_num=%s, segment=%s, type(segment)=%s'%(row_num, segment, type(segment)))
+            
         ''' for srt format, line:
         1
         00:56:06,001 --> 00:56:06,901
         Yeah.
         '''
+        if isinstance(segment, dict):
+            segment = SimpleNamespace(**segment)
+        
         return """%s
 %s,000 --> %s,000
 %s\n\n""" % (row_num
