@@ -43,7 +43,9 @@ def check_audio_stream(file_path: str) -> dict:
             "-of", "json",
             file_path
         ]
-        cmd_str = " ".join(cmd)
+        # 创建新列表，最后一个元素添加引号
+        cmd_with_quotes = cmd[:-1] + ['"' + cmd[-1] + '"']
+        cmd_str = " ".join(cmd_with_quotes)
         
         result = subprocess.run(
             cmd, 

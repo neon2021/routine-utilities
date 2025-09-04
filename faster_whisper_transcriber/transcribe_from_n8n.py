@@ -91,6 +91,7 @@ import traceback
 max_parallel_workers = yaml_config_boxed.transcribe.max_parallel_workers
 def transcribe_files(filtered_rows):
     from concurrent.futures import ProcessPoolExecutor, wait, FIRST_COMPLETED, as_completed
+    from concurrent.futures.process import BrokenProcessPool
     
     import multiprocessing as mp
     import time
@@ -105,70 +106,94 @@ def transcribe_files(filtered_rows):
         pass
     ctx = mp.get_context("spawn")
 
-    with ProcessPoolExecutor(max_workers=MAX_WORKERS, mp_context=ctx) as pool:
-        pending = set()
-        ctx_map = {}
-        perf_logger.info("start to transcribe audio stream for files")
-        for r in filtered_rows:
-            file_id = r["id"]
-            path = r["path"]
-            md5 = r["md5"]
-            cur_logger.info("[id=%s] Processing file: %s", file_id, path)
+    try:
+        with ProcessPoolExecutor(max_workers=MAX_WORKERS, mp_context=ctx) as pool:
+            pending = set()
+            ctx_map = {}
+            perf_logger.info("start to transcribe audio stream for files")
+            for r in filtered_rows:
+                file_id = r["id"]
+                path = r["path"]
+                md5 = r["md5"]
+                cur_logger.info("[id=%s] Processing file: %s", file_id, path)
 
-            submit_path = path
-            is_tmp_wav = False
-            # # —— 串行转换：MKV 先转 WAV，再交给子进程只做转录 ——
-            # if path.lower().endswith(".mkv"):
-            #     wait_for_free_ram(min_free_gb=2.0)  # 转换前守内存
-            #     submit_path = to_wav16k_mono(path)
-            #     is_tmp_wav = True
-            #     logger.info("[id=%s] mkv→wav done: %s", file_id, submit_path)
+                submit_path = path
+                is_tmp_wav = False
+                # # —— 串行转换：MKV 先转 WAV，再交给子进程只做转录 ——
+                # if path.lower().endswith(".mkv"):
+                #     wait_for_free_ram(min_free_gb=2.0)  # 转换前守内存
+                #     submit_path = to_wav16k_mono(path)
+                #     is_tmp_wav = True
+                #     logger.info("[id=%s] mkv→wav done: %s", file_id, submit_path)
 
-            from transcribe_insert import main_func
-            cur_logger.info("[id=%s] Submitting to pool: %s", file_id, submit_path)
-            fut = pool.submit(main_func, file_id, submit_path, md5)
-            pending.add(fut)
-            ctx_map[fut] = {"file_id": file_id, "path": submit_path, "is_tmp_wav": is_tmp_wav}
-            processed += 1
+                from transcribe_insert import main_func
+                cur_logger.info("[id=%s] Submitting to pool: %s", file_id, submit_path)
+                fut = pool.submit(main_func, file_id, submit_path, md5)
+                pending.add(fut)
+                ctx_map[fut] = {"file_id": file_id, "path": submit_path, "is_tmp_wav": is_tmp_wav}
+                processed += 1
 
-            # 达并发上限就消费一个完成的
-            if len(pending) >= MAX_WORKERS:
-                done, pending = wait(pending, return_when=FIRST_COMPLETED)
-                for f in done:
-                    try:
-                        res = f.result()
-                        cur_logger.info("[id=%s] done: %s", ctx_map[f]["file_id"], res)
-                    except Exception as e:
-                        # 记录详细错误信息
-                        logger.error(f"[id={file_id}] failed: {e}")
-                        logger.debug(f"[id={file_id}] Full traceback:\n{traceback.format_exc()}")
-                        # old code
-                        logger.exception("[id=%s] failed: %r", ctx_map[f]["file_id"], e)
-                    finally:
-                        # 清理临时 WAV
-                        if ctx_map[f]["is_tmp_wav"]:
-                            try:
-                                os.remove(ctx_map[f]["path"])
-                            except Exception:
-                                pass
-                        ctx_map.pop(f, None)
-                time.sleep(0.3)  # 轻微错峰
-        perf_logger.info("finish to transcribe audio stream for files")
+                # 达并发上限就消费一个完成的
+                if len(pending) >= MAX_WORKERS:
+                    done, pending = wait(pending, return_when=FIRST_COMPLETED)
+                    for f in done:
+                        try:
+                            res = f.result()
+                            cur_logger.info("[id=%s] done: %s", ctx_map[f]["file_id"], res)
+                        except BrokenProcessPool as e:
+                            # 池已破碎：取消剩余任务并显式关闭
+                            cur_logger.error("ProcessPool broken while getting result: %r", e)
+                            for pf in list(pending):
+                                pf.cancel()
+                            pending.clear()
+                            # 让 with 块退出后 __exit__ 正常触发 shutdown
+                            raise
+                        except Exception as e:
+                            # 记录详细错误信息
+                            logger.error(f"[id={file_id}] failed: {e}")
+                            logger.debug(f"[id={file_id}] Full traceback:\n{traceback.format_exc()}")
+                            # old code
+                            logger.exception("[id=%s] failed: %r", ctx_map[f]["file_id"], e)
+                        finally:
+                            # 清理临时 WAV
+                            if ctx_map[f]["is_tmp_wav"]:
+                                try:
+                                    os.remove(ctx_map[f]["path"])
+                                except Exception:
+                                    pass
+                            ctx_map.pop(f, None)
+                    time.sleep(0.3)  # 轻微错峰
+            perf_logger.info("finish to transcribe audio stream for files")
 
-        # 收尾：把剩余的都处理掉
-        for f in as_completed(pending):
-            try:
-                res = f.result()
-                cur_logger.info("[id=%s] done: %s", ctx_map[f]["file_id"], res)
-            except Exception as e:
-                cur_logger.exception("[id=%s] failed: %r", ctx_map[f]["file_id"], e)
-            finally:
-                if ctx_map[f]["is_tmp_wav"]:
-                    try:
-                        os.remove(ctx_map[f]["path"])
-                    except Exception:
-                        pass
-                ctx_map.pop(f, None)
+            # 收尾：把剩余的都处理掉
+            for f in as_completed(pending):
+                try:
+                    res = f.result()
+                    cur_logger.info("[id=%s] done: %s", ctx_map[f]["file_id"], res)
+                except BrokenProcessPool as e:
+                    cur_logger.error("ProcessPool broken in tail consume: %r", e)
+                    for pf in list(pending):
+                        pf.cancel()
+                    pending.clear()
+                    raise
+                except Exception as e:
+                    cur_logger.exception("[id=%s] failed: %r", ctx_map[f]["file_id"], e)
+                finally:
+                    if ctx_map[f]["is_tmp_wav"]:
+                        try:
+                            os.remove(ctx_map[f]["path"])
+                        except Exception:
+                            pass
+                    ctx_map.pop(f, None)
+    except BrokenProcessPool:
+        # 到这里时 with 已经离开；再做一层保险清理
+        for f in list(pending):
+            f.cancel()
+        pending.clear()
+        ctx_map.clear()
+        # 可视需要这里选择：重建池重试 / 直接返回 / 抛出
+        logger.error("Process pool broken; cancelled pending and cleaned up.")
+    finally:
         logger.info("Done. processed=%d", processed)
 
 def main():
@@ -208,7 +233,7 @@ def main():
             for r in rows:
                 idx += 1
                 if idx % 200 == 0:
-                    perf_logger.info("filtered rows_count: %s", idx)
+                    perf_logger.info("filtered rows_count: %s/%s (%.2f%%)", idx, rows_count, (idx/rows_count)*100)
                     
                     # 2025-09-04 11:18:28 | INFO | media_detector.py:175 | filtered_rows length: 152, count_sum for skipping files: {'no_audio': 125, 'non_existing': 248}
                     perf_logger.info("-" * 120)
@@ -257,9 +282,9 @@ def main():
                         row["path"] = path
                         r["path"] = path
                     
-                if not os.path.exists(path):
+                if not os.path.exists(path) or not os.path.isfile(path):
                     # 文件不存在，跳过
-                    cur_logger.info("[id=%s][path=%s] Non-existing file detected; skip.", file_id, path)
+                    cur_logger.info("[id=%s][path=%s] Non-existing or irregular file detected; skip.", file_id, path)
                     count_sum["non_existing"] = count_sum.get("non_existing", 0) + 1
                     continue
 
