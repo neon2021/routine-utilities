@@ -4,8 +4,9 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple, Any
 
 from global_config.logger_config import logger
+from global_config.logger_config import get_logger
 
-logger.name = os.path.basename('MountPathUtil')
+cur_logger = get_logger("mount_path_utils")
 
 @dataclass
 class MountPathUtil:
@@ -71,7 +72,7 @@ class MountPathUtil:
 
     def logical_path_2_real(self, uuid:str, relative_path:str)->str:
         if uuid is None or relative_path is None:
-            logger.error(f'logical_path_2_real, uuid:{uuid} or relative_path:{relative_path} is illegal')
+            cur_logger.error(f'logical_path_2_real, uuid:{uuid} or relative_path:{relative_path} is illegal')
             return None
         mount_path_list = [m for m in self.mount_points if m.partition_uuid == uuid or m.uuid == uuid]
         print(f'mount_path_list: {mount_path_list}')

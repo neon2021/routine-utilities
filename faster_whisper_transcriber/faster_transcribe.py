@@ -11,12 +11,11 @@ import subprocess, tempfile
 from pathlib import Path
 import json
     
-from global_config.logger_config import logger
+from global_config.logger_config import logger, get_logger
 
 from types import SimpleNamespace
 
-
-logger.name = os.path.basename(__file__)
+cur_logger = get_logger(os.path.basename(__file__))
 
 # nice method to convert seconds to the format as "hour:minute:second"
 # sourced from "Python Convert Seconds to HH:MM:SS (hours, minutes, seconds)" https://pynative.com/python-convert-seconds-to-hhmmss/
@@ -47,7 +46,7 @@ class WhisperTranscriber:
                 self.selected_model_path = os.path.expanduser("~/Downloads/huggingface_downloads/mlx-community/whisper-medium-mlx-8bit")
         else:
             self.selected_model_path = model_dict[model]
-        logger.info('model=%s, selected_model_path=%s'%(model, self.selected_model_path))
+        cur_logger.info('model=%s, selected_model_path=%s'%(model, self.selected_model_path))
 
 
         # define our torch configuration
@@ -55,7 +54,7 @@ class WhisperTranscriber:
         if not self.is_macos():
             device = "cuda" if torch.cuda.is_available() else "cpu" # fix bug: ValueError: unsupported device cuda:0
             compute_type = "float16" if self.system == "Darwin" or torch.cuda.is_available() else "float32"
-            logger.info('device=%s, compute_type=%s'%(device, compute_type))
+            cur_logger.info('device=%s, compute_type=%s'%(device, compute_type))
 
             # load model on GPU if available, else cpu
             # model = WhisperModel(os.path.expanduser("~/Downloads/huggingface_downloads/distil-whisper/distil-large-v3-ct2"), device=device, compute_type=compute_type,local_files_only=True)
@@ -70,7 +69,7 @@ class WhisperTranscriber:
             language: "zh", "en" or None
         '''
         
-        logger.info('transcribe: pid=%s, ppid=%s, file_path=%s'%(os.getpid(), os.getppid(), file_path))
+        cur_logger.info('transcribe: pid=%s, ppid=%s, file_path=%s'%(os.getpid(), os.getppid(), file_path))
         
         if self.is_macos():
             import mlx_whisper
@@ -89,7 +88,7 @@ class WhisperTranscriber:
                                 , vad_filter=vad_filter)
         # if delete_after_transcribing:
         #     os.remove(file_path)
-        #     logger.info(f'after removing, file_path is there: {os.path.exists(file_path)}')
+        #     cur_logger.info(f'after removing, file_path is there: {os.path.exists(file_path)}')
         return segments, info
 
     def start_transcribe(self, file_path:str, file_format:str="srt", not_write_file:bool=True, multilingual=True, language:str=None, temperature=(0.0, 0.2, 0.4)):
@@ -97,7 +96,39 @@ class WhisperTranscriber:
             language: "zh", "en" or None
         '''
         
-        logger.info('file_path=%s'%(file_path))
+        cur_logger.info('transcribe: pid=%s, ppid=%s, file_path=%s'%(os.getpid(), os.getppid(), file_path))
+        
+        # 检查是否为VOB文件
+        if file_path.lower().endswith('.vob'):
+            cur_logger.info(f'VOB file detected: {file_path}')
+            
+            # 创建临时目录
+            temp_dir = tempfile.mkdtemp()
+            base_name = os.path.splitext(os.path.basename(file_path))[0]
+            wav_file_path = os.path.join(temp_dir, f"{base_name}.wav")
+            
+            try:
+                # 使用ffmpeg将VOB转换为WAV
+                cmd = [
+                    'ffmpeg', '-i', file_path, 
+                    '-vn', '-acodec', 'pcm_s16le',
+                    '-ar', '16000', '-ac', '1',
+                    wav_file_path, '-y'
+                ]
+                
+                cur_logger.info(f'Converting VOB to WAV: {" ".join(cmd)}')
+                result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+                
+                cur_logger.info(f'Conversion successful: {wav_file_path}, result:{result}')
+                file_path = wav_file_path
+                
+            except subprocess.CalledProcessError as e:
+                logger.error(f'Failed to convert VOB to WAV: {e}')
+                logger.error(f"stderr: {e.stderr}")
+                raise Exception(f'Failed to convert VOB file {file_path} to WAV: {e}')
+            except Exception as e:
+                logger.error(f'Error during VOB conversion: {str(e)}')
+                raise Exception(f'VOB conversion failed for file {file_path}: {str(e)}')
         
         if self.is_macos():
             import mlx_whisper
@@ -131,7 +162,7 @@ class WhisperTranscriber:
                 lines.append(line)
                 # if row_num % 50 ==0:
                 #     srt_out.flush()
-                logger.info(line)
+                cur_logger.info(line)
                 row_num+=1
 
                 ending = datetime.now()
@@ -148,7 +179,7 @@ class WhisperTranscriber:
             file_name_suffix= "_srt.txt" if file_format=='txt' else ".srt"
 
             output_srt_file_path= os.path.join( os.path.dirname(file_path),only_file_name+"_"+start.strftime("%H_%M_%S")+file_name_suffix)
-            logger.info('output_srt_file_path: %s'%(output_srt_file_path))
+            cur_logger.info('output_srt_file_path: %s'%(output_srt_file_path))
             with open(output_srt_file_path,'w') as srt_out:
                 row_num=1
                 for segment in segments:
@@ -161,7 +192,7 @@ class WhisperTranscriber:
                     srt_out.write(line)
                     # if row_num % 50 ==0:
                     #     srt_out.flush()
-                    logger.info(line)
+                    cur_logger.info(line)
                     row_num+=1
 
                 ending = datetime.now()
@@ -177,7 +208,7 @@ class WhisperTranscriber:
 
     def create_txt_line(self, row_num:int, segment)->str:
         if row_num<=2:
-            logger.info('row_num=%s, segment=%s, type(segment)=%s'%(row_num, segment, type(segment)))
+            cur_logger.info('row_num=%s, segment=%s, type(segment)=%s'%(row_num, segment, type(segment)))
             
         if isinstance(segment, dict):
             segment = SimpleNamespace(**segment)
@@ -192,7 +223,7 @@ class WhisperTranscriber:
 
     def create_srt_line(self, row_num:int, segment)->str:
         if row_num<=2:
-            logger.info('row_num=%s, segment=%s, type(segment)=%s'%(row_num, segment, type(segment)))
+            cur_logger.info('row_num=%s, segment=%s, type(segment)=%s'%(row_num, segment, type(segment)))
             
         ''' for srt format, line:
         1
@@ -222,12 +253,12 @@ if __name__ == '__main__':
     transcriber = None
     for file_path in args.files:
         if not os.path.exists(file_path):
-            logger.info(f"File not found: {file_path}")
+            cur_logger.info(f"File not found: {file_path}")
             continue
 
         parts = os.path.splitext(file_path)
         srt_file_path=parts[0]+'.srt'
-        logger.info(f"\ncheckpoint: file_path: {file_path}, srt_file_path: {srt_file_path}\n")
+        cur_logger.info(f"\ncheckpoint: file_path: {file_path}, srt_file_path: {srt_file_path}\n")
 
         if transcriber is None:
             transcriber = WhisperTranscriber('distil-large-v3-ct2')

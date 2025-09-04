@@ -8,10 +8,10 @@ import subprocess
 import json
 import logging
 from pathlib import Path
-from global_config.logger_config import logger
+from global_config.logger_config import logger, get_logger
 
 # 配置日志
-logger.name = os.path.basename(__file__)
+cur_logger = get_logger(os.path.basename(__file__))
 
 # logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 # logger = logging.getLogger(__name__)
@@ -91,7 +91,7 @@ def check_audio_stream(file_path: str) -> dict:
         
     except subprocess.CalledProcessError as e:
         # ffprobe 执行失败
-        logger.error(f"ffprobe执行错误: {e}")
+        cur_logger.error(f"ffprobe执行错误: {e}")
         return {
             'has_audio': False,
             'audio_streams': [],
@@ -99,7 +99,7 @@ def check_audio_stream(file_path: str) -> dict:
         }
     except subprocess.TimeoutExpired:
         # 超时
-        logger.error("ffprobe执行超时")
+        cur_logger.error("ffprobe执行超时")
         return {
             'has_audio': False,
             'audio_streams': [],
@@ -107,7 +107,7 @@ def check_audio_stream(file_path: str) -> dict:
         }
     except Exception as e:
         # 其他异常
-        logger.error(f"检测过程中发生错误: {e}")
+        cur_logger.error(f"检测过程中发生错误: {e}")
         return {
             'has_audio': False,
             'audio_streams': [],
@@ -167,7 +167,7 @@ def check_audio_stream_alternative(file_path: str) -> dict:
             }
             
     except Exception as e:
-        logger.error(f"备用方法检测失败: {e}")
+        cur_logger.error(f"备用方法检测失败: {e}")
         return {
             'has_audio': False,
             'audio_streams': [],
