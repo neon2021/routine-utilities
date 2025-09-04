@@ -32,6 +32,7 @@ def check_audio_stream(file_path: str) -> dict:
             }
     """
     
+    cmd_str = None
     try:
         # 使用 ffprobe 检查音频流
         cmd = [
@@ -42,6 +43,7 @@ def check_audio_stream(file_path: str) -> dict:
             "-of", "json",
             file_path
         ]
+        cmd_str = " ".join(cmd)
         
         result = subprocess.run(
             cmd, 
@@ -91,7 +93,7 @@ def check_audio_stream(file_path: str) -> dict:
         
     except subprocess.CalledProcessError as e:
         # ffprobe 执行失败
-        cur_logger.error(f"ffprobe执行错误: {e}")
+        cur_logger.error(f"cmd: {cmd_str}, ffprobe执行错误: {e}")
         return {
             'has_audio': False,
             'audio_streams': [],
@@ -99,7 +101,7 @@ def check_audio_stream(file_path: str) -> dict:
         }
     except subprocess.TimeoutExpired:
         # 超时
-        cur_logger.error("ffprobe执行超时")
+        cur_logger.error(f"cmd: {cmd_str}, ffprobe执行超时")
         return {
             'has_audio': False,
             'audio_streams': [],
@@ -107,7 +109,7 @@ def check_audio_stream(file_path: str) -> dict:
         }
     except Exception as e:
         # 其他异常
-        cur_logger.error(f"检测过程中发生错误: {e}")
+        cur_logger.error(f"cmd: {cmd_str}, 检测过程中发生错误: {e}")
         return {
             'has_audio': False,
             'audio_streams': [],
