@@ -92,7 +92,7 @@ class WhisperTranscriber:
                 files = {"file": (Path(file_path).name, f)}
                 data = {
                     "whisper_model_alias": self.selected_model_path.replace("@remote_fast_api", ""),
-                    "whisper_beam_size": beam_size
+                    "whisper_beam_size": beam_size,
                 }
                 response = requests.post(url, files=files, data=data)
 

@@ -24,7 +24,7 @@ def get_logger(logger_name:str="app"):
         logger0.setLevel(logging.INFO)
 
         formatter = logging.Formatter(
-            fmt="%(asctime)s | %(levelname)s | %(name)s:%(lineno)d | %(message)s",
+            fmt="%(asctime)s | %(levelname)s | pid=%(process)d | %(name)s:%(lineno)d | %(message)s",
             datefmt="%Y-%m-%d %H:%M:%S"
         )
 

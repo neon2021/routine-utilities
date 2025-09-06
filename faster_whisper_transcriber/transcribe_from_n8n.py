@@ -42,7 +42,7 @@ where (f.mime_type ilike 'video/%%' or f.mime_type ilike 'audio/%%')
   and f.deleted = 0
   and (t.status != 'success' or t.id is null)
   and f.id between $id_min and $id_max
-order by f.id $order_by, f.size desc, t.ended_at nulls last;
+order by f.id $id_order_by, f.size $size_order_by, t.ended_at nulls last;
 """)
 
 SQL_FILTER_DELETED = r"""
@@ -209,11 +209,13 @@ def main():
     parser.add_argument("--id-min", type=int, default=0, help="Lower bound (inclusive) for file_inventory.id (BETWEEN).")
     parser.add_argument("--id-max", type=int, default=100000000, help="Upper bound (inclusive) for file_inventory.id (BETWEEN).")
     parser.add_argument("--limit", type=int, default=None, help="Optional hard cap on number of candidates processed.")
-    parser.add_argument("--order-by", type=str, default="id_asc", help="Ordering of candidates. Options: id_desc, id_asc.")
-    parser.add_argument("--whisper-model-alias", type=str, default="id_asc", help="Ordering of candidates. Options: id_desc, id_asc.")
+    parser.add_argument("--id-order-by", type=str, default="asc", help="Ordering of candidates. Options: desc, asc.")
+    parser.add_argument("--size-order-by", type=str, default="desc", help="Ordering of candidates. Options: desc, asc.")
+    parser.add_argument("--whisper-model-alias", type=str, default=None, help="whisper_model_alias to override config.")
 
     parser.add_argument("-v", "--verbose", action="count", default=0, help="Increase log verbosity.")
     args = parser.parse_args()
+    perf_logger.info("Parsed args: %s", args)
 
     conn = get_conn(DB_CONN)
     conn.autocommit = False
@@ -225,13 +227,15 @@ def main():
     try:
         with conn, conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
             # === node: query audio and video files ===
-            order_by_str = "desc" if args.order_by=="id_desc" else "asc"
+            id_order_by_str = "desc" if args.id_order_by=="desc" else "asc"
+            size_order_by_str = "desc" if args.size_order_by=="desc" else "asc"
+            
             whisper_model_alias = args.whisper_model_alias if args.whisper_model_alias else yaml_config_boxed.transcribe.whisper.model_alias
             
-            cur_logger.info("Querying candidate media files in id range [%s, %s], order_by: %s, order_by_str:%s ...", args.id_min, args.id_max, args.order_by, order_by_str)
+            cur_logger.info("Querying candidate media files in id range [%s, %s], id_order_by: %s, id_order_by_str:%s, size_order_by_str:%s, size_order_by:%s ...", args.id_min, args.id_max, args.id_order_by, id_order_by_str, args.size_order_by, size_order_by_str)
             
-            tmp_sql = SQL_QUERY_CANDIDATES.substitute({"id_min": args.id_min, "id_max": args.id_max, "order_by": order_by_str})
-            print(f'tmp_sql: {tmp_sql}')
+            tmp_sql = SQL_QUERY_CANDIDATES.substitute({"id_min": args.id_min, "id_max": args.id_max, "id_order_by": id_order_by_str, "size_order_by": size_order_by_str})
+            perf_logger.info(f'SQL_QUERY_CANDIDATES: {tmp_sql}')
             cur.execute(tmp_sql)
             
             rows = cur.fetchall()

@@ -260,7 +260,7 @@ from functools import lru_cache
 NUM_WORKERS=1
 
 def transcribe_all(conn, cur, file_id:str, file_path:str,start_time:str,llm_model_name:str,file_md5:str,whisper_model_alias:str,whisper_beam_size:str,model_384d:str):
-    version_ymd_hms = datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
+    version_ymd_hms_ppid_pid = datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S') + '-' + str(os.getppid()) + '-' + str(os.getpid())
     embedding_model_name = model_384d
     model_in_out = None
     try:
@@ -293,15 +293,15 @@ def transcribe_all(conn, cur, file_id:str, file_path:str,start_time:str,llm_mode
         cur_logger.info(f'model_in_out:{model_in_out}')
 
         # err_msg = old_logic(segments,OLLAMA_MODEL,info,embedding_model)
-        err_msg = new_logic(conn, cur, file_id, segments, version_ymd_hms)
+        err_msg = new_logic(conn, cur, file_id, segments, version_ymd_hms_ppid_pid)
 
         if len(err_msg)>0:
-            log_transcription(conn, cur, file_id, file_md5, file_path, "partial_success", start_time, whisper_model_alias, embedding_model_name,model_in_out,version_ymd_hms, str(err_msg))
+            log_transcription(conn, cur, file_id, file_md5, file_path, "partial_success", start_time, whisper_model_alias, embedding_model_name,model_in_out,version_ymd_hms_ppid_pid, str(err_msg))
         else:
-            log_transcription(conn, cur, file_id, file_md5, file_path, "success", start_time, whisper_model_alias, embedding_model_name,model_in_out,version_ymd_hms)
+            log_transcription(conn, cur, file_id, file_md5, file_path, "success", start_time, whisper_model_alias, embedding_model_name,model_in_out,version_ymd_hms_ppid_pid)
 
     except Exception as e:
-        log_transcription(conn, cur, file_id, file_md5, file_path, "error", start_time, whisper_model_alias, embedding_model_name,model_in_out if model_in_out else 'None',version_ymd_hms, str(e))
+        log_transcription(conn, cur, file_id, file_md5, file_path, "error", start_time, whisper_model_alias, embedding_model_name,model_in_out if model_in_out else 'None',version_ymd_hms_ppid_pid, str(e))
     finally:
         # cur.close()
         # conn.close()
