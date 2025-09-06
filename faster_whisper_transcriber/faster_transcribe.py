@@ -117,7 +117,17 @@ class WhisperTranscriber:
             res = mlx_whisper.transcribe(file_path, path_or_hf_repo=self.selected_model_path, language=language)
             # TODO 2025-09-05: the return values like segments, info need to be adapted to be consistent with faster_whisper
             segments = [SimpleNamespace(**seg) for seg in res['segments']]
-            info = {'language': res['language'], 'selected_model_path': self.selected_model_path, 'tech':'mlx_whisper','transcription_options':{'beam_size': beam_size, 'vad_filter': vad_filter}}
+            info = {
+                'language': res['language'],
+                'language_probability': 1.0,
+                'duration': sum([seg.end - seg.start for seg in segments]),
+                'duration_after_vad': None,
+                'selected_model_path': self.selected_model_path, 'tech':'mlx_whisper',
+                'transcription_options':{
+                    'beam_size': beam_size, 
+                    'vad_filter': vad_filter
+                }
+            }
             info = SimpleNamespace(**info)
         else:
             segments, info = self.model.transcribe(file_path
