@@ -28,7 +28,7 @@ async def transcribe(file: UploadFile = File(...),
             cur_logger.info(f'end to init {whisper_model_alias}, transcriber.id: {id(transcriber)}')
 
             # Step 1: 转录
-            cur_logger.info(f'begin to transcribe by {whisper_model_alias}, file: {tmp.name}')
+            cur_logger.info(f'begin to transcribe by {whisper_model_alias}, original file: {file.filename}, temp file: {tmp.name}')
             segments, info = transcriber.transcribe(tmp.name, beam_size=whisper_beam_size, language=None, vad_filter=True)
             cur_logger.info(f'end to transcribe by {whisper_model_alias}, info:{info}')
             
