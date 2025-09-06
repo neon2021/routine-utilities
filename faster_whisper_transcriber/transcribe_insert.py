@@ -10,13 +10,13 @@ import subprocess
 import argparse
 from types import SimpleNamespace
 
-from global_config.logger_config import logger
+from global_config.logger_config import get_logger
 
-logger.name = os.path.basename(__file__)
+cur_logger = get_logger(os.path.basename(__file__))
 
 def log_transcription(conn, cur, file_id, file_md5, path, status, start_time, ollama_model, embedding_model_name,model_in_out,version, error_message=None):
     if status != 'success':
-        logger.info(f'error_message: {error_message}')
+        cur_logger.info(f'error_message: {error_message}')
 
     end_time = datetime.datetime.now()
     duration = (end_time - start_time).total_seconds()
@@ -40,10 +40,10 @@ def get_transcription_log(cur, file_path):
     try:
         cur.execute(f"SELECT file_id, path, status, started_at FROM transcription_log WHERE path = %s order by id desc;", (file_path,))
         row = cur.fetchone()
-        logger.info(f'row: {row}')
+        cur_logger.info(f'row: {row}')
         return row
     except Exception as e:
-        logger.info(f"❌ 查询 transcription_log 记录失败: {str(e)}")
+        cur_logger.info(f"❌ 查询 transcription_log 记录失败: {str(e)}")
         return None
 
 def old_logic(conn, cur, segments, ollamaModel, info, embedding_model,version):
@@ -53,7 +53,7 @@ def old_logic(conn, cur, segments, ollamaModel, info, embedding_model,version):
     seg_idx = 0
     for seg in segments:
         seg_idx += 1
-        logger.info(f'deal with seg_idx: {seg_idx}')
+        cur_logger.info(f'deal with seg_idx: {seg_idx}')
         start, end, text = seg.start, seg.end, seg.text.strip()
         if not text:
             continue
@@ -65,7 +65,7 @@ def old_logic(conn, cur, segments, ollamaModel, info, embedding_model,version):
     if buffer:
         merged.append(buffer)
 
-    logger.info(f'merged length: {len(merged)}')
+    cur_logger.info(f'merged length: {len(merged)}')
 
     err_msg=[]
     # Step 2: 处理合并段落
@@ -78,7 +78,7 @@ def old_logic(conn, cur, segments, ollamaModel, info, embedding_model,version):
         # Step 3: 调用 Ollama 模型
         def run_ollama(prompt):
             start_time = datetime.datetime.now()
-            logger.info(f'begin to run_ollama with {prompt}')
+            cur_logger.info(f'begin to run_ollama with {prompt}')
             try:
                 result = subprocess.run(
                     ["ollama", "run", ollamaModel],
@@ -91,15 +91,15 @@ def old_logic(conn, cur, segments, ollamaModel, info, embedding_model,version):
                     if len(stderr_msg) > 0:
                         return {"err":stderr_msg,"errType":"stderr"}
                 decoded_output = result.stdout.decode('utf-8', errors='replace')
-                logger.info(f'end to run_ollama with {prompt}\n\nresult: {decoded_output}')
+                cur_logger.info(f'end to run_ollama with {prompt}\n\nresult: {decoded_output}')
                 return {"out":decoded_output}
             except Exception as e:
-                logger.info(f'failed to run_ollama with {prompt}')
+                cur_logger.info(f'failed to run_ollama with {prompt}')
                 return {"err":str(e),"errType":"exception"}
             finally:
                 end_time = datetime.datetime.now()
                 duration = (end_time - start_time).total_seconds()
-                logger.info(f'耗时: {duration:.2f} 秒')
+                cur_logger.info(f'耗时: {duration:.2f} 秒')
 
         translated = ""
         summary_zh = ""
@@ -197,20 +197,20 @@ def old_logic(conn, cur, segments, ollamaModel, info, embedding_model,version):
     return err_msg
 
 def new_logic(conn, cur, file_id, segments, version):
-    logger.info(f'begin to deal with segments')
+    cur_logger.info(f'begin to deal with segments')
     
     err_msg=[]
     
     seg_idx = 0
     for seg in segments:
         if seg_idx <= 2:
-            logger.info(f'seg_idx: {seg_idx}, segment: {seg}, type(segment): {type(seg)}')
+            cur_logger.info(f'seg_idx: {seg_idx}, segment: {seg}, type(segment): {type(seg)}')
 
         if isinstance(seg, dict):
             seg = SimpleNamespace(**seg)
             
         seg_idx += 1
-        logger.info(f'deal with file_id: {file_id} seg_idx: {seg_idx}')
+        cur_logger.info(f'deal with file_id: {file_id} seg_idx: {seg_idx}')
         start, end, text = seg.start, seg.end, seg.text.strip()
         if not text:
             continue
@@ -249,20 +249,16 @@ def exist_same_md5_transcript_log(cur, file_md5:str)->bool:
     try:
         cur.execute(f"SELECT file_id, path, status, started_at FROM transcription_log WHERE file_md5 = %s and status='success';", (file_md5,))
         rows = cur.fetchall()
-        logger.info(f'exist_same_md5_transcript_log: rows: {rows}')
+        cur_logger.info(f'exist_same_md5_transcript_log: rows: {rows}')
         return rows and len(rows)>0
     except Exception as e:
-        logger.info(f"❌ failed to query transcription_log with same md5: {str(e)}")
+        cur_logger.info(f"❌ failed to query transcription_log with same md5: {str(e)}")
         return None
 
 from functools import lru_cache
 
 NUM_WORKERS=1
 
-@lru_cache(maxsize=1)
-def get_model(whisper_model_alias:str):
-    return WhisperTranscriber(whisper_model_alias, num_workers=NUM_WORKERS)
-    
 def transcribe_all(conn, cur, file_id:str, file_path:str,start_time:str,llm_model_name:str,file_md5:str,whisper_model_alias:str,whisper_beam_size:str,model_384d:str):
     version_ymd_hms = datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
     embedding_model_name = model_384d
@@ -277,16 +273,14 @@ def transcribe_all(conn, cur, file_id:str, file_path:str,start_time:str,llm_mode
             return
 
         # 初始化模型
-        logger.info(f'begin to init {whisper_model_alias}')
-        transcriber = get_model(whisper_model_alias)
-        logger.info(f'end to init {whisper_model_alias}, transcriber.id: {id(transcriber)}')
-        embedding_model = SentenceTransformer(model_384d)  # 和 pgvector 维度保持一致（384）
-        
+        cur_logger.info(f'begin to init {whisper_model_alias}')
+        transcriber = WhisperTranscriber(whisper_model_alias, num_workers=NUM_WORKERS)
+        cur_logger.info(f'end to init {whisper_model_alias}, transcriber.id: {id(transcriber)}')
 
         # Step 1: 转录
-        logger.info(f'begin to transcribe by {whisper_model_alias}')
+        cur_logger.info(f'begin to transcribe by {whisper_model_alias}')
         segments, info = transcriber.transcribe(SRT_SOURCE, beam_size=whisper_beam_size, language=None, vad_filter=True)
-        logger.info(f'end to transcribe by {whisper_model_alias}, info:{info}')
+        cur_logger.info(f'end to transcribe by {whisper_model_alias}, info:{info}')
         
         if info is None or (isinstance(info, dict) and info['tech'] == 'mlx_whisper'):
             model_in_out = {'model':'mlx_whisper'}
@@ -296,7 +290,7 @@ def transcribe_all(conn, cur, file_id:str, file_path:str,start_time:str,llm_mode
                 "args": str(getattr(info, "transcription_options", "")),
                 "info":{"language":info.language,"language_probability":info.language_probability, "duration":info.duration, "duration_after_vad":info.duration_after_vad}
             }
-        logger.info(f'model_in_out:{model_in_out}')
+        cur_logger.info(f'model_in_out:{model_in_out}')
 
         # err_msg = old_logic(segments,OLLAMA_MODEL,info,embedding_model)
         err_msg = new_logic(conn, cur, file_id, segments, version_ymd_hms)
@@ -315,10 +309,9 @@ def transcribe_all(conn, cur, file_id:str, file_path:str,start_time:str,llm_mode
 
 
 from global_config.config import yaml_config_boxed
-def main_func(file_id:str, file_path:str,file_md5:str, start_time=datetime.datetime.now()):
+def main_func(whisper_model_alias:str, file_id:str, file_path:str,file_md5:str, start_time=datetime.datetime.now()):
     DB_CONN = yaml_config_boxed.transcribe.db_conn
     llm_model_name = yaml_config_boxed.transcribe.llm.ollama_model
-    whisper_model_alias = yaml_config_boxed.transcribe.whisper.model_alias
     whisper_beam_size = yaml_config_boxed.transcribe.whisper.beam_size
     model_384d = yaml_config_boxed.transcribe.embedding.model_384d
 
@@ -328,7 +321,7 @@ def main_func(file_id:str, file_path:str,file_md5:str, start_time=datetime.datet
         started_at = datetime.datetime.now()
         if old_row:
             file_id, path, status, started_at = old_row
-            logger.info(f'get_transcription_log, file_id:{file_id}, path:{path}, status:{status}, started_at:{started_at}')
+            cur_logger.info(f'get_transcription_log, file_id:{file_id}, path:{path}, status:{status}, started_at:{started_at}')
         time_gap_in_days = (datetime.datetime.now() - started_at).days
         if old_row is None or status != 'success' or time_gap_in_days>1:
             transcribe_all(conn, cur, file_id, file_path, start_time, llm_model_name, file_md5, whisper_model_alias, whisper_beam_size, model_384d)
@@ -347,7 +340,7 @@ if __name__ == '__main__':
     file_md5 = args.file_md5
 
     if not os.path.exists(file_path):
-        logger.info(f"file not exists, ignored, file_path:{file_path}")
+        cur_logger.info(f"file not exists, ignored, file_path:{file_path}")
         sys.exit(0)
         
     main_func(file_id, file_path, file_md5, start_time)

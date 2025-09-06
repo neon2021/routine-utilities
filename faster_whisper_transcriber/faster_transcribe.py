@@ -25,9 +25,10 @@ def conver_to_hms(sec:float)->str:
     return '%02d:%02d:%02d'%(hh,mm,ss)
 
 class WhisperTranscriber:
-    def __init__(self, model:str, cpu_threads:int=4, num_workers:int=1) -> None:
+    def __init__(self, model:str, disable_mlx_whisper:bool=False, cpu_threads:int=4, num_workers:int=1) -> None:
         import platform
         self.system = platform.system()
+        self.disable_mlx_whisper = disable_mlx_whisper
         
         logger.name = os.path.basename(__file__)
         same_folder=os.path.expanduser("~/Downloads/huggingface_downloads/")
@@ -36,24 +37,32 @@ class WhisperTranscriber:
             # 'faster-distil-whisper-large-v2':os.path.join(same_folder,"/Systran/faster-distil-whisper-large-v2"),
             'faster-whisper-large-v3-turbo-ct2':same_folder+"/deepdml/faster-whisper-large-v3-turbo-ct2",
             # 'faster-whisper-large-v3':same_folder+"/Systran/faster-whisper-large-v3",
-            "faster-whisper-medium":same_folder+"Systran/faster-whisper-medium"
-            }
+            "faster-whisper-tiny":same_folder+"Systran/faster-whisper-tiny",
+            "faster-whisper-medium":same_folder+"Systran/faster-whisper-medium",
+            "faster-whisper-tiny@remote_fast_api":"Systran/faster-whisper-tiny@remote_fast_api",
+            "faster-whisper-medium@remote_fast_api":"Systran/faster-whisper-medium@remote_fast_api",
+            "faster-whisper-large-v3-turbo-ct2@remote_fast_api":"Systran/faster-whisper-large-v3-turbo-ct2@remote_fast_api",
+        }
 
-        if self.is_macos():
-            if model == 'large':
-                self.selected_model_path = os.path.expanduser("~/Downloads/huggingface_downloads/mlx-community/whisper-large-v3-mlx")
-            else:
-                self.selected_model_path = os.path.expanduser("~/Downloads/huggingface_downloads/mlx-community/whisper-medium-mlx-8bit")
-        else:
+        if model.endswith("@remote_fast_api") or not self.is_macos():
             self.selected_model_path = model_dict[model]
+        else:
+            if 'large' in model:
+                self.selected_model_path = os.path.expanduser("~/Downloads/huggingface_downloads/mlx-community/whisper-large-v3-mlx")
+            elif 'medium' in model:
+                self.selected_model_path = os.path.expanduser("~/Downloads/huggingface_downloads/mlx-community/whisper-medium-mlx-8bit")
+            else:
+                self.selected_model_path = os.path.expanduser("~/Downloads/huggingface_downloads/mlx-community/whisper-tiny-mlx")
+            cur_logger.info(f"macOS detected, using mlx_whisper with model path: {self.selected_model_path} instead of '{model}'")
+
         cur_logger.info('model=%s, selected_model_path=%s'%(model, self.selected_model_path))
 
 
         # define our torch configuration
         # device = "cuda:0" if torch.cuda.is_available() else "cpu" # bug: ValueError: unsupported device cuda:0
-        if not self.is_macos():
+        if not self.is_macos() and not model.endswith("@remote_fast_api"):
             device = "cuda" if torch.cuda.is_available() else "cpu" # fix bug: ValueError: unsupported device cuda:0
-            compute_type = "float16" if self.system == "Darwin" or torch.cuda.is_available() else "float32"
+            compute_type = "float16" if not self.is_macos() and torch.cuda.is_available() else "float32"
             cur_logger.info('device=%s, compute_type=%s'%(device, compute_type))
 
             # load model on GPU if available, else cpu
@@ -62,7 +71,7 @@ class WhisperTranscriber:
                                     cpu_threads=cpu_threads, num_workers=num_workers)
 
     def is_macos(self)->bool:
-        return self.system == "Darwin"
+        return not self.disable_mlx_whisper and self.system == "Darwin"
     
     def transcribe(self, file_path:str, beam_size:int=5, language:str=None, vad_filter:bool=True):
         '''
@@ -71,7 +80,34 @@ class WhisperTranscriber:
         
         cur_logger.info('transcribe: pid=%s, ppid=%s, file_path=%s'%(os.getpid(), os.getppid(), file_path))
         
-        if self.is_macos():
+        if self.selected_model_path.endswith("@remote_fast_api"):
+            import requests
+
+            from global_config.config import yaml_config_boxed
+            remote_fast_api = yaml_config_boxed.transcribe.remote_fast_api
+            url = f"http://{remote_fast_api}/transcribe"
+            cur_logger.info(f"Sending request to remote FastAPI server at {url}")
+
+            with open(file_path, "rb") as f:
+                files = {"file": (Path(file_path).name, f)}
+                data = {
+                    "whisper_model_alias": self.selected_model_path.replace("@remote_fast_api", ""),
+                    "whisper_beam_size": beam_size
+                }
+                response = requests.post(url, files=files, data=data)
+
+            if response.status_code == 200:
+                result = response.json()
+                if "error" in result:
+                    raise Exception(f"Error from remote server: {result['error']}")
+                segments = result.get("segments", [])
+                segments = [SimpleNamespace(**seg) for seg in segments]
+                info = result.get("info", {})
+                info = SimpleNamespace(**info)
+                cur_logger.info(f"Received response from remote server: info={info}")
+            else:
+                raise Exception(f"Failed to get response from remote server, status code: {response.status_code}, detail: {response.text}")
+        elif self.is_macos():
             import mlx_whisper
             # NOTE: beam_size, vad_filter are omitted, not yet implemented
             # RETURNS:
@@ -79,16 +115,15 @@ class WhisperTranscriber:
             #   segments
             #   language
             res = mlx_whisper.transcribe(file_path, path_or_hf_repo=self.selected_model_path, language=language)
-            segments = res['segments']
-            info = {'language': res['language'], 'selected_model_path': self.selected_model_path, 'tech':'mlx_whisper'}
+            # TODO 2025-09-05: the return values like segments, info need to be adapted to be consistent with faster_whisper
+            segments = [SimpleNamespace(**seg) for seg in res['segments']]
+            info = {'language': res['language'], 'selected_model_path': self.selected_model_path, 'tech':'mlx_whisper','transcription_options':{'beam_size': beam_size, 'vad_filter': vad_filter}}
+            info = SimpleNamespace(**info)
         else:
             segments, info = self.model.transcribe(file_path
                                 , beam_size=beam_size
                                 , language=language
                                 , vad_filter=vad_filter)
-        # if delete_after_transcribing:
-        #     os.remove(file_path)
-        #     cur_logger.info(f'after removing, file_path is there: {os.path.exists(file_path)}')
         return segments, info
 
     def start_transcribe(self, file_path:str, file_format:str="srt", not_write_file:bool=True, multilingual=True, language:str=None, temperature=(0.0, 0.2, 0.4)):
@@ -130,29 +165,16 @@ class WhisperTranscriber:
                 logger.error(f'Error during VOB conversion: {str(e)}')
                 raise Exception(f'VOB conversion failed for file {file_path}: {str(e)}')
         
-        if self.is_macos():
-            import mlx_whisper
-            # NOTE: beam_size, vad_filter are omitted, not yet implemented
-            # RETURNS:
-            #   text
-            #   segments
-            #   language
-            res = mlx_whisper.transcribe(file_path, path_or_hf_repo=self.selected_model_path,language=language)
-            segments = res['segments']
-            info = {'language': res['language']}
-        else:
-            segments, info = self.model.transcribe(file_path
-                                , beam_size=5
-                                , multilingual=multilingual
-                                , language=language
-                                , vad_filter=True
-                                , temperature=temperature)
+        segments, info = self.transcribe(file_path=file_path, beam_size=5, language=language if not multilingual else None, vad_filter=True)
 
         start = datetime.now()
         if not_write_file:
             lines=[]
             row_num=1
             for segment in segments:
+                if row_num==1:
+                    print(f'type(segments): {type(segments)}, type(segments[0]):{type(segment if segments else "No segments")}, segments[0]:{segment if segments else "No segments data"}, info: {info}, type(info): {type(info)}')
+                    
                 if file_format=='txt':
                     line = self.create_txt_line(row_num, segment)
                     
@@ -243,14 +265,19 @@ class WhisperTranscriber:
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Transcribe audio or video files')
     parser.add_argument('files', metavar='FILE', nargs='+', help='File paths to transcribe')
+    parser.add_argument('--disable_mlx_whisper', action='store_true', help='Disable mlx_whisper on macOS')
+    parser.add_argument('--model', type=str, default=None, help='Whisper model to use (e.g., distil-large-v3-ct2, faster-whisper-large-v3-turbo-ct2, faster-whisper-medium, faster-whisper-tiny@remote_fast_api, faster-whisper-medium@remote_fast_api)')
     
     args = parser.parse_args()
+    print(f'args: {args}')
 
     # Unable to load any of {libcudnn_ops.so.9.1.0, libcudnn_ops.so.9.1, libcudnn_ops.so.9, libcudnn_ops.so}
     # Invalid handle. Cannot load symbol cudnnCreateTensorDescriptor
     # [1]    65130 IOT instruction (core dumped)  python faster-transcribe.py
     # transcriber = WhisperTranscriber('faster-whisper-large-v3-turbo-ct2')
     transcriber = None
+    model_name = args.model
+    disable_mlx_whisper = bool(args.disable_mlx_whisper)
     for file_path in args.files:
         if not os.path.exists(file_path):
             cur_logger.info(f"File not found: {file_path}")
@@ -261,7 +288,7 @@ if __name__ == '__main__':
         cur_logger.info(f"\ncheckpoint: file_path: {file_path}, srt_file_path: {srt_file_path}\n")
 
         if transcriber is None:
-            transcriber = WhisperTranscriber('distil-large-v3-ct2')
+            transcriber = WhisperTranscriber(model_name, disable_mlx_whisper)
         srt = transcriber.start_transcribe(file_path=file_path)
 
         with open(srt_file_path,'w') as srt_file:
