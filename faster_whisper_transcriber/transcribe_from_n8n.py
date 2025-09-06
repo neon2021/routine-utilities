@@ -89,8 +89,7 @@ def handle_result(fut, ctx):
 from global_config.config import yaml_config_boxed
 import traceback
 
-max_parallel_workers = yaml_config_boxed.transcribe.max_parallel_workers
-def transcribe_files(filtered_rows, whisper_model_alias:str):
+def transcribe_files(filtered_rows, whisper_model_alias:str, max_parallel_workers:int):
     from concurrent.futures import ProcessPoolExecutor, wait, FIRST_COMPLETED, as_completed
     from concurrent.futures.process import BrokenProcessPool
     
@@ -212,6 +211,7 @@ def main():
     parser.add_argument("--id-order-by", type=str, default="asc", help="Ordering of candidates. Options: desc, asc.")
     parser.add_argument("--size-order-by", type=str, default="desc", help="Ordering of candidates. Options: desc, asc.")
     parser.add_argument("--whisper-model-alias", type=str, default=None, help="whisper_model_alias to override config.")
+    parser.add_argument("--max-parallel-workers", type=int, default=None, help="Max parallel workers for ProcessPoolExecutor to overrie config.")
 
     parser.add_argument("-v", "--verbose", action="count", default=0, help="Increase log verbosity.")
     args = parser.parse_args()
@@ -231,6 +231,7 @@ def main():
             size_order_by_str = "desc" if args.size_order_by=="desc" else "asc"
             
             whisper_model_alias = args.whisper_model_alias if args.whisper_model_alias else yaml_config_boxed.transcribe.whisper.model_alias
+            max_parallel_workers = args.max_parallel_workers if args.max_parallel_workers and args.max_parallel_workers > 0 else yaml_config_boxed.transcribe.max_parallel_workers
             
             cur_logger.info("Querying candidate media files in id range [%s, %s], id_order_by: %s, id_order_by_str:%s, size_order_by_str:%s, size_order_by:%s ...", args.id_min, args.id_max, args.id_order_by, id_order_by_str, args.size_order_by, size_order_by_str)
             
@@ -256,7 +257,7 @@ def main():
                     perf_logger.info("filtered_rows length: %s, count_sum for skipping files: %s", len(filtered_rows), count_sum)
                     perf_logger.info("-" * 120)
                     
-                    transcribe_files(filtered_rows, whisper_model_alias)
+                    transcribe_files(filtered_rows, whisper_model_alias, max_parallel_workers)
                     
                     filtered_rows.clear()
 

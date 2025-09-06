@@ -317,6 +317,21 @@ def main_func(whisper_model_alias:str, file_id:str, file_path:str,file_md5:str, 
 
     # PostgreSQL 连接
     with psycopg2.connect(DB_CONN) as conn, conn.cursor() as cur:
+        conn.autocommit = False
+        # 15 seconds timeout for each statement
+        cur.execute("SET statement_timeout = %s", (15 * 1000,))
+        # using 'for update' lock to prevent multiple processes from transcribing the same file
+        cur.execute("""
+            SELECT * FROM file_inventory 
+            WHERE id = %s FOR UPDATE SKIP LOCKED
+        """, (file_id,))
+        
+        record = cur.fetchone()
+        
+        if not record:
+            cur_logger.warning(f"[file_id={file_id}] locked by other processes; skip.")
+            return
+                    
         old_row = get_transcription_log(cur, file_path)
         started_at = datetime.datetime.now()
         if old_row:
