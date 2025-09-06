@@ -15,6 +15,8 @@ import sys
 import argparse
 import subprocess
 from typing import Optional
+from string import Template
+
 
 import psycopg2
 import psycopg2.extras
@@ -24,7 +26,7 @@ from global_config.logger_config import logger,get_logger
 cur_logger = get_logger("transcribe_from_n8n")
 perf_logger = get_logger("perf.transcribe_from_n8n")
 
-SQL_QUERY_CANDIDATES = r"""
+SQL_QUERY_CANDIDATES = Template("""
 select 
   f.*
 from file_inventory f
@@ -39,9 +41,9 @@ left outer join (
 where (f.mime_type ilike 'video/%%' or f.mime_type ilike 'audio/%%')
   and f.deleted = 0
   and (t.status != 'success' or t.id is null)
-  and f.id between %(id_min)s and %(id_max)s
-order by f.size desc, t.ended_at nulls last, f.id desc;
-"""
+  and f.id between $id_min and $id_max
+order by f.id $order_by, f.size desc, t.ended_at nulls last;
+""")
 
 SQL_FILTER_DELETED = r"""
 select
@@ -88,7 +90,7 @@ from global_config.config import yaml_config_boxed
 import traceback
 
 max_parallel_workers = yaml_config_boxed.transcribe.max_parallel_workers
-def transcribe_files(filtered_rows):
+def transcribe_files(filtered_rows, whisper_model_alias:str):
     from concurrent.futures import ProcessPoolExecutor, wait, FIRST_COMPLETED, as_completed
     from concurrent.futures.process import BrokenProcessPool
     
@@ -110,24 +112,27 @@ def transcribe_files(filtered_rows):
             pending = set()
             ctx_map = {}
             perf_logger.info("start to transcribe audio stream for files")
-            for r in filtered_rows:
-                file_id = r["id"]
-                path = r["path"]
-                md5 = r["md5"]
-                cur_logger.info("[id=%s] Processing file: %s", file_id, path)
+            for one_row in filtered_rows:
+                file_id = one_row["id"]
+                path = one_row["path"]
+                md5 = one_row["md5"]
+                cur_logger.info("[file_id=%s] Processing file: %s", file_id, path)
+                conn = get_conn(DB_CONN)
+                
+                with conn, conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
+                    cur.execute(f"select * from transcription_log where file_md5=%(file_md5)s and status='success';", {"file_md5": md5})
+                    is_suc_before = cur.fetchall()
+                    if is_suc_before:
+                        cur_logger.info("[file_id=%s] successful rows existed; skip.", file_id)
+                        continue
 
                 submit_path = path
                 is_tmp_wav = False
-                # # —— 串行转换：MKV 先转 WAV，再交给子进程只做转录 ——
-                # if path.lower().endswith(".mkv"):
-                #     wait_for_free_ram(min_free_gb=2.0)  # 转换前守内存
-                #     submit_path = to_wav16k_mono(path)
-                #     is_tmp_wav = True
-                #     logger.info("[id=%s] mkv→wav done: %s", file_id, submit_path)
 
                 from transcribe_insert import main_func
                 cur_logger.info("[id=%s] Submitting to pool: %s", file_id, submit_path)
-                fut = pool.submit(main_func, file_id, submit_path, md5)
+                
+                fut = pool.submit(main_func, whisper_model_alias, file_id, submit_path, md5)
                 pending.add(fut)
                 ctx_map[fut] = {"file_id": file_id, "path": submit_path, "is_tmp_wav": is_tmp_wav}
                 processed += 1
@@ -195,18 +200,20 @@ def transcribe_files(filtered_rows):
     finally:
         logger.info("Done. processed=%d", processed)
 
+# DB 连接参数
+DB_CONN = yaml_config_boxed.transcribe.db_conn
+
 def main():
     parser = argparse.ArgumentParser(description="Run media transcribe loop translated from n8n.")
     # id 范围与批处理
     parser.add_argument("--id-min", type=int, default=0, help="Lower bound (inclusive) for file_inventory.id (BETWEEN).")
     parser.add_argument("--id-max", type=int, default=100000000, help="Upper bound (inclusive) for file_inventory.id (BETWEEN).")
     parser.add_argument("--limit", type=int, default=None, help="Optional hard cap on number of candidates processed.")
+    parser.add_argument("--order-by", type=str, default="id_asc", help="Ordering of candidates. Options: id_desc, id_asc.")
+    parser.add_argument("--whisper-model-alias", type=str, default="id_asc", help="Ordering of candidates. Options: id_desc, id_asc.")
 
     parser.add_argument("-v", "--verbose", action="count", default=0, help="Increase log verbosity.")
     args = parser.parse_args()
-
-    # DB 连接参数
-    DB_CONN = yaml_config_boxed.transcribe.db_conn
 
     conn = get_conn(DB_CONN)
     conn.autocommit = False
@@ -218,12 +225,18 @@ def main():
     try:
         with conn, conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
             # === node: query audio and video files ===
-            cur_logger.info("Querying candidate media files in id range [%s, %s] ...", args.id_min, args.id_max)
-            cur.execute(SQL_QUERY_CANDIDATES, {"id_min": args.id_min, "id_max": args.id_max})
+            order_by_str = "desc" if args.order_by=="id_desc" else "asc"
+            whisper_model_alias = args.whisper_model_alias if args.whisper_model_alias else yaml_config_boxed.transcribe.whisper.model_alias
+            
+            cur_logger.info("Querying candidate media files in id range [%s, %s], order_by: %s, order_by_str:%s ...", args.id_min, args.id_max, args.order_by, order_by_str)
+            
+            tmp_sql = SQL_QUERY_CANDIDATES.substitute({"id_min": args.id_min, "id_max": args.id_max, "order_by": order_by_str})
+            print(f'tmp_sql: {tmp_sql}')
+            cur.execute(tmp_sql)
+            
             rows = cur.fetchall()
             rows_count = len(rows)
             cur_logger.info("Fetched %d candidate rows.", rows_count)
-
 
             idx = 0
             filtered_rows = []
@@ -239,7 +252,7 @@ def main():
                     perf_logger.info("filtered_rows length: %s, count_sum for skipping files: %s", len(filtered_rows), count_sum)
                     perf_logger.info("-" * 120)
                     
-                    transcribe_files(filtered_rows)
+                    transcribe_files(filtered_rows, whisper_model_alias)
                     
                     filtered_rows.clear()
 
