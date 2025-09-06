@@ -29,15 +29,14 @@ select
   f.*
 from file_inventory f
 left outer join (
-    select tl.status, tl.path, tl.id, tl.file_id, tl.ended_at
+    select tl.status, tl.path, tl.id, tl.file_id, tl.ended_at, tl.file_md5
     from transcription_log tl
     where not exists (
         select t.id from transcription_log t
         where t.path = tl.path and t.id > tl.id
     )
-) t on f.id = t.file_id
+) t on f.md5 = t.file_md5
 where (f.mime_type ilike 'video/%%' or f.mime_type ilike 'audio/%%')
-    and f.mime_type != 'video/x-matroska'
   and f.deleted = 0
   and (t.status != 'success' or t.id is null)
   and f.id between %(id_min)s and %(id_max)s
